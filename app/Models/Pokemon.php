@@ -21,7 +21,7 @@ class Pokemon extends Model
      */
     public function types()
     {
-        return $this->belongsToMany(Type::class);
+        return $this->belongsToMany(Types::class);
         /*belongsTomany car un pokemon peut avoir pls types et un type peut-etre pris par plus pokemon*/
     }
 
@@ -32,7 +32,7 @@ class Pokemon extends Model
      */
     public function attaques()
     {
-        return $this->belongsToMany(Attaque::class);
+        return $this->belongsToMany(Attaques::class);
         /* un pokemon peut avoir pls attaques et une attaque peut-etre utilisée par un ou pls pokemon*/
     }
 }
