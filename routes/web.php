@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\PokemonController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,10 @@ Route::middleware('auth')->group(function () {
 Route::get('/', [HomepageController::class, 'index']); /* appelle la méthode index de HomepageController. - affichage des 6 pokemons*/
 
 
+
+/*Affichage de la liste des pokemon autre que la homepage*/
+Route::get('/pokemons', [PokemonController::class, 'index'])->name('pokemons.index');
+Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('pokemons.show');
 
 
 // Inclut les routes d'authentification définies dans 'auth.php'

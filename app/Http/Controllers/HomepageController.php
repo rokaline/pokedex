@@ -14,9 +14,8 @@ class HomepageController extends Controller
     // Méthode qui sera appelée pour afficher la page d'accueil
     public function index()
     {
-        // Récupère tous les Pokémon de la base de données (6 pour l'instant)
-        $pokemons = Pokemon::all();
-
+        // Récupère tous les Pokémon de la base de données
+        $pokemons = Pokemon::paginate(6);
         // Retourne la vue 'homepage.index' et lui passe la variable 'pokemons'
         return view('homepage.index', [
             'pokemons' => $pokemons,
