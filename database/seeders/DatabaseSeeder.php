@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,5 +20,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        /*pour le pokedex*/
+
+        $this->call(TypesSeeder::class);
+        $this->call(AttaquesSeeder::class);
+        $this->call(PokemonSeeder::class);
+
     }
 }

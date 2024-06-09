@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-class Attaque extends Model
+class Attaques extends Model
 {
     // Utilisation de la factory associée
     use HasFactory;
@@ -19,7 +19,7 @@ class Attaque extends Model
      */
     public function type()
     {
-        return $this->belongsTo(Type::class);
+        return $this->belongsTo(Types::class);
         /*une attaque a un seul type*/
     }
 

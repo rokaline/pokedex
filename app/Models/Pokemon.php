@@ -12,7 +12,7 @@ class Pokemon extends Model
     use HasFactory;
 
     // Définir les attributs pouvant être remplis
-    protected $fillable = ['pv', 'poids', 'taille'];
+    protected $fillable = ['nom','pv', 'poids', 'taille'];
 
     /**
      * Définir la relation entre Pokémon et Types.

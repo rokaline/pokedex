@@ -1,10 +1,11 @@
 <?php
+/*app/Models/Types.php*/
 
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-class Type extends Model
+class Types extends Model
 {
     // Utilisation de la factory associée
     use HasFactory;
@@ -19,7 +20,7 @@ class Type extends Model
      */
     public function attaques()
     {
-        return $this->hasMany(Attaque::class);
+        return $this->hasMany(Attaques::class);
 
         /* un type peut avoir plusieurs attaques, mais une attaque à un seul type*/
     }
