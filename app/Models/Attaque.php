@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-class Attaques extends Model
+class Attaque extends Model
 {
     // Utilisation de la factory associée
     use HasFactory;
@@ -19,7 +19,7 @@ class Attaques extends Model
      */
     public function type()
     {
-        return $this->belongsTo(Types::class);
+        return $this->belongsTo(Type::class);
         /*une attaque a un seul type*/
     }
 
@@ -28,7 +28,7 @@ class Attaques extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function pokemons()
+    public function pokemon()
     {
         return $this->belongsToMany(Pokemon::class);
         /*ne attaque peut-e utilisée par Pokémo et un Pokémon peut prendre plusieurs attaques*/

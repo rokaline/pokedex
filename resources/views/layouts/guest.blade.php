@@ -1,4 +1,3 @@
-<!-- resources/views/layouts/guest.blade.php -->
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -15,34 +14,41 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-
-<body class="font-sans text-gray-900 antialiased">
-    <div class="min-h-screen flex flex-col pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
+<body class="font-sans text-gray-900 antialiased bg-white">
+    <div class="min-h-screen flex flex-col pt-6 sm:pt-0">
         <div class="container mx-auto flex flex-col space-y-10">
-            <!-- Navigation -->
-            <nav class="flex justify-between items-center py-2">
+            <nav class="flex justify-between items-center py-2 bg-black text-red-600">
                 <div>
-                    <!-- Logo et lien vers la page d'accueil -->
-                    <a href="/"
-                        class="group font-bold text-3xl flex items-center space-x-4 hover:text-emerald-600 transition ">
-                        <x-application-logo
-                            class="w-10 h-10 fill-current text-gray-500 group-hover:text-emerald-500 transition" />
-                        <span>Pokedex World</span>
+                    <a href="/" class="group font-bold text-3xl flex items-center space-x-4 hover:text-emerald-600 transition">
+                        <img src="images/boule.jpg" alt="Logo" class="w-10 h-10 fill-current text-gray-500 group-hover:text-yellow-500 transition" />
+                        <span class="ml-8">Pokedex World</span>
                     </a>
                 </div>
                 <div class="flex items-center space-x-4 justify-end">
-                    <!-- Lien vers la liste des Pokémon -->
-                    <a class="font-bold hover:text-emerald-600 transition"
-                        href="{{ route('pokemons.index') }}">Pokémon</a>
+                    <a class="font-bold hover:text-yellow-600 transition" href="/">guest.blade.php (Pokemon)</a>
                 </div>
             </nav>
 
-            <!-- Contenu principal -->
+            <a class="font-bold text-lg text-red-600 hover:text-black transition" href="{{ route('pokemons.index') }}">
+                Pokemon
+            </a>
+
+
+
             <main>
                 {{ $slot }}
             </main>
         </div>
+
+        <!-- Footer -->
+        <footer class="flex justify-center items-center space-x-4 py-5 bg-black mt-16">
+            <a href="https://www.pokemon.com/us/pokedex" class="font-bold text-red-600 hover:text-white-600 transition">
+                Pokemon
+            </a>
+        </footer>
     </div>
 </body>
+
+</html>
 
 </html>

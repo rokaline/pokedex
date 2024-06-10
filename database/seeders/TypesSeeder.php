@@ -10,7 +10,7 @@ class TypesSeeder extends Seeder
 {
     public function run()
     {
-        Types::insert([
+        Type::insert([
             [
                 'nom' => 'Feu',
                 'image' => 'tyFeu.jpg',

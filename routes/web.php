@@ -43,9 +43,12 @@ Route::get('/', [HomepageController::class, 'index']); /* appelle la méthode in
 
 
 
-/*Affichage de la liste des pokemon autre que la homepage*/
+/*pour l'affichage pokemon et de ses charactéristiques*/
 Route::get('/pokemons', [PokemonController::class, 'index'])->name('pokemons.index');
-Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('pokemons.show');
+Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('pokemons.show'); /*appelle la methode pour affichage du pokemon selectionné*/
+
+
+
 
 
 // Inclut les routes d'authentification définies dans 'auth.php'

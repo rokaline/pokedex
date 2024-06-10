@@ -27,11 +27,19 @@
                 </div>
 
                 <!-- Liens de navigation pour chaque Pokémon -->
-                <a class="flex bg-white rounded-md shadow-md p-5 w-full hover:shadow-lg hover:scale-105 transition"
+                {{-- <a class="flex bg-white rounded-md shadow-md p-5 w-full hover:shadow-lg hover:scale-105 transition"
                 href="#">
-                Liens de navigation pour chaque Pokémon
+                Lien pour le pokemon selectioné
                 {{ $pokemon->pokemon }} <!-- Affichage du nom du Pokémon -->
+                </a> --}}
+
+                <!-- Liens de navigation pour chaque Pokémon -->
+                <a class="flex bg-white rounded-md shadow-md p-5 w-full hover:shadow-lg hover:scale-105 transition"
+                href="{{ route('pokemons.show', $pokemon->id) }}">
+                Lien pour le Pokémon sélectionné
+                {{ $pokemon->nom }} <!-- Affichage du nom du Pokémon -->
                 </a>
+
 
                 <!-- Pagination pour naviguer entre les pages -->
                 <div class="mt-8">
@@ -48,10 +56,4 @@
 
 
 
-{{--
-<x-guest-layout>
-    <a class="flex bg-white rounded-md shadow-md p-5 w-full hover:shadow-lg hover:scale-105 transition"
-        href="{{ route('pokemons.show', $pokemon) }}">
-        {{ $pokemon->pokemon }}
-    </a>
-</x-guest-layout> --}}
+

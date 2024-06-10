@@ -1,4 +1,5 @@
 <?php
+/*create_pokemon_type_table.php*/
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -11,11 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pokemon', function (Blueprint $table) {
+        Schema::create('pokemon_type', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');           $table->integer('pv');
-            $table->decimal('poids', 8, 2);
-            $table->decimal('taille', 8, 2);
+            $table->foreignId('pokemon_id')->constrained()->onDelete('cascade');
+            $table->foreignId('type_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pokemon');
+        Schema::dropIfExists('pokemon_type');
     }
 };

@@ -1,5 +1,5 @@
 <?php
-
+/*app/Models/Pokemon.php*/
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,7 +21,7 @@ class Pokemon extends Model
      */
     public function types()
     {
-        return $this->belongsToMany(Types::class);
+        return $this->belongsToMany(Type::class);
         /*belongsTomany car un pokemon peut avoir pls types et un type peut-etre pris par plus pokemon*/
     }
 
@@ -32,7 +32,7 @@ class Pokemon extends Model
      */
     public function attaques()
     {
-        return $this->belongsToMany(Attaques::class);
+        return $this->belongsToMany(Attaque::class);
         /* un pokemon peut avoir pls attaques et une attaque peut-etre utilisée par un ou pls pokemon*/
     }
 }
