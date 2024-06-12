@@ -10,8 +10,8 @@
             <li class="border border-black p-4 mb-4">
                 <!-- Affiche le nom du Pokémon en gras -->
                 Nom: <strong>{{ $pokemon->nom }}</strong><br>
-{{--
-                 <!-- Affiche les points de vie du Pokémon -->
+
+                 {{-- <!-- Affiche les points de vie du Pokémon -->
                 PV: {{ $pokemon->pv }}<br>
 
                 <!-- Affiche le poids du Pokémon en kilogrammes -->
@@ -20,15 +20,8 @@
                 <!-- Affiche la taille du Pokémon en mètres -->
                 Taille: {{ $pokemon->taille }} m<br>
 
-                <!-- Affiche l'image du Pokémon avec une bordure rouge -->
-                {{-- <div class="border border-red-500">
-                    Image du pokemon
-                    <img src="{{ asset('images/'.$pokemon->image) }}" alt="{{ $pokemon->nom }} " class="w-full h-auto">
-                </div> --}}
-
-
-
-                <!-- Conteneur pour l'image du pokemon -->
+                <!--Affiche l'image du Pokémon avec une bordure rouge -->
+                 --}}
                 <div class="flex items-center justify-center border border-red-500">
                     <img
                     src="{{ Storage::url($pokemon->img_path)}}"
@@ -47,10 +40,10 @@
 
 
                 <!-- Pagination pour naviguer entre les pages -->
-                <div class="mt-8">
+                {{-- <div class="mt-8">
                     Pagination pour naviguer entre les pages
                 {{ $pokemons->links() }} <!-- Affichage des liens de pagination -->
-                </div>
+                </div> --}}
 
             </li>
         @endforeach

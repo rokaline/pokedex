@@ -56,6 +56,14 @@ class PokemonSeeder extends Seeder
             ],
         ]);
 
+        $poke = Pokemon::find(1);
+        $poke->attaques()->sync([1,3]);
+
+        $poke = Pokemon::find(2);
+        $poke->attaques()->sync([2,4]);
+
+
+
         // à garder pour générer des données aléatoires
         // \App\Models\Pokemon::factory(10)->create();
     }
