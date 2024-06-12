@@ -11,7 +11,7 @@ class Type extends Model
     use HasFactory;
 
     // Définir les attributs pouvant être remplis
-    protected $fillable = ['image', 'nom', 'couleur'];
+    protected $fillable = ['nom', 'img_path', 'couleur'];
 
     /**
      * Définir la relation entre Type et Attaques.
@@ -30,9 +30,15 @@ class Type extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function pokemon()
+    // public function pokemon()
+    // {
+    //     return $this->belongsToMany(Pokemon::class);
+    //     /*Un type peut avoir plusieurs Pokémon, et un Pokémon peut avoir plusieurs types*/
+    // }
+
+    public function pokemons()
     {
-        return $this->belongsToMany(Pokemon::class);
+        return $this->belongsToMany(Pokemon::class, 'pokemon_type');
         /*Un type peut avoir plusieurs Pokémon, et un Pokémon peut avoir plusieurs types*/
     }
 }

@@ -11,30 +11,22 @@ class PokemonController extends Controller{
     public function index()
     {
 
-        $pokemons = Pokemon::paginate(6);
+        $pokemon = Pokemon::paginate(6);
 
         return view('pokemon.index', [
-            'pokemons' => $pokemons,
+            'pokemons' => $pokemon,
         ]);
     }
 
+
+    /*pour affichage du pokemon et ses caracteristiques*/
     public function show($id)
     {
-// dd($id);
+//dd($id);
         $pokemon = Pokemon::with(['types', 'attaques.type'])->findOrFail($id);
 
         return view('pokemon.show', compact('pokemon'));
     }
-
-
-    // public function show($id)
-    // {
-    //     $pokemon = Pokemon::with(['types', 'attaques'])->findOrFail($id);
-
-    //     return view('pokemon.show', [
-    //         'pokemon' => $pokemon,
-    //     ]);
-    // }
 
 }
 

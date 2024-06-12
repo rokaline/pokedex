@@ -10,7 +10,7 @@
             <li class="border border-black p-4 mb-4">
                 <!-- Affiche le nom du Pokémon en gras -->
                 Nom: <strong>{{ $pokemon->nom }}</strong><br>
-
+{{--
                  <!-- Affiche les points de vie du Pokémon -->
                 PV: {{ $pokemon->pv }}<br>
 
@@ -21,15 +21,27 @@
                 Taille: {{ $pokemon->taille }} m<br>
 
                 <!-- Affiche l'image du Pokémon avec une bordure rouge -->
-                <div class="border border-red-500">
+                {{-- <div class="border border-red-500">
                     Image du pokemon
                     <img src="{{ asset('images/'.$pokemon->image) }}" alt="{{ $pokemon->nom }} " class="w-full h-auto">
+                </div> --}}
+
+
+
+                <!-- Conteneur pour l'image du pokemon -->
+                <div class="flex items-center justify-center border border-red-500">
+                    <img
+                    src="{{ Storage::url($pokemon->img_path)}}"
+                    alt="image du pokemon"
+                    class="rounded shadow aspect-auto object-cover object-center"
+                    />
                 </div>
+
 
                 <!-- Liens de navigation pour chaque Pokémon -->
                 <a class="flex bg-white rounded-md shadow-md p-5 w-full hover:shadow-lg hover:scale-105 transition"
                 href="{{ route('pokemons.show', $pokemon->id) }}">
-                Lien pour le Pokémon sélectionné
+                Informations à propos de :
                 {{ $pokemon->nom }} <!-- Affichage du nom du Pokémon -->
                 </a>
 

@@ -1,4 +1,5 @@
 <?php
+/*create_types_table*/
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -13,8 +14,8 @@ return new class extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->nullable();
             $table->string('nom');
+            $table->string('img_path')->nullable();
             $table->string('couleur');
             $table->timestamps();
         });

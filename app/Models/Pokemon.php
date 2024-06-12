@@ -12,7 +12,7 @@ class Pokemon extends Model
     use HasFactory;
 
     // Définir les attributs pouvant être remplis
-    protected $fillable = ['nom','pv', 'poids', 'taille'];
+    protected $fillable = ['nom','img_path','pv', 'poids', 'taille'];
 
     /**
      * Définir la relation entre Pokémon et Types.
@@ -21,7 +21,7 @@ class Pokemon extends Model
      */
     public function types()
     {
-        return $this->belongsToMany(Type::class);
+        return $this->belongsToMany(Type::class, 'pokemon_type');
         /*belongsTomany car un pokemon peut avoir pls types et un type peut-etre pris par plus pokemon*/
     }
 
@@ -32,7 +32,7 @@ class Pokemon extends Model
      */
     public function attaques()
     {
-        return $this->belongsToMany(Attaque::class);
+        return $this->belongsToMany(Attaque::class,'attaque_pokemon');
         /* un pokemon peut avoir pls attaques et une attaque peut-etre utilisée par un ou pls pokemon*/
     }
 }

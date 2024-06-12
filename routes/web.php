@@ -3,6 +3,8 @@
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\PokemonController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\PokemonController as AdminPokemonController;
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -41,16 +43,21 @@ Route::middleware('auth')->group(function () {
 /*HomePage*/
 /*Route::get('/', [HomepageController::class, 'index']); /* appelle la méthode index de HomepageController. - affichage des 6 pokemons*/
 
-/*pour retour à la page d'acceuil ap du pokemon selectionné*/// Route pour la page d'accueil
+/*pour retour à la page d'acceuil ap du pokemon selectionné*/// Route pour la page d'accueil grâce: "->name('homepage.index');"
 Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
 
 
 /*pour l'affichage pokemon et de ses charactéristiques*/
 Route::get('/pokemons', [PokemonController::class, 'index'])->name('pokemons.index');
-Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('pokemons.show'); /*appelle la methode pour affichage du pokemon selectionné*/
+Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('pokemons.show');
+ /*appelle la methode pour affichage du pokemon selectionné*/
 
 
+/* Admin des pokemon*/
 
+// Route::middleware(['auth'])->prefix('admin')->group(function () {
+//     Route::resource('pokemons', AdminPokemonController::class);
+// });
 
 
 // Inclut les routes d'authentification définies dans 'auth.php'

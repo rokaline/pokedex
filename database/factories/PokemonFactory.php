@@ -22,9 +22,14 @@ class PokemonFactory extends Factory
     {
         return [
             'nom' => $this->faker->word,
+            'img_path' => 'images/' . $this->faker->word . '.jpg',
             'pv' => $this->faker->numberBetween(10, 100),
             'poids' => $this->faker->randomFloat(2, 0.1, 100), // Poids entre 0.1 et 100 kg
             'taille' => $this->faker->randomFloat(2, 0.1, 10), // Taille entre 0.1 et 10 mètres
         ];
     }
+
+     /**
+     * Reverse the migrations.
+     */
 }

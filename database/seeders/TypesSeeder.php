@@ -13,22 +13,22 @@ class TypesSeeder extends Seeder
         Type::insert([
             [
                 'nom' => 'Feu',
-                'image' => 'tyFeu.jpg',
+                'img_path' => 'tyFeu.jpg',
                 'couleur' => 'jaune',
             ],
             [
                 'nom' => 'Eau',
-                'image' => 'tyEau.jpg',
+                'img_path' => 'tyEau.jpg',
                 'couleur' => 'bleu',
             ],
             [
                 'nom' => 'Plante',
-                'image' => 'tyPlante.jpg',
+                'img_path' => 'tyPlante.jpg',
                 'couleur' => 'vert',
             ],
             [
                 'nom' => 'Electrique',
-                'image' => 'tyElectrique.jpg',
+                'img_path' => 'tyElectrique.jpg',
                 'couleur' => 'jaune',
             ],
         ]);

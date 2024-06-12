@@ -13,28 +13,28 @@ class AttaquesSeeder extends Seeder
         Attaque::insert([
             [
                 'nom' => 'Flammes Éternelles',
-                'image' => 'atFlamme.jpg',
+                'img_path' => 'atFlamme.jpg',
                 'dégâts' => 90,
                 'description' => 'Un torrent de feu brûlant l\'ennemi avec une intensité inégalée. Peut parfois brûler la cible.',
                 'type_id' => Type::where('nom', 'Feu')->first()->id,
             ],
             [
                 'nom' => 'Cascade Mystique',
-                'image' => 'atCascade.jpg',
+                'img_path' => 'atCascade.jpg',
                 'dégâts' => 80,
                 'description' => 'Une puissante cascade d\'eau qui frappe l\'ennemi. Peut parfois augmenter la défense du lanceur.',
                 'type_id' => Type::where('nom', 'Eau')->first()->id,
             ],
             [
                 'nom' => 'Fouet-Liane',
-                'image' => 'atFouet.jpg',
+                'img_path' => 'atFouet.jpg',
                 'dégâts' => 70,
                 'description' => 'Des lianes vigoureuses fouettent l\'ennemi. Peut parfois paralyser la cible.',
                 'type_id' => Type::where('nom', 'Plante')->first()->id,
             ],
             [
                 'nom' => 'Souffle Electrique',
-                'image' => 'atSouffle.jpg',
+                'img_path' => 'atSouffle.jpg',
                 'dégâts' => 85,
                 'description' => 'Un souffle puissant rempli d\'énergie électrique. Peut parfois effrayer l\'ennemi et réduire sa défense.',
                 'type_id' => Type::where('nom', 'Electrique')->first()->id,

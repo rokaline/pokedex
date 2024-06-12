@@ -43,7 +43,7 @@
         <!-- Footer -->
         <footer class="flex justify-center items-center space-x-4 py-5 bg-black mt-16">
             <a href="https://www.pokemon.com/us/pokedex" class="font-bold text-red-600 hover:text-white-600 transition">
-                Pokemon
+               Site officiel Pokemon
             </a>
         </footer>
     </div>
