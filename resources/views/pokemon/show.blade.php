@@ -12,48 +12,36 @@
             class="rounded shadow aspect-auto object-cover object-center">{{ $pokemon->img_path }}</span>
                 </div>
 
-
             <p><strong>PV:</strong> {{ $pokemon->pv }}</p>
             <p><strong>Poids:</strong> {{ $pokemon->poids }} kg</p>
             <p><strong>Taille:</strong> {{ $pokemon->taille }} m</p>
 
-    </div>
+            </div>
 
 
-{{-- type; ex: photo: tyFeu,jpg	, Nom: Feu; couleurJaune
- --}}
-    <div class="mt-4">
-        <h2 class="font-bold text-lg">Type</h2>
-        @if($pokemon->types)
-            @foreach($pokemon->types as $type)
-                <div class="mb-4 border border-gray-300 p-4 rounded-md">
-                    <p><strong>Nom du type:</strong>{{ $type->nom }}</p>
-                    <img src="{{ Storage::url($type->img_path)}}"
-                    alt="image du type"
-                    class="rounded shadow aspect-auto object-cover object-center">{{ $type->img_path }}</span>
-                        </div>
-                    <p><strong>couleur:</strong> {{ $type->couleur }}</p>
-                </div>
-            @endforeach
-        @else
-            <p>Aucune attaque disponible pour ce Pokémon.</p>
-        @endif
-    </div>
-
-
-
+{{-- bloc pour affichage du type et des attaques --}}
 
     <div class="mt-4">
-        <h2 class="font-bold text-lg">Attaques</h2>
+
         @if($pokemon->attaques)
             @foreach($pokemon->attaques as $attaque)
                 <div class="mb-4 border border-gray-300 p-4 rounded-md">
-                    <h3 class="font-bold">{{ $attaque->nom }}</h3>
-                    <img src="{{ asset('images/' . $attaque->image) }}" alt="{{ $attaque->nom }}" class="w-12 h-12 mb-2">
+                    <h3 class="font-bold">Nom de l'attaque: {{ $attaque->nom }}</h3>
+
+                    <img src="{{ Storage::url($attaque->img_path)}}"
+                    alt="image du pokemon"
+                    class="rounded shadow aspect-auto object-cover object-center">{{ $attaque->img_path }}</span>
+                        </div>
+
                     <p><strong>Dégâts:</strong> {{ $attaque->dégâts }}</p>
                     <p>{{ $attaque->description }}</p>
+
                     <p><strong>Type:</strong> {{ $attaque->type->nom }}</p>
-                    <p><strong>Couleur:</strong> {{ $attaque->type->nom }}</p>
+                    <img src="{{ Storage::url($attaque->type->img_path)}}"
+                    alt="image du pokemon"
+                    class="rounded shadow aspect-auto object-cover object-center">{{ $pokemon->img_path }}</span>
+                        </div>
+                    <p><strong>Couleur:</strong> {{ $attaque->type->couleur }}</p>
                 </div>
             @endforeach
         @else
