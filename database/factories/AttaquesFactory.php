@@ -21,7 +21,7 @@ class AttaquesFactory extends Factory
 
         return [
             'nom' => $this->faker->word,
-            'image' => 'images/' . $this->faker->word . '.jpg',
+            'img_path' => 'images/' . $this->faker->word . '.jpg',
             'dégâts' => $this->faker->numberBetween(10, 150),
             'description' => $this->faker->sentence,
             'type_id' => Type::factory()->create()->id, // Génère automatiquement un type associé

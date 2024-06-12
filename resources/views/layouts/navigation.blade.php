@@ -1,14 +1,15 @@
+
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
+                {{-- <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
-                </div>
+                </div> --}}
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -16,6 +17,51 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+
+                <!--  Lien à ajouter vers la liste des pokemon dans le menu de l'administration (partie utilisateur une fois loggé). -->
+                <x-nav-link :href="route('pokemons.index')" :active="request()->routeIs('pokemons.*')">
+                    {{ __('Pokemons (nav dans login)') }}
+                </x-nav-link>
+                </div>
+
+
+
+
+                <!-- pour se connecter -->
+                <nav class="bg-gray-800 p-4">
+                    <div class="container mx-auto">
+                        <div class="flex justify-between">
+                            <div>
+                                <!-- Lien vers la page d'accueil -->
+                                <a href="{{ route('homepage.index') }}" class="text-white">Accueil</a>
+                            </div>
+                            <div>
+                                @guest
+                                    <!-- Bouton de connexion -->
+                                    <a
+                                        href="{{ route('login') }}"
+                                        class="font-bold bg-white text-gray-700 px-4 py-2 rounded shadow-md"
+                                    >
+                                        Se connecter
+                                    </a>
+                                @else
+                                    <!-- Lien vers la page d'administration -->
+                                    <a
+                                        href="{{ route('admin.pokemons.index') }}"
+                                        class="font-bold bg-white text-gray-700 px-4 py-2 rounded shadow-md"
+                                    >
+                                        Administration
+                                    </a>
+                                @endguest
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+
+
+
+
             </div>
 
             <!-- Settings Dropdown -->
@@ -98,3 +144,6 @@
         </div>
     </div>
 </nav>
+
+
+

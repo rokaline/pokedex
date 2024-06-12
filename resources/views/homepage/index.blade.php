@@ -40,7 +40,7 @@
 
                 <!-- Liens de navigation pour chaque Pokémon -->
                 <a class="flex bg-white rounded-md shadow-md p-5 w-full hover:shadow-lg hover:scale-105 transition"
-                href="{{ route('pokemons.show', $pokemon->id) }}">
+                href="{{ route('homepage.pokemons.show', $pokemon->id) }}">
                 Informations à propos de :
                 {{ $pokemon->nom }} <!-- Affichage du nom du Pokémon -->
                 </a>

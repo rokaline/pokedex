@@ -48,16 +48,24 @@ Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
 
 
 /*pour l'affichage pokemon et de ses charactéristiques*/
-Route::get('/pokemons', [PokemonController::class, 'index'])->name('pokemons.index');
-Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('pokemons.show');
+Route::get('/pokemons', [PokemonController::class, 'index'])->name('homepage.pokemons.index');
+Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('homepage.pokemons.show');
  /*appelle la methode pour affichage du pokemon selectionné*/
 
 
 /* Admin des pokemon*/
 
-// Route::middleware(['auth'])->prefix('admin')->group(function () {
-//     Route::resource('pokemons', AdminPokemonController::class);
-// });
+// Routes protégées par l'authentification
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::resource('pokemons', AdminPokemonController::class);
+});
+
+// Route pour afficher le formulaire d'administration des Pokémons
+Route::get('/admin/pokemons', [AdminPokemonController::class, 'create'])->name('admin.pokemons.create');
+
+// // Route pour gérer la soumission du formulaire
+Route::post('/admin/pokemons', [AdminPokemonController::class, 'store'])->name('admin.pokemons.store');
+
 
 
 // Inclut les routes d'authentification définies dans 'auth.php'

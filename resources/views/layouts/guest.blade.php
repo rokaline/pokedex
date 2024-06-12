@@ -27,11 +27,22 @@
                 <div class="flex items-center space-x-4 justify-end">
                     <a class="font-bold hover:text-yellow-600 transition" href="/">guest.blade.php (Pokemon)</a>
                 </div>
+
+                <div class="flex items-center space-x-4 justify-end">
+                    <a class="font-bold hover:text-yellow-600 transition" href="{{route('login') }}">Login</a>
+                </div>
+
+
+
             </nav>
 
+
+
+            {{-- liste des pokemon
             <a class="font-bold text-lg text-red-600 hover:text-black transition" href="{{ route('pokemons.index') }}">
                 Pokemon
-            </a>
+            </a> --}}
+
 
 
 

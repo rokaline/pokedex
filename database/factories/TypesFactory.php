@@ -21,7 +21,7 @@ class TypesFactory extends Factory
         return [
 
             'nom' => $this->faker->word,
-            'image' => 'images/' . $this->faker->word . '.jpg',
+            'img_path' => 'images/' . $this->faker->word . '.jpg',
             'couleur' => $this->faker->safeColorName,
         ];
     }

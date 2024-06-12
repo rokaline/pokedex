@@ -1,91 +1,76 @@
-<!-- vue de la page du pokemon sélectionné -->
-
-
-<!-- resources/views/pokemon/show.blade.php -->
-
-<x-guest-layout>
-
-
-  Dans pokomeon/show
-    <h1 class="font-bold text-xl mb-4 capitalize">{{ $pokemon->nom }}</h1> <!-- Nom POkemon -->
-
-    {{-- <div class="flex items-center justify-center"> ancien chemin pour image
-        <img
-            src="{{ asset('images/' . $pokemon->image) }}"
-            alt="{{ $pokemon->nom }}"
-            class="rounded shadow aspect-auto object-cover object-center"
-        />
-    </div> --}}
-
-    <div class="mt-4">
-        <!-- Conteneur pour l'image du pokemon -->
-
-        <div class="flex items-center justify-center border border-red-500">
-            <img
-            src="{{ Storage::url($pokemon->img_path)}}"
-            alt="image du pokemon"
-            class="rounded shadow aspect-auto object-cover object-center"
-            />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Pokemons</h1>
+        <div class="form-group">
+            <label for="name">Nom</label>
+            <input type="text" class="form-control" id="name" value="{{ $pokemon['nom'] }}" readonly>
         </div>
-        <p><strong>PV: </strong> {{ $pokemon->pv }}</p>
-        <p><strong>Poids: </strong> {{ $pokemon->poids }} kg</p>
-        <p><strong>Taille: </strong> {{ $pokemon->taille }} m</p>
-    </div>
 
-    <div class="mt-4"> <!-- type -->
-        <h2 class="font-bold text-lg">Types</h2>
-        @foreach($pokemon->types as $type)
-            <div class="flex items-center">
-                {{-- <img src="{{ asset('images/' . $type->image) }}" alt="{{ $type->nom }}" class="w-6 h-6"> --}}
-                <p><strong>Nom: </strong> <span class="ml-2">{{ $type->nom }}</span>
+        <div class="form-group">
+            <label for="height">Taille</label>
+            <input type="text" class="form-control" id="height" value="{{ $pokemon['taille'] }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="weight">Poids</label>
+            <input type="text" class="form-control" id="weight" value="{{ $pokemon['poids'] }}" readonly>
+        </div>
 
-                 <!-- Conteneur pour l'image de l'attaque -->
-                 <div class="flex items-center justify-center">
-                    <img
-                    src="{{ Storage::url($type->img_path)}}"
-                    alt="image dy type"
-                    class="rounded shadow aspect-auto object-cover object-center"
-                    />
-                </div>
-                <p><strong>Couleur: </strong> {{ $type->couleur }} m</p>
+        {{-- ////////Type --}}
+        <div class="form-group">
+            <label for="types">Type</label>
+            <ul class="list-group" id="types">
+                @foreach($pokemon['types'] as $type)
+                    <li class="list-group-item">{{ $type }}</li>
+                @endforeach
+            </ul>
+        </div>
+
+
+        {{-- ////////Attaque --}}
+        <div class="form-group">
+            <label for="attacks">Attaque</label>
+            <ul class="list-group" id="attacks">
+                @foreach($pokemon->attaques as $attaque)
+                    <li class="list-group-item">{{ $attaque }}</li>
+                @endforeach
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" rows="3" readonly>{{ $pokemon['description'] }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="image">Image</label>
+            <div>
+                <img src="{{ asset('images/'.$pokemon['img']) }}" alt="Pokemon Image" class="img-thumbnail" style="max-width: 200px;">
             </div>
-        @endforeach
-    </div>
-
-    <div class="mt-4"><!-- attaques-->
-        <h2 class="font-bold text-lg">Attaques</h2>
-        @foreach($pokemon->attaques as $attaque)
-            <div class="mb-4">
-                <p><strong>Nom de l'attaque </strong> <span class="ml-2">{{ $attaque->nom }}</span>
+        </div>
+        <div class="form-group">
+            <label for="upload">Charger l'image</label>
+            <input type="file" class="form-control-file" id="upload" disabled>
+        </div>
 
 
-                {{-- <img src="{{ asset('images/' . $attaque->image) }}" alt="{{ $attaque->nom }}" class="w-12 h-12"> --}}
+        <!-- Pagination pour naviguer entre les pages -->
+        {{-- <div class="mt-8">
+            Pagination pour naviguer entre les pages
+        {{ $pokemons->links() }} <!-- Affichage des liens de pagination -->
+        </div> --}}
 
-
-                <!-- Conteneur pour l'image de l'attaque -->
-                <div class="flex items-center justify-center">
-                    <img
-                    src="{{ Storage::url($attaque->img_path)}}"
-                    alt="image de l'attaque"
-                    class="rounded shadow aspect-auto object-cover object-center"
-                    />
-                </div>
-
-                <p><strong>Dégâts:</strong> {{ $attaque->degats }}</p>
-                <p><strong>Description de l'attaque </strong> {{ $attaque->description }}</p>
-                <p><strong>Type:</strong> {{ $attaque->type->nom }}</p>
-            </div>
-        @endforeach
-    </div>
-
-    <!-- retour à la homepage-->
-    <div class="mt-8 flex items-center justify-center">
-        <a
-            href="{{ route('homepage.index') }}"
-            class="font-bold bg-white text-gray-700 px-4 py-2 rounded shadow">
-            Retour à la liste des Pokémon (sur la homepage)
+        <a href="{{ route('homepage.pokemons.show', $pokemon->id) }}">
+            {{-- <img src="{{ asset('storage/' . $pokemon->img_path) }}" alt="image du pokemon"> --}}
         </a>
+
     </div>
-</x-guest-layout>
-
-
+</body>
+</html>
