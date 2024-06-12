@@ -39,8 +39,10 @@ Route::middleware('auth')->group(function () {
 //////////////////////////
 
 /*HomePage*/
-Route::get('/', [HomepageController::class, 'index']); /* appelle la méthode index de HomepageController. - affichage des 6 pokemons*/
+/*Route::get('/', [HomepageController::class, 'index']); /* appelle la méthode index de HomepageController. - affichage des 6 pokemons*/
 
+/*pour retour à la page d'acceuil ap du pokemon selectionné*/// Route pour la page d'accueil
+Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
 
 
 /*pour l'affichage pokemon et de ses charactéristiques*/

@@ -43,11 +43,12 @@
         @endforeach
     </div>
 
+    <!-- retour à la homepage-->
     <div class="mt-8 flex items-center justify-center">
         <a
-            href="{{ route('pokemons.index') }}"
+            href="{{ route('homepage.index') }}"
             class="font-bold bg-white text-gray-700 px-4 py-2 rounded shadow">
-            Retour à la liste des Pokémon
+            Retour à la liste des Pokémon (sur la homepage)
         </a>
     </div>
 </x-guest-layout>
