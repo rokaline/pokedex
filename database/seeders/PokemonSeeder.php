@@ -62,6 +62,27 @@ class PokemonSeeder extends Seeder
         $poke = Pokemon::find(2);
         $poke->attaques()->sync([2,4]);
 
+        $poke = Pokemon::find(3);
+        $poke->attaques()->sync([3]);
+
+        $poke = Pokemon::find(4);
+        $poke->attaques()->sync([1,6]);
+
+        $poke = Pokemon::find(5);
+        $poke->attaques()->sync([5]);
+
+        $poke = Pokemon::find(6);
+        $poke->attaques()->sync([2,3]);
+
+        $poke = Pokemon::find(6);
+        $poke->attaques()->sync([6]);
+
+        $poke = Pokemon::find(2);
+        $poke->attaques()->sync([3,5]);
+
+        $poke = Pokemon::find(3);
+        $poke->attaques()->sync([2,1]);
+
 
 
         // à garder pour générer des données aléatoires
