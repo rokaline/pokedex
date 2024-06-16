@@ -5,6 +5,7 @@
 
 <x-guest-layout>
 
+    <strong>Détails du Pokemon (pokemon show.blade)</strong>
     {{-- Nom du Pokémon --}}
     <h1 class="font-bold text-xl mb-4 capitalize text-center">{{ $pokemon->nom }}</h1>
 

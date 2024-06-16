@@ -1,5 +1,7 @@
 
-{{-- views/layouts/navigation.blade --}}
+{{-- views/layouts/navigation.blade: uniquement quand connecté (authentifié) --}}
+
+
 
 
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
@@ -14,7 +16,9 @@
                     </a>
                 </div> --}}
 
-                <!-- Navigation Links -->
+
+
+                <!-- Navigation Links (dans la nav de la partie user)-->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
@@ -22,30 +26,45 @@
                 </div>
 
 
-                <!-- pour se connecter -->
-                <nav class="bg-gray-800 p-4">
-                    <div class="container mx-auto">
-                        <div class="flex justify-between">
-                            <div>
-                                <!-- Lien vers la page d'accueil -->
-                                <a href="{{ route('homepage.index') }}" class="font-bold bg-white text-gray-700 px-4 py-2 rounded shadow-md">Retour à accueil (depuis layouts/navigation.blade & aussi pokemon.show.blade)</a>
-                            </div>
-                            <div>
-                                @guest
-                                    <!-- Bouton de connexion -->
-                                    <a
-                                        href="{{ route('login') }}"
-                                        class="font-bold bg-white text-gray-700 px-4 py-2 rounded shadow-md"
-                                    >
-                                        Se connecter
-                                    </a>
-                                @else
 
-                                @endguest
-                            </div>
-                        </div>
-                    </div>
-                </nav>
+                <!-- Navigation Links (dans la nav de la partie user)-->
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Dashboard') }}
+                    </x-nav-link>
+                </div>
+
+
+                <!-- Liste des pokemons)-->
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('homepage.pokemons.index')" :active="request()->routeIs('homepage.pokemons.index')">
+                        {{ __('Liste des Pokémon') }}
+                    </x-nav-link>
+                </div>
+
+
+                {{-- <x-nav-link
+            :href="route('articles.index')"
+            :active="request()->routeIs('articles.*')"
+          >
+            {{ __('Articles') }}
+          </x-nav-link> --}}
+
+
+
+
+                <!-- Lien vers la page d'accueil -->
+                {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <a href="{{ route('homepage.index') }}" class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">Retour à accueil (depuis layouts/navigation.blade & aussi pokemon.show.blade)</a>
+                </div> --}}
+
+                <!-- Lien vers la page d'accueil -->
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('homepage.index')" :active="request()->routeIs('homepage.index')">
+                        {{ __('Retour à accueil') }} Retour à accueil (depuis layouts/navigation.blade & aussi pokemon.show.blade)
+                    </x-nav-link>
+                </div>
+
 
 
 
@@ -133,6 +152,10 @@
         </div>
     </div>
 </nav>
+
+
+
+
 
 
 
