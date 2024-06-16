@@ -38,9 +38,6 @@
                     <a class="font-bold hover:text-yellow-600 transition" href="{{route('homepage.index') }}">Accueil</a>
                 </div>
 
-                <div class="flex items-center space-x-4 justify-end">
-                    <a class="font-bold hover:text-yellow-600 transition" href="{{route('homepage.index') }}">Tttttt tableau pour tous</a>
-                </div>
 
 
                 {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"> --}}
