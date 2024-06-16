@@ -20,6 +20,7 @@ class PokemonController extends Controller
         return view('admin.pokemons.index', compact('pokemons'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      */

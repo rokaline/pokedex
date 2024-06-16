@@ -1,16 +1,6 @@
 <!-- resources/views/pokemon/index.blade.php -->
 
 
-
-
-
-
-
-
-
-
-
-
 <x-app-layout>
 
     {{-- <x-slot name="header">

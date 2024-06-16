@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
 
 
+// pour tout le monde
 
 /*pour l'affichage pokemon et de ses charactéristiques (sans login*/
 Route::get('/pokemons', [PokemonController::class, 'index'])->name('homepage.pokemons.index');
@@ -49,8 +50,9 @@ Route::get('/dashboard', function () {
 
 //ADMIN/POKEMON: AFFICHER/ CREER / EDITER / CONSERVER /SUPPRIMER
 /* aut, que pour les personnes identifiées*/
+
 Route::middleware(['auth'])->prefix('admin')->group(function () {
-    Route::get('/pokemons', [AdminPokemonController::class, 'index'])->name('admin.pokemons.index');
+    Route::get('/pokemons', [AdminPokemonController::class, 'index'])->name('admin.pokemon.index');
     Route::get('/pokemons/create', [AdminPokemonController::class, 'create'])->name('admin.pokemons.create');
     Route::post('/pokemons', [AdminPokemonController::class, 'store'])->name('admin.pokemons.store');
     Route::get('/pokemons/{id}/edit', [AdminPokemonController::class, 'edit'])->name('admin.pokemons.edit');
