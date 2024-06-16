@@ -11,16 +11,13 @@
                 <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
                     <div class="flex justify-between items-center">
                         <h2 class="text-2xl font-bold text-gray-800">Liste des Pokémon (pour visiteurs)</h2>
-
-                        {{-- Bouton d'ajout de Pokémon --}}
-                        <div>
-                            <a href="{{ route('pokemons.create') }}"
-                                class="text-gray-500 font-bold py-2 px-4 rounded hover:bg-gray-200 transition duration-200">
-                                Ajouter un Pokémon
-                            </a>
-                        </div>
                     </div>
+                        {{-- Bouton d'ajout de Pokémon --}}
 
+                        <div> <a href="{{ route('pokemons.create') }}" class="text-gray-500 font-bold py-2 px-4 rounded hover:bg-gray-200 transition duration-200">
+                            Ajouter un Pokémon
+                        </a>
+                    </div>
                     <div class="mt-6 text-gray-500 overflow-x-auto">
                         <table class="min-w-full divide-y divide-gray-200 border border-gray-300 rounded-lg">
                             <thead class="bg-gray-50">

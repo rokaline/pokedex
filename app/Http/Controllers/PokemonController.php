@@ -3,7 +3,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
+
 use App\Models\Pokemon;
 use Illuminate\Http\Request;
 
@@ -27,6 +27,14 @@ class PokemonController extends Controller{
 
         return view('pokemon.show', compact('pokemon'));
     }
+
+
+    public function create()
+    {
+        return view('pokemon.create');
+    }
+
+
 
 }
 

@@ -28,12 +28,14 @@
 
 
 
-                {{-- Lien vers le tableau de pokemon A GARDER pour + TARD --}}
+                {{-- Lien vers le tableau de pokemon de Pokemon/index --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <div class="flex items-center space-x-4 justify-end">
                         <a class="font-bold hover:text-yellow-600 transition" href="{{ route('homepage.pokemons.index') }}">Tableau des Pokémon (visible apd dash)</a>
                     </div>
                 </div>
+              
+
 
 
                      {{-- pour tableaud dans dashborad/pokemon--}}
@@ -42,6 +44,10 @@
                             {{ __('PokeTab') }} Retour à accueil (depuis Admin & aussi pokemon.show.blade)
                         </x-nav-link>
                     </div> --}}
+
+                    {{-- <x-nav-link :href="route('pokemons.index')" :active="request()->routeIs('pokemons.*')">
+                        {{ __('Pokemons') }}
+                    </x-nav-link --}}
 
 
             </div>
@@ -102,9 +108,9 @@
 
 
         <!--  Lien à ajouter pour la partie user -->
-        {{-- <x-responsive-nav-link :href="route('pokemons.index')" :active="request()->routeIs('pokemons.*')">
+        <x-responsive-nav-link :href="route('pokemons.index')" :active="request()->routeIs('pokemons.*')">
             {{ __('Pokemons') }}
-        </x-responsive-nav-link> --}}
+        </x-responsive-nav-link>
 
 
 

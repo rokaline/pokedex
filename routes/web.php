@@ -27,12 +27,16 @@ Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
 
 // pour tout le monde
 
-/*pour l'affichage pokemon et de ses charactéristiques (sans login*/
+/*pour l'affichage pokemon et de ses charactéristiques (sans login*)*/
 Route::get('/pokemons', [PokemonController::class, 'index'])->name('homepage.pokemons.index');
+
 // Caractéristiques d'un pokemon
 Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('homepage.pokemons.show');
+
  /*appelle la methode pour affichage du pokemon selectionné*/
- // Tableau des pokemon
+// Création d'un pokemon
+Route::get('/pokemons/create', [PokemonController::class, 'create'])->name('homepage.pokemons.create');
+
 
 
 
