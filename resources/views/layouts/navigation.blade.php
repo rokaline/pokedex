@@ -26,21 +26,8 @@
                 </div>
 
 
-
-                <!-- Navigation Links (dans la nav de la partie user)-->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
-
-
                 <!-- Liste des pokemons)-->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('homepage.pokemons.index')" :active="request()->routeIs('homepage.pokemons.index')">
-                        {{ __('Liste des Pokémon') }}
-                    </x-nav-link>
-                </div>
+
 
 
                 {{-- <x-nav-link
@@ -53,10 +40,7 @@
 
 
 
-                <!-- Lien vers la page d'accueil -->
-                {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <a href="{{ route('homepage.index') }}" class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">Retour à accueil (depuis layouts/navigation.blade & aussi pokemon.show.blade)</a>
-                </div> --}}
+
 
                 <!-- Lien vers la page d'accueil -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -67,8 +51,12 @@
 
 
 
-
-
+                {{-- Lien vers le tableau de pokemon A GARDER pour + TARD --}}
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="flex items-center space-x-4 justify-end">
+                        <a class="font-bold hover:text-yellow-600 transition" href="{{ route('homepage.pokemons.index') }}">Tableau des Pokémon (apd dashboard)</a>
+                    </div>
+                </div>
 
             </div>
 

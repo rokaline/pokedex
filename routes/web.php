@@ -25,11 +25,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
 
 
+
 /*pour l'affichage pokemon et de ses charactéristiques (sans login*/
 Route::get('/pokemons', [PokemonController::class, 'index'])->name('homepage.pokemons.index');
 // Caractéristiques d'un pokemon
 Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('homepage.pokemons.show');
  /*appelle la methode pour affichage du pokemon selectionné*/
+ // Tableau des pokemon
+
+
 
 
 

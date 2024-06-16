@@ -9,7 +9,7 @@
 
 
                                 views/pokemon/index.blade
-
+                                    tableau des pokemon
 
 
 
@@ -19,7 +19,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Pokemon') }}
         </h2>
-        
+
     </x-slot>
 
     <div class="py-12">
