@@ -4,7 +4,7 @@ use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\PokemonController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\PokemonController as AdminPokemonController;
-
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -47,7 +47,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
 
 
-/*pour l'affichage pokemon et de ses charactéristiques*/
+/*pour l'affichage pokemon et de ses charactéristiques (sans login*/
 Route::get('/pokemons', [PokemonController::class, 'index'])->name('homepage.pokemons.index');
 Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('homepage.pokemons.show');
  /*appelle la methode pour affichage du pokemon selectionné*/
@@ -65,6 +65,9 @@ Route::get('/admin/pokemons', [AdminPokemonController::class, 'create'])->name('
 
 // // Route pour gérer la soumission du formulaire
 Route::post('/admin/pokemons', [AdminPokemonController::class, 'store'])->name('admin.pokemons.store');
+
+
+
 
 
 

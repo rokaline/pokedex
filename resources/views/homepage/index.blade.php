@@ -31,7 +31,7 @@
                 </div>
 
 
-                <!-- Liens de navigation pour chaque Pokémon -->
+                <!-- Caracteristique du pokemon pour chaque Pokémon -->
                 <a class="flex bg-white rounded-md shadow-md p-5 w-full hover:shadow-lg hover:scale-105 transition"
                 href="{{ route('homepage.pokemons.show', $pokemon->id) }}">
                 Informations à propos de :
@@ -40,7 +40,7 @@
 
 
                 <!-- Pagination pour naviguer entre les pages -->
-                {{-- <div class="mt-8">
+                <div class="mt-8">
                     Pagination pour naviguer entre les pages
                 {{ $pokemons->links() }} <!-- Affichage des liens de pagination -->
                 </div> --}}

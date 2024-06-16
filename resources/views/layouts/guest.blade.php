@@ -24,9 +24,9 @@
                         <span class="ml-8">Pokedex World</span>
                     </a>
                 </div>
-                <div class="flex items-center space-x-4 justify-end">
+                {{-- <div class="flex items-center space-x-4 justify-end">
                     <a class="font-bold hover:text-yellow-600 transition" href="/">guest.blade.php (Pokemon)</a>
-                </div>
+                </div> --}}
 
                 <div class="flex items-center space-x-4 justify-end">
                     <a class="font-bold hover:text-yellow-600 transition" href="{{route('login') }}">Login</a>

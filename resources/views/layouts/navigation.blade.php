@@ -18,15 +18,7 @@
                     </x-nav-link>
                 </div>
 
-                <!--  Lien à ajouter vers la liste des pokemon dans le menu de l'administration (partie utilisateur une fois loggé). -->
-                <x-nav-link :href="route('pokemons.index')" :active="request()->routeIs('pokemons.*')">
-                    {{ __('Pokemons (nav dans login)') }}
-                </x-nav-link>
-                </div>
-
-
-
-
+            
                 <!-- pour se connecter -->
                 <nav class="bg-gray-800 p-4">
                     <div class="container mx-auto">
@@ -45,13 +37,7 @@
                                         Se connecter
                                     </a>
                                 @else
-                                    <!-- Lien vers la page d'administration -->
-                                    <a
-                                        href="{{ route('admin.pokemons.index') }}"
-                                        class="font-bold bg-white text-gray-700 px-4 py-2 rounded shadow-md"
-                                    >
-                                        Administration
-                                    </a>
+
                                 @endguest
                             </div>
                         </div>
