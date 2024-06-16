@@ -14,69 +14,41 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body class="font-sans text-gray-900 antialiased bg-white">
-    <div class="min-h-screen flex flex-col pt-6 sm:pt-0">
-        <div class="container mx-auto flex flex-col space-y-10">
-            <nav class="flex justify-between items-center py-2 bg-black text-red-600">
-                {{-- <div>
-                    <a href="/" class="group font-bold text-3xl flex items-center space-x-4 hover:text-emerald-600 transition">
-                        <img src="images/boule.jpg" alt="Logo" class="w-10 h-10 fill-current text-gray-500 group-hover:text-yellow-500 transition" />
-                        <span class="ml-8">Pokedex World</span>
-                    </a>
+    <div class="min-h-screen flex flex-col">
+        <!-- Navigation -->
+        <nav class="bg-black text-red-600 py-4">
+            <div class="container mx-auto flex justify-between items-center px-4">
+                <!-- Logo -->
+                <a href="/" class="group font-bold text-3xl flex items-center space-x-4 hover:text-red-500 transition">
+                    <img src="images/boule.jpg" alt="Logo" class="w-10 h-10 fill-current text-gray-500 group-hover:text-yellow-500 transition" />
+                    <span class="ml-2">Pokedex World</span>
+                </a>
 
+                <!-- Liens de navigation -->
+                <div class="flex items-center space-x-6">
+                    <a href="{{ route('login') }}" class="font-bold hover:text-yellow-600 transition">Login</a>
+                    <a href="{{ route('homepage.index') }}" class="font-bold hover:text-yellow-600 transition">Accueil</a>
+                    <!-- Ajouter d'autres liens de navigation ici si nécessaire -->
                 </div>
-                {{-- <div class="flex items-center space-x-4 justify-end">
-                    <a class="font-bold hover:text-yellow-600 transition" href="/">guest.blade.php (Pokemon)</a>
-                </div> --}}
+            </div>
+        </nav>
 
-                <div class="flex items-center space-x-4 justify-end">
-                    <a class="font-bold hover:text-yellow-600 transition" href="{{route('login') }}">Login</a>
-
-
-                    
-                </div>
-
-
-                <div class="flex items-center space-x-4 justify-end">
-                    <a class="font-bold hover:text-yellow-600 transition" href="{{route('homepage.index') }}">Accueil</a>
-                </div>
-
-
-
-                {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"> --}}
-
-
-                    <div class="flex items-center space-x-4 justify-end">
-
-                        {{-- lien fonctionnel mais pas apd du bon fichier <a class="font-bold hover:text-yellow-600 transition" href="{{ route('homepage.pokemons.index') }}">Tableau des Pokémon</a> --}}
-                    </div>
-                </div>
-            </nav>
-
-
-
-            {{-- liste des pokemon
-            <a class="font-bold text-lg text-red-600 hover:text-black transition" href="{{ route('pokemons.index') }}">
-                Pokemon
-            </a> --}}
-
-
-
-
-            <main>
+        <!-- Contenu principal -->
+        <main class="flex-1">
+            <div class="container mx-auto py-6 px-4">
                 {{ $slot }}
-            </main>
-        </div>
+            </div>
+        </main>
 
         <!-- Footer -->
-        <footer class="flex justify-center items-center space-x-4 py-5 bg-black mt-16">
-            <a href="https://www.pokemon.com/us/pokedex" class="font-bold text-red-600 hover:text-white-600 transition">
-               Site officiel Pokemon
-            </a>
+        <footer class="bg-black py-5">
+            <div class="container mx-auto flex justify-center items-center space-x-4">
+                <a href="https://www.pokemon.com/us/pokedex" class="font-bold text-red-600 hover:text-white transition">Site officiel Pokemon</a>
+            </div>
         </footer>
     </div>
 </body>
-
-</html>
 
 </html>

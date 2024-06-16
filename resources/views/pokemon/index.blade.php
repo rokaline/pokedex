@@ -15,7 +15,7 @@
                <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
                    <div class="flex justify-between mt-8">
                        <div class=" text-2xl">
-                           Liste des Pokemon (Public: views/pokemon index)
+                           Liste des Pokemon (pour visiteurs)
                        </div>
 
                        {{-- pour ajouter pokemon --}}

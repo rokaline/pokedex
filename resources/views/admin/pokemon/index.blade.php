@@ -1,148 +1,75 @@
-<x-app-layout>
-    <!-- Slot pour le header -->
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Pokemons') }}
-        </h2>
-    </x-slot>
+<!-- resources/views/pokemon/show.blade.php -->
 
-    <!-- Contenu principal -->
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
-                    <!-- Section du titre et des boutons d'action -->
-                    <div class="flex justify-between mt-8">
-                        <div class="text-2xl">
-                            Tableau Pokemon (views/admin/pokemon/ondex)
-                        </div>
-                        <!-- Bouton "Liste des Pokémon" -->
-                        <div class="flex items-center justify-center space-x-8">
-                            <a href="{{ route('pokemons.create') }}"
-                                class="text-gray-500 font-bold py-2 px-4 rounded hover:bg-gray-200 transition">
-                                Liste des Pokémon
-                            </a>
-                        </div>
-                        <!-- Bouton "Modifier un Pokémon" -->
-                        <div class="flex items-center justify-center space-x-8">
-                            <a href="{{ route('pokemons.create') }}"
-                                class="text-gray-500 font-bold py-2 px-4 rounded hover:bg-gray-200 transition flex items-center">
-                                <x-heroicon-o-plus class="w-4 h-4 mr-2" />
-                                Modifier un Pokemon
-                            </a>
-                        </div>
-                    </div>
+<x-guest-layout>
+    <div class="container mx-auto p-6">
+        <h1 class="font-bold text-3xl mb-4 capitalize text-center text-red-500">{{ $pokemon->nom }}</h1>
 
+        {{-- Image et informations du Pokémon --}}
+        <div class="mt-4 text-center">
+            <img src="{{ Storage::url($pokemon->img_path) }}"
+                alt="image du pokemon"
+                class="rounded-lg shadow-lg aspect-auto object-cover object-center mx-auto w-1/6 border-4 border-red-500">
 
-                    {{-- <a href="{{ route('admin.pokemon.index', $pokemon->id) }}"> --}}
-                    <!-- Tableau des Pokémon -->
-                    <div class="mt-6 text-gray-500">
-                        <table class="table-auto w-full">
-                            <thead>
-                                <tr class="uppercase text-left">
-                                    <th class="px-4 py-2 border">Nom du Pokémon</th>
-                                    <th class="px-4 py-2 border">Photo</th>
-                                    <th class="px-4 py-2 border">PV</th>
-                                    <th class="px-4 py-2 border">Poids</th>
-                                    <th class="px-4 py-2 border">Taille</th>
-                                    <th class="px-4 py-2 border">Type de Pokémon</th>
-                                    <th class="px-4 py-2 border">Couleur</th>
-                                    <th class="px-4 py-2 border">Type d'attaque</th>
-                                    <th class="px-4 py-2 border">Dégâts</th>
-                                    <th class="px-4 py-2 border">Description</th>
-                                    <th class="px-4 py-2 border">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($pokemons as $pokemon)
-                                    <tr class="hover:bg-gray-50 odd:bg-gray-100 hover:odd:bg-gray-200 transition">
-                                        <td class="border px-4 py-2">{{ $pokemon->nom }}</td>
-                                        <td class="border px-4 py-2">
-                                            <img src="{{ Storage::url($pokemon->img_path) }}" alt="{{ $pokemon->nom }}" class="w-16 h-16">
-                                        </td>
-                                        <td class="border px-4 py-2">{{ $pokemon->pv }}</td>
-                                        <td class="border px-4 py-2">{{ $pokemon->poids }}</td>
-                                        <td class="border px-4 py-2">{{ $pokemon->taille }}</td>
-                                        <td class="border px-4 py-2">
-                                            <!-- Types de Pokémon -->
-                                            @if ($pokemon->types)
-                                                @foreach ($pokemon->types as $type)
-                                                    {{ $type->nom }}@if (!$loop->last), @endif
-                                                @endforeach
-                                            @else
-                                                Aucun type disponible pour ce Pokémon.
-                                            @endif
-                                        </td>
-                                        <td class="border px-4 py-2">
-                                            <!-- Couleurs des types -->
-                                            @if ($pokemon->types)
-                                                @foreach ($pokemon->types as $type)
-                                                    {{ $type->couleur }}@if (!$loop->last), @endif
-                                                @endforeach
-                                            @else
-                                                -
-                                            @endif
-                                        </td>
-                                        <td class="border px-4 py-2">
-                                            <!-- Attaques du Pokémon -->
-                                            @if ($pokemon->attaques)
-                                                @foreach ($pokemon->attaques as $attaque)
-                                                    {{ $attaque->nom }}@if (!$loop->last), @endif
-                                                @endforeach
-                                            @else
-                                                Aucune attaque disponible pour ce Pokémon.
-                                            @endif
-                                        </td>
-                                        <td class="border px-4 py-2">
-                                            <!-- Dégâts des attaques -->
-                                            @if ($pokemon->attaques)
-                                                @foreach ($pokemon->attaques as $attaque)
-                                                    {{ $attaque->dégât }}@if (!$loop->last), @endif
-                                                @endforeach
-                                            @else
-                                                -
-                                            @endif
-                                        </td>
-                                        <td class="border px-4 py-2">
-                                            <!-- Descriptions des attaques -->
-                                            @if ($pokemon->attaques)
-                                                @foreach ($pokemon->attaques as $attaque)
-                                                    {{ $attaque->description }}@if (!$loop->last), @endif
-                                                @endforeach
-                                            @else
-                                                -
-                                            @endif
-                                        </td>
-                                        <td class="border px-4 py-2 space-x-4">
-                                            <!-- Actions (Édition et Suppression) -->
-                                            <div class="flex space-x-4">
-                                                <!-- Édition -->
-                                                <a href="{{ route('pokemons.edit', $pokemon->id) }}" class="text-blue-400">
-                                                    <x-heroicon-o-pencil class="w-5 h-5" />
-                                                </a>
-                                                <!-- Suppression (avec confirmation) -->
-                                                <button
-                                                    x-data="{ id: {{ $pokemon->id }} }"
-                                                    x-on:click.prevent="window.selected = id; $dispatch('open-modal', 'confirm-article-deletion');"
-                                                    type="submit"
-                                                    class="text-red-400"
-                                                >
-                                                    <x-heroicon-o-trash class="w-5 h-5" />
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!-- Pagination -->
-                    <div class="mt-4">
-                        {{ $pokemons->links() }}
-                    </div>
-                </div>
+            <div class="mt-4 text-lg text-gray-700">
+                <p><strong>PV:</strong> {{ $pokemon->pv }}</p>
+                <p><strong>Poids:</strong> {{ $pokemon->poids }} kg</p>
+                <p><strong>Taille:</strong> {{ $pokemon->taille }} m</p>
             </div>
         </div>
+
+        {{-- Bloc pour affichage du type et des attaques --}}
+        <div class="mt-8">
+            {{-- Types --}}
+            <div class="mb-6">
+                <h2 class="font-semibold text-2xl text-gray-800 text-center mb-4">Types</h2>
+                @if($pokemon->types)
+                    @foreach($pokemon->types as $type)
+                        <div class="flex items-center justify-center mb-2">
+                            <img src="{{ Storage::url($type->img_path) }}"
+                                alt="{{ $type->nom }}"
+                                class="rounded-full shadow-md aspect-auto object-cover object-center w-12 h-12 border-2 border-gray-300">
+                            <span class="ml-2 font-semibold text-lg" style="color: {{ $type->couleur }}">{{ $type->nom }}</span>
+                        </div>
+                    @endforeach
+                @else
+                    <p class="text-center text-gray-600">Aucun type disponible pour ce Pokémon.</p>
+                @endif
+            </div>
+
+            {{-- Attaques --}}
+            <div class="mb-6">
+                <h2 class="font-semibold text-2xl text-gray-800 text-center mb-4">Attaques</h2>
+                @if($pokemon->attaques)
+                    @foreach($pokemon->attaques as $attaque)
+                        <div class="mb-4 border border-gray-300 p-4 rounded-md shadow-lg bg-gray-100">
+                            <h3 class="font-bold text-xl text-gray-800 mb-2">{{ $attaque->nom }}</h3>
+
+                            <img src="{{ Storage::url($attaque->img_path) }}"
+                                alt="image de l'attaque"
+                                class="rounded-lg shadow-md aspect-auto object-cover object-center mx-auto w-1/6 border-4 border-gray-300 mb-4">
+
+                            <div class="text-lg text-gray-700">
+                                <p><strong>Dégâts:</strong> {{ $attaque->dégâts }}</p>
+                                <p><strong>Description:</strong> <p class="mt-2">{{ $attaque->description }}</p>
+                                <p><strong>Type:</strong> {{ $attaque->type->nom }}</p>
+                                <img src="{{ Storage::url($attaque->type->img_path) }}"
+                                    alt="{{ $attaque->type->nom }}"
+                                    class="rounded-full shadow-md aspect-auto object-cover object-center w-36 h-36 border-2 border-gray-300 mt-2">
+                                <p><strong>Couleur:</strong> <span style="color: {{ $attaque->type->couleur }}">{{ $attaque->type->couleur }}</span></p>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <p class="text-center text-gray-600">Aucune attaque disponible pour ce Pokémon.</p>
+                @endif
+            </div>
+        </div>
+
+        {{-- Bouton de retour --}}
+        <div class="mt-8 flex items-center justify-center">
+            <a href="{{ route('homepage.index') }}" class="font-bold bg-red-500 text-white px-4 py-2 rounded shadow-lg hover:bg-red-600 transition">
+                Retour à la liste des Pokémon
+            </a>
+        </div>
     </div>
-</x-app-layout>
+</x-guest-layout>

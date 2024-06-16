@@ -1,82 +1,78 @@
 <!-- resources/views/pokemon/show.blade.php -->
 
-
-<!-- resources/views/pokemon/show.blade.php -->
-
 <x-guest-layout>
+    <div class="container mx-auto p-6">
+        <h1 class="font-bold text-3xl mb-4 capitalize text-center text-red-500">{{ $pokemon->nom }}</h1>
 
-    <strong>Détails du Pokemon (pokemon show.blade)</strong>
-    {{-- Nom du Pokémon --}}
-    <h1 class="font-bold text-xl mb-4 capitalize text-center">{{ $pokemon->nom }}</h1>
+        {{-- Image et informations du Pokémon --}}
+        <div class="mt-4 text-center">
+            <img src="{{ Storage::url($pokemon->img_path) }}"
+                alt="image du pokemon"
+                class="rounded-lg shadow-lg aspect-auto object-cover object-center mx-auto w-1/6 border-4 border-red-500">
 
-    {{-- Image et informations du Pokémon --}}
-    <div class="mt-4 text-center">
-        <img src="{{ Storage::url($pokemon->img_path) }}"
-            alt="image du pokemon"
-            class="rounded shadow aspect-auto object-cover object-center mx-auto w-1/3">
+            <div class="mt-4 text-lg text-gray-700">
+                <p><strong>PV:</strong> {{ $pokemon->pv }}</p>
+                <p><strong>Poids:</strong> {{ $pokemon->poids }} kg</p>
+                <p><strong>Taille:</strong> {{ $pokemon->taille }} m</p>
+            </div>
+        </div>
 
-        <p class="mt-4"><strong>PV:</strong> {{ $pokemon->pv }}</p>
-        <p><strong>Poids:</strong> {{ $pokemon->poids }} kg</p>
-        <p><strong>Taille:</strong> {{ $pokemon->taille }} m</p>
-    </div>
+        {{-- Bloc pour affichage du type et des attaques --}}
+        <div class="mt-8">
+            {{-- Types --}}
+            <div class="mb-6">
 
+                @if($pokemon->types)
+                    @foreach($pokemon->types as $type)
 
-    {{-- Bloc pour affichage du type et des attaques --}}
-    <div class="mt-8">
+                        <div class="flex items-center justify-center mb-2">
 
-        {{-- Types --}}
+                            <h2 class="font-semibold text-2xl text-gray-800 text-center mb-4">Type</h2><img src="{{ Storage::url($type->img_path) }}"
+                                alt="{{ $type->nom }}"
+                                class="rounded-full shadow-md aspect-auto object-cover object-center w-8 h-8 border-2 border-gray-300">
+                            <span class="ml-2 font-semibold text-lg" style="color: {{ $type->couleur }}">{{ $type->nom }}</span>
+                        </div>
+                    @endforeach
+                @else
+                    <p class="text-center text-gray-600">Aucun type disponible pour ce Pokémon.</p>
+                @endif
+            </div>
 
-        @if($pokemon->types)
-            @foreach($pokemon->types as $type)
-                <div class="flex items-center justify-center mb-2">
-                    <img src="{{ Storage::url($type->img_path) }}"
-                        alt="{{ $type->nom }}"
-                        class="rounded shadow aspect-auto object-cover object-center mx-auto w-1/4">
-                    <span class="ml-2" style="color: {{ $type->couleur }}">{{ $type->nom }}</span>
-                </div>
-            @endforeach
-        @else
-            <p>Aucun type disponible pour ce Pokémon.</p>
-        @endif
+            {{-- Attaques --}}
+            <div class="mb-6">
 
-        {{-- Attaques --}}
-        @if($pokemon->attaques)
-            @foreach($pokemon->attaques as $attaque)
-                <div class="mb-4 border border-gray-300 p-4 rounded-md">
-                    <h3 class="font-bold">Nom de l'attaque: {{ $attaque->nom }}</h3>
+                @if($pokemon->attaques)
+                    @foreach($pokemon->attaques as $attaque)
 
-                    <img src="{{ Storage::url($attaque->img_path) }}"
-                        alt="image de l'attaque"
-                        class="rounded shadow aspect-auto object-cover object-center mx-auto w-1/3">
+                        <div class="mb-4 border border-gray-300 p-4 rounded-md shadow-lg bg-gray-100">
+                            <h2 class="font-semibold text-2xl text-gray-800 text-center mb-4">Attaques</h2><h3 class="font-bold text-xl text-gray-800 mb-2">{{ $attaque->nom }}</h3>
 
-                    <p class="mt-4"><strong>Dégâts:</strong> {{ $attaque->dégâts }}</p>
-                    <p>{{ $attaque->description }}</p>
+                            <img src="{{ Storage::url($attaque->img_path) }}"
+                                alt="image de l'attaque"
+                                class="rounded-lg shadow-md aspect-auto object-cover object-center mx-auto w-1/6 border-4 border-gray-300 mb-4">
 
-                    <p><strong>Type:</strong> {{ $attaque->type->nom }}</p>
-                    <img src="{{ Storage::url($attaque->type->img_path) }}"
-                        alt="{{ $attaque->type->nom }}"
-                        class="rounded shadow aspect-auto object-cover object-center mx-auto w-1/4">
-                    <p><strong>Couleur:</strong> <span style="color: {{ $attaque->type->couleur }}">{{ $attaque->type->couleur }}</span></p>
-                </div>
-            @endforeach
-        @else
-            <p>Aucune attaque disponible pour ce Pokémon.</p>
-        @endif
-    </div>
+                            <div class="text-lg text-gray-700">
+                                <p><strong>Dégâts:</strong> {{ $attaque->dégâts }}</p>
+                                <p><strong>Description:</strong> <p class="mt-2">{{ $attaque->description }}</p>
+                                <p><strong>Type:</strong> {{ $attaque->type->nom }}</p>
+                                <img src="{{ Storage::url($attaque->type->img_path) }}"
+                                    alt="{{ $attaque->type->nom }}"
+                                    class="rounded-full shadow-md aspect-auto object-cover object-center w-8 h-8 border-2 border-gray-300 mt-2">
+                                <p><strong>Couleur:</strong> <span style="color: {{ $attaque->type->couleur }}">{{ $attaque->type->couleur }}</span></p>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <p class="text-center text-gray-600">Aucune attaque disponible pour ce Pokémon.</p>
+                @endif
+            </div>
+        </div>
 
-    {{-- Bouton de retour --}}
-    <div class="mt-8 flex items-center justify-center">
-        <a href="{{ route('homepage.index') }}" class="font-bold bg-white text-gray-700 px-4 py-2 rounded shadow">
-            Retour à la liste des Pokémon (sur la homepage)
-        </a>
+        {{-- Bouton de retour --}}
+        <div class="mt-8 flex items-center justify-center">
+            <a href="{{ route('homepage.index') }}" class="font-bold bg-red-500 text-white px-4 py-2 rounded shadow-lg hover:bg-red-600 transition">
+                Retour à la liste des Pokémon
+            </a>
+        </div>
     </div>
 </x-guest-layout>
-
-
-
-
-
-
-
-
-
