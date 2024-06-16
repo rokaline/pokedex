@@ -19,11 +19,11 @@
                        </div>
 
                        {{-- pour ajouter pokemon --}}
-                       {{-- <div class="flex  items-center justify-center space-x-8">
+                       <div class="flex  items-center justify-center space-x-8">
                            <a href="{{ route('pokemons.create') }}"
                                class="text-gray-500 font-bold py-2 px-4 rounded hover:bg-gray-200 transition">Ajouter un
                                pokemon</a>
-                       </div> --}}
+                       </div>
                    </div>
 
                    <div class="mt-6 text-gray-500">

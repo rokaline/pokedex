@@ -2,6 +2,11 @@
 
 <x-guest-layout>
     <div class="container mx-auto p-6">
+
+
+
+        <h1> ADMIN/Pokemon/index </h1>
+
         <h1 class="font-bold text-3xl mb-4 capitalize text-center text-red-500">{{ $pokemon->nom }}</h1>
 
         {{-- Image et informations du Pokémon --}}
