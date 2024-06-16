@@ -36,12 +36,28 @@ Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('homepage
 
 
 
+/*====================================
+=            Back Office             =
+====================================*/
 
 // Route pour la page de tableau de bord (dashboard) : Page d'accueil du back office
+// Page d'accueil du back office
 Route::get('/dashboard', function () {
-    // Retourne la vue 'dashboard'
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard'); // (pointe vers)'
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+//ADMIN/POKEMON: AFFICHER/ CREER / EDITER / CONSERVER /SUPPRIMER
+/* aut, que pour les personnes identifiées*/
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::get('/pokemons', [AdminPokemonController::class, 'index'])->name('admin.pokemons.index');
+    Route::get('/pokemons/create', [AdminPokemonController::class, 'create'])->name('admin.pokemons.create');
+    Route::post('/pokemons', [AdminPokemonController::class, 'store'])->name('admin.pokemons.store');
+    Route::get('/pokemons/{id}/edit', [AdminPokemonController::class, 'edit'])->name('admin.pokemons.edit');
+    Route::put('/pokemons/{id}', [AdminPokemonController::class, 'update'])->name('admin.pokemons.update');
+    Route::delete('/pokemons/{id}', [AdminPokemonController::class, 'destroy'])->name('admin.pokemons.destroy');
+});
+
 
 // Groupe de routes nécessitant l'authentification
 Route::middleware('auth')->group(function () {
@@ -56,26 +72,6 @@ Route::middleware('auth')->group(function () {
 
 
 });
-
-
-
-/* Admin des pokemon*/
-
-// Routes protégées par l'authentification
-Route::middleware(['auth'])->prefix('admin')->group(function () {
-    Route::resource('pokemons', AdminPokemonController::class);
-});
-
-// Route pour afficher le formulaire d'administration des Pokémons
-Route::get('/admin/pokemons', [AdminPokemonController::class, 'create'])->name('admin.pokemons.create');
-
-// // Route pour gérer la soumission du formulaire
-Route::post('/admin/pokemons', [AdminPokemonController::class, 'store'])->name('admin.pokemons.store');
-
-
-
-
-
 
 // Inclut les routes d'authentification définies dans 'auth.php'
 require __DIR__.'/auth.php';

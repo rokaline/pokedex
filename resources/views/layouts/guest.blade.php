@@ -31,6 +31,9 @@
 
                 <div class="flex items-center space-x-4 justify-end">
                     <a class="font-bold hover:text-yellow-600 transition" href="{{route('login') }}">Login</a>
+
+
+                    
                 </div>
 
 
@@ -45,7 +48,7 @@
 
                     <div class="flex items-center space-x-4 justify-end">
 
-                        <a class="font-bold hover:text-yellow-600 transition" href="{{ route('homepage.pokemons.index') }}">Tableau des Pokémon</a>
+                        {{-- lien fonctionnel mais pas apd du bon fichier <a class="font-bold hover:text-yellow-600 transition" href="{{ route('homepage.pokemons.index') }}">Tableau des Pokémon</a> --}}
                     </div>
                 </div>
             </nav>

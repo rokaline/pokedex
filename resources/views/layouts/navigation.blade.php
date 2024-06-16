@@ -11,41 +11,24 @@
             <div class="flex">
 
 
-                <!-- Navigation Links (dans la nav de la partie user)-->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
-
-
-                <!-- Liste des pokemons)-->
-
-
-
-                {{-- <x-nav-link
-            :href="route('articles.index')"
-            :active="request()->routeIs('articles.*')"
-          >
-            {{ __('Articles') }}
-          </x-nav-link> --}}
-
 
                 <!-- Lien vers la page d'accueil -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('homepage.index')" :active="request()->routeIs('homepage.index')">
-                        {{ __('Retour à accueil') }} Retour à accueil (depuis layouts/navigation.blade & aussi pokemon.show.blade)
+                        {{ __('Retour à accueil') }} Retour à accueil (depuis Admin & home)
                     </x-nav-link>
                 </div>
 
 
 
                 {{-- Lien vers le tableau de pokemon A GARDER pour + TARD --}}
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                 {{-- <a class="font-bold hover:text-yellow-600 transition" href="{{ route('homepage.pokemons.index') }}">Tableau des Pokémon (apd dashboard)</a> --}}
+                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <div class="flex items-center space-x-4 justify-end">
-                        <a class="font-bold hover:text-yellow-600 transition" href="{{ route('homepage.pokemons.index') }}">Tableau des Pokémon (apd dashboard)</a>
+                        <a href="{{ route('admin.pokemons.index') }}" class="font-bold hover:text-yellow-600 transition">Tableau des Pokémon pour admin</a>
                     </div>
                 </div>
+
 
             </div>
 
