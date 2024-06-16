@@ -15,7 +15,7 @@ class HomepageController extends Controller
     public function index()
     {
         // Récupère tous les Pokémon de la base de données
-        $pokemons = Pokemon::paginate(6);
+        $pokemons = Pokemon::paginate(8);
         // Retourne la vue 'homepage.index' et lui passe la variable 'pokemons'
         return view('homepage.index', [
             'pokemons' => $pokemons,
