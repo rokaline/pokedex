@@ -10,47 +10,49 @@ use Illuminate\Support\Facades\Route;
 
 /////////////////////// Routes déjà présentes dans laravel
 // Route pour la page d'accueil
-Route::get('/', function () {
-    // Retourne la vue 'welcome'
-    return view('welcome');
-});
-
-// Route pour la page de tableau de bord (dashboard)
-Route::get('/dashboard', function () {
-    // Retourne la vue 'dashboard'
-    return view('dashboard');
-})->middleware(['auth', 'verified']) // Applique les middleware 'auth' et 'verified' à cette route
-  ->name('dashboard'); // Nomme cette route 'dashboard'
-
-// Groupe de routes nécessitant l'authentification
-Route::middleware('auth')->group(function () {
-    // Route pour éditer le profil
-    Route::get('/profile', [ProfileController::class, 'edit'])
-        ->name('profile.edit'); // Nomme cette route 'profile.edit'
-
-    // Route pour mettre à jour le profil
-    Route::patch('/profile', [ProfileController::class, 'update'])
-        ->name('profile.update'); // Nomme cette route 'profile.update'
-
-    // Route pour supprimer le profil
-    Route::delete('/profile', [ProfileController::class, 'destroy'])
-        ->name('profile.destroy'); // Nomme cette route 'profile.destroy'
-});
+// Route::get('/', function () {
+//     // Retourne la vue 'welcome'
+//     return view('welcome');
+// });
 
 
-//////////////////////////
+/*====================================
+=            Front Office            =
+====================================*/
 
-/*HomePage*/
-/*Route::get('/', [HomepageController::class, 'index']); /* appelle la méthode index de HomepageController. - affichage des 6 pokemons*/
 
-/*pour retour à la page d'acceuil ap du pokemon selectionné*/// Route pour la page d'accueil grâce: "->name('homepage.index');"
+//Page d'accueil
 Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
 
 
 /*pour l'affichage pokemon et de ses charactéristiques (sans login*/
 Route::get('/pokemons', [PokemonController::class, 'index'])->name('homepage.pokemons.index');
+// Caractéristiques d'un pokemon
 Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('homepage.pokemons.show');
  /*appelle la methode pour affichage du pokemon selectionné*/
+
+
+
+// Route pour la page de tableau de bord (dashboard) : Page d'accueil du back office
+Route::get('/dashboard', function () {
+    // Retourne la vue 'dashboard'
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard'); // (pointe vers)'
+
+// Groupe de routes nécessitant l'authentification
+Route::middleware('auth')->group(function () {
+    // Route pour éditer le profil
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit'); // Nomme cette route 'profile.edit'
+
+    // Route pour mettre à jour le profil
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update'); // Nomme cette route 'profile.update'
+
+    // Route pour supprimer le profil
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy'); // Nomme cette route 'profile.destroy'
+
+
+});
+
 
 
 /* Admin des pokemon*/

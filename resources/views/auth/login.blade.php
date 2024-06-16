@@ -1,3 +1,6 @@
+
+ {{-- views/auth.login.blade: page de connexion: --}}
+
 <x-guest-layout>
     <!-- page login -->
     <x-auth-session-status class="mb-4" :status="session('status')" />

@@ -1,4 +1,7 @@
 
+{{-- views/layouts/navigation.blade --}}
+
+
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,14 +21,14 @@
                     </x-nav-link>
                 </div>
 
-            
+
                 <!-- pour se connecter -->
                 <nav class="bg-gray-800 p-4">
                     <div class="container mx-auto">
                         <div class="flex justify-between">
                             <div>
                                 <!-- Lien vers la page d'accueil -->
-                                <a href="{{ route('homepage.index') }}" class="text-white">Accueil</a>
+                                <a href="{{ route('homepage.index') }}" class="font-bold bg-white text-gray-700 px-4 py-2 rounded shadow-md">Retour à accueil (depuis layouts/navigation.blade & aussi pokemon.show.blade)</a>
                             </div>
                             <div>
                                 @guest

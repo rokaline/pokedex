@@ -1,3 +1,7 @@
+
+{{-- guest.blade.php --}}
+
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -18,12 +22,13 @@
     <div class="min-h-screen flex flex-col pt-6 sm:pt-0">
         <div class="container mx-auto flex flex-col space-y-10">
             <nav class="flex justify-between items-center py-2 bg-black text-red-600">
-                <div>
+                {{-- <div>
                     <a href="/" class="group font-bold text-3xl flex items-center space-x-4 hover:text-emerald-600 transition">
                         <img src="images/boule.jpg" alt="Logo" class="w-10 h-10 fill-current text-gray-500 group-hover:text-yellow-500 transition" />
                         <span class="ml-8">Pokedex World</span>
                     </a>
-                </div>
+
+                </div> --}}
                 {{-- <div class="flex items-center space-x-4 justify-end">
                     <a class="font-bold hover:text-yellow-600 transition" href="/">guest.blade.php (Pokemon)</a>
                 </div> --}}
