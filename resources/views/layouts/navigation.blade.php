@@ -19,22 +19,10 @@
                 </div> --}}
 
 
-                <!-- Liste des pokemons)-->
-
-
-
-                {{-- <x-nav-link
-            :href="route('articles.index')"
-            :active="request()->routeIs('articles.*')"
-          >
-            {{ __('Articles') }}
-          </x-nav-link> --}}
-
-
                 <!-- Lien vers la page d'accueil -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('homepage.index')" :active="request()->routeIs('homepage.index')">
-                        {{ __('Retour à accueil') }} Retour à accueil (depuis Admin & aussi pokemon.show.blade)
+                        {{ __('ACCUEIL') }} ACCEUIL
                     </x-nav-link>
                 </div>
 
@@ -46,6 +34,15 @@
                         <a class="font-bold hover:text-yellow-600 transition" href="{{ route('homepage.pokemons.index') }}">Tableau des Pokémon (visible apd dash)</a>
                     </div>
                 </div>
+
+
+                     {{-- pour tableaud dans dashborad/pokemon--}}
+                     {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('admin.pokemons.index')" :active="request()->routeIs('admins.pokemon.index')">
+                            {{ __('PokeTab') }} Retour à accueil (depuis Admin & aussi pokemon.show.blade)
+                        </x-nav-link>
+                    </div> --}}
+
 
             </div>
 
@@ -102,6 +99,14 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
+
+
+        <!--  Lien à ajouter pour la partie user -->
+        {{-- <x-responsive-nav-link :href="route('pokemons.index')" :active="request()->routeIs('pokemons.*')">
+            {{ __('Pokemons') }}
+        </x-responsive-nav-link> --}}
+
+
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">

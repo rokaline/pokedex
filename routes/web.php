@@ -51,14 +51,22 @@ Route::get('/dashboard', function () {
 //ADMIN/POKEMON: AFFICHER/ CREER / EDITER / CONSERVER /SUPPRIMER
 /* aut, que pour les personnes identifiées*/
 
-Route::middleware(['auth'])->prefix('admin')->group(function () {
-    Route::get('/pokemons', [AdminPokemonController::class, 'index'])->name('admin.pokemon.index');
-    Route::get('/pokemons/create', [AdminPokemonController::class, 'create'])->name('admin.pokemons.create');
-    Route::post('/pokemons', [AdminPokemonController::class, 'store'])->name('admin.pokemons.store');
-    Route::get('/pokemons/{id}/edit', [AdminPokemonController::class, 'edit'])->name('admin.pokemons.edit');
-    Route::put('/pokemons/{id}', [AdminPokemonController::class, 'update'])->name('admin.pokemons.update');
-    Route::delete('/pokemons/{id}', [AdminPokemonController::class, 'destroy'])->name('admin.pokemons.destroy');
+
+Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
+    // Gestion des articles (création, modification, suppression)
+    Route::resource('/pokemons', AdminPokemonController::class)->except(['show']);
+
+    // Gestion des utilisateurs (Détails et changement de rôle)
+    // Route::resource('/users', UserController::class)->only(['index', 'edit', 'update']);
 });
+// Route::middleware(['auth'])->prefix('admin')->group(function () {
+//     Route::get('/pokemons', [AdminPokemonController::class, 'index'])->name('admin.pokemon.index');
+//     Route::get('/pokemons/create', [AdminPokemonController::class, 'create'])->name('admin.pokemons.create');
+//     Route::post('/pokemons', [AdminPokemonController::class, 'store'])->name('admin.pokemons.store');
+//     Route::get('/pokemons/{id}/edit', [AdminPokemonController::class, 'edit'])->name('admin.pokemons.edit');
+//     Route::put('/pokemons/{id}', [AdminPokemonController::class, 'update'])->name('admin.pokemons.update');
+//     Route::delete('/pokemons/{id}', [AdminPokemonController::class, 'destroy'])->name('admin.pokemons.destroy');
+// });
 
 
 // Groupe de routes nécessitant l'authentification
