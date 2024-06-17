@@ -5,6 +5,7 @@ use App\Http\Controllers\PokemonController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\PokemonController as AdminPokemonController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\TypeController;
 use App\Models\Pokemon;
 use Illuminate\Support\Facades\Route;
 
@@ -47,8 +48,10 @@ Route::get('/dashboard', function () {
 
 
 // POKEMON
-
 Route::middleware(['auth'])->group(function () {
+
+    //POKEMON
+
     Route::get('/pokemon', [PokemonController::class, 'index'])->name('homepage.pokemons.index');
 
     // Création d'un pokemon
@@ -60,37 +63,26 @@ Route::middleware(['auth'])->group(function () {
     // Suppression d'un pokemon
     Route::delete('/pokemon/{pokemon}/destroy', [PokemonController::class, 'destroy'])->name('pokemons.destroy');
 
-
-
-   // Route::get('/pokemon/destroy', [PokemonController::class, 'destroy'])->name('pokemons.destroy');
-
     // Enregistrement d'un nouveau pokemon
     Route::post('/pokemon', [PokemonController::class, 'store'])->name('pokemons.store');
+
+});
+
+
+//TYPES
+// Routes pour les types
+Route::middleware(['auth'])->group(function () {
+    Route::get('/types', [TypeController::class, 'index'])->name('type.index');
+    Route::get('/types/create', [TypeController::class, 'create'])->name('type.create');
+    Route::post('/types', [TypeController::class, 'store'])->name('type.store');
+    Route::get('/types/{type}/edit', [TypeController::class, 'edit'])->name('type.edit');
+    Route::put('/types/{type}', [TypeController::class, 'update'])->name('type.update');
+    Route::delete('/types/{type}', [TypeController::class, 'destroy'])->name('type.destroy');
 });
 
 
 
-
-
-
-//ADMIN/POKEMON: AFFICHER/ CREER / EDITER / CONSERVER /SUPPRIMER
-/* aut, que pour les personnes identifiées*/
-
-
-// Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
-//     // Gestion des articles (création, modification, suppression)
-//     Route::resource('/pokemons', AdminPokemonController::class)->except(['show']);
-
-
-// });
-// Route::middleware(['auth'])->prefix('admin')->group(function () {
-//     Route::get('/pokemons', [AdminPokemonController::class, 'index'])->name('admin.pokemon.index');
-//     Route::get('/pokemons/create', [AdminPokemonController::class, 'create'])->name('admin.pokemons.create');
-//     Route::post('/pokemons', [AdminPokemonController::class, 'store'])->name('admin.pokemons.store');
-//     Route::get('/pokemons/{id}/edit', [AdminPokemonController::class, 'edit'])->name('admin.pokemons.edit');
-//     Route::put('/pokemons/{id}', [AdminPokemonController::class, 'update'])->name('admin.pokemons.update');
-//     Route::delete('/pokemons/{id}', [AdminPokemonController::class, 'destroy'])->name('admin.pokemons.destroy');
-// });
+//ATTAQUES
 
 
 // Groupe de routes nécessitant l'authentification

@@ -12,7 +12,7 @@
 
 
 
-                <!-- Lien vers la page d'accueil -->
+                <!-- HOMEPAGE -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('homepage.index')" :active="request()->routeIs('homepage.index')">
                         {{ __('ACCUEIL') }} ACCEUIL
@@ -21,22 +21,22 @@
 
 
 
-                {{-- Lien vers le tableau de pokemon de Pokemon/index --}}
+                {{-- TABLEAU PKx --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <div class="flex items-center space-x-4 justify-end">
-                        <a class="font-bold hover:text-yellow-600 transition" href="{{ route('homepage.pokemons.index') }}">Tableau des Pokémon (visible apd dash)</a>
+                        <a class="font-bold hover:text-yellow-600 transition" href="{{ route('homepage.pokemons.index') }}">Tableau des Pokémon</a>
                     </div>
                 </div>
 
 
 
 
-                {{-- Lien vers TYPESx --}}
-                {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                {{-- Lien TYPES GESTION --}}
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <div class="flex items-center space-x-4 justify-end">
-                        <a class="font-bold hover:text-yellow-600 transition" href="{{ route('homepage.type.edit') }}">Types Pokemon</a>
+                        <a class="font-bold hover:text-yellow-600 transition" href="{{ route('type.index') }}">Types Pokemon</a>
                     </div>
-                </div> --}}
+                </div>
 
 
             </div>
