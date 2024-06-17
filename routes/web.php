@@ -5,6 +5,7 @@ use App\Http\Controllers\PokemonController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\PokemonController as AdminPokemonController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Models\Pokemon;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,17 +17,21 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
+//pour debug
+Route::get('/pokemon/test', [HomepageController::class, 'index'])->name('pokemons.index');
+//Route::get('/pokemon/test', [HomepageController::class, 'index'])->name('pokemons.store');
 /*====================================
 =            Front Office            =
 ====================================*/
 
 
 
-Route::get('/pokemon/test', [HomepageController::class, 'index'])->name('pokemons.index');
+
+//Route::get('/pokemon/test', [PokemonController::class, 'index'])->name('pokemons.store');
 
 //Page d'accueil
 Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
-// Caractéristiques d'un pokemon
+/*pour l'affichage pokemon et de ses charactéristiques (sans login*)*/
 Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('homepage.pokemons.show');
 
 
@@ -34,17 +39,26 @@ Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('homepage
 
 // pour tout le monde (à changer en auth)
 
-/*pour l'affichage pokemon et de ses charactéristiques (sans login*)*/
-Route::get('/pokemon', [PokemonController::class, 'index'])->name('homepage.pokemons.index');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/pokemon', [PokemonController::class, 'index'])->name('homepage.pokemons.index');
 
- /*appelle la methode pour affichage du pokemon selectionné*/
-// Création d'un pokemon
-Route::get('/pokemon/create', [PokemonController::class, 'create'])->name('pokemons.create');
+    // Création d'un pokemon
+    Route::get('/pokemon/create', [PokemonController::class, 'create'])->name('pokemon.create');
 
-Route::get('/pokemon/edit', [PokemonController::class, 'edit'])->name('pokemons.edit');
+    // Édition d'un pokemon
+    Route::get('/pokemon/edit', [PokemonController::class, 'edit'])->name('pokemons.edit');
 
-//Route::get('/pokemon/destroy', [PokemonController::class, 'destroy'])->name('pokemons.destroy');
-Route::delete('/pokemon/destroy', [PokemonController::class, 'destroy'])->name('pokemons.destroy');
+    // Suppression d'un pokemon
+    Route::delete('/pokemon/destroy', [PokemonController::class, 'destroy'])->name('pokemons.destroy');
+
+
+
+   // Route::get('/pokemon/destroy', [PokemonController::class, 'destroy'])->name('pokemons.destroy');
+
+    // Enregistrement d'un nouveau pokemon
+    Route::post('/pokemon', [PokemonController::class, 'store'])->name('pokemons.store');
+});
+
 
 /*====================================
 =            Back Office             =

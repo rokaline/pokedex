@@ -10,7 +10,7 @@ class Pokemon extends Model
 {
     // Utilisation de la factory associée
     use HasFactory;
-
+    protected $table = 'pokemon';
     // Définir les attributs pouvant être remplis
     protected $fillable = ['nom','img_path','pv', 'poids', 'taille'];
 

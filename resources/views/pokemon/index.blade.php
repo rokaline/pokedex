@@ -16,7 +16,7 @@
                     </div>
                         {{-- Bouton d'ajout de Pokémon --}}
 
-                        <div> <a href="{{ route('pokemons.create') }}" class="text-gray-500 font-bold py-2 px-4 rounded hover:bg-gray-200 transition duration-200">
+                        <div> <a href="{{ route('pokemon.create') }}" class="text-gray-500 font-bold py-2 px-4 rounded hover:bg-gray-200 transition duration-200">
                             Ajouter un Pokémon
                         </a>
                     </div>
@@ -180,4 +180,5 @@
             document.getElementById('imageModal').classList.add('hidden');
         }
     </script>
+
 </x-app-layout>
