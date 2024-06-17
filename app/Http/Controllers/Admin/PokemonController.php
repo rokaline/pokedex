@@ -16,7 +16,7 @@ class PokemonController extends Controller
      */
     public function index()
     {
-        $pokemons = Pokemon::with('types', 'attaques')->paginate(10);
+        $pokemon = Pokemon::with('types', 'attaques')->paginate(10);
         return view('admin.pokemons.index', compact('pokemons'));
     }
 

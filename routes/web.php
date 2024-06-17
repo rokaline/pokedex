@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 =            Front Office            =
 ====================================*/
 
-
+Route::get('/pokemon/test', [HomepageController::class, 'index'])->name('pokemons.index');
 //Page d'accueil
 Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
 
@@ -28,17 +28,20 @@ Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
 // pour tout le monde
 
 /*pour l'affichage pokemon et de ses charactéristiques (sans login*)*/
-Route::get('/pokemons', [PokemonController::class, 'index'])->name('homepage.pokemons.index');
+Route::get('/pokemon', [PokemonController::class, 'index'])->name('homepage.pokemons.index');
 
 // Caractéristiques d'un pokemon
 Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('homepage.pokemons.show');
 
  /*appelle la methode pour affichage du pokemon selectionné*/
 // Création d'un pokemon
-Route::get('/pokemons/create', [PokemonController::class, 'create'])->name('homepage.pokemons.create');
+Route::get('/pokemon/create', [PokemonController::class, 'create'])->name('pokemons.create');
 
 
+Route::get('/pokemon/edit', [PokemonController::class, 'edit'])->name('pokemons.edit');
 
+
+Route::get('/pokemon/destroy', [PokemonController::class, 'destroy'])->name('pokemons.destroy');
 
 
 /*====================================
@@ -56,13 +59,12 @@ Route::get('/dashboard', function () {
 /* aut, que pour les personnes identifiées*/
 
 
-Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
-    // Gestion des articles (création, modification, suppression)
-    Route::resource('/pokemons', AdminPokemonController::class)->except(['show']);
+// Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
+//     // Gestion des articles (création, modification, suppression)
+//     Route::resource('/pokemons', AdminPokemonController::class)->except(['show']);
 
-    // Gestion des utilisateurs (Détails et changement de rôle)
-    // Route::resource('/users', UserController::class)->only(['index', 'edit', 'update']);
-});
+
+// });
 // Route::middleware(['auth'])->prefix('admin')->group(function () {
 //     Route::get('/pokemons', [AdminPokemonController::class, 'index'])->name('admin.pokemon.index');
 //     Route::get('/pokemons/create', [AdminPokemonController::class, 'create'])->name('admin.pokemons.create');

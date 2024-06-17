@@ -2,7 +2,7 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Articles') }}
+            {{ __('Pokemons') }}
         </h2>
     </x-slot>
 
@@ -10,7 +10,7 @@
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
             <div class="flex justify-between mt-8">
                 <div class=" text-2xl">
-                    Créer un article
+                    Créer un pokemon
                 </div>
             </div>
 
