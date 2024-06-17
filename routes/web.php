@@ -20,29 +20,31 @@ use Illuminate\Support\Facades\Route;
 =            Front Office            =
 ====================================*/
 
+
+
 Route::get('/pokemon/test', [HomepageController::class, 'index'])->name('pokemons.index');
+
 //Page d'accueil
 Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
+// Caractéristiques d'un pokemon
+Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('homepage.pokemons.show');
 
 
-// pour tout le monde
+
+
+// pour tout le monde (à changer en auth)
 
 /*pour l'affichage pokemon et de ses charactéristiques (sans login*)*/
 Route::get('/pokemon', [PokemonController::class, 'index'])->name('homepage.pokemons.index');
-
-// Caractéristiques d'un pokemon
-Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('homepage.pokemons.show');
 
  /*appelle la methode pour affichage du pokemon selectionné*/
 // Création d'un pokemon
 Route::get('/pokemon/create', [PokemonController::class, 'create'])->name('pokemons.create');
 
-
 Route::get('/pokemon/edit', [PokemonController::class, 'edit'])->name('pokemons.edit');
 
-
-Route::get('/pokemon/destroy', [PokemonController::class, 'destroy'])->name('pokemons.destroy');
-
+//Route::get('/pokemon/destroy', [PokemonController::class, 'destroy'])->name('pokemons.destroy');
+Route::delete('/pokemon/destroy', [PokemonController::class, 'destroy'])->name('pokemons.destroy');
 
 /*====================================
 =            Back Office             =
