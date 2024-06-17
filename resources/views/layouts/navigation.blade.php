@@ -11,13 +11,6 @@
             <div class="flex">
 
 
-                <!-- Navigation Links (dans la nav de la partie user)-->
-                {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                  <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div> --}}
-
 
                 <!-- Lien vers la page d'accueil -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -38,16 +31,12 @@
 
 
 
-                     {{-- pour tableaud dans dashborad/pokemon--}}
-                     {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('admin.pokemons.index')" :active="request()->routeIs('admins.pokemon.index')">
-                            {{ __('PokeTab') }} Retour à accueil (depuis Admin & aussi pokemon.show.blade)
-                        </x-nav-link>
-                    </div> --}}
-
-                    {{-- <x-nav-link :href="route('pokemons.index')" :active="request()->routeIs('pokemons.*')">
-                        {{ __('Pokemons') }}
-                    </x-nav-link --}}
+                {{-- Lien vers TYPESx --}}
+                {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="flex items-center space-x-4 justify-end">
+                        <a class="font-bold hover:text-yellow-600 transition" href="{{ route('homepage.type.edit') }}">Types Pokemon</a>
+                    </div>
+                </div> --}}
 
 
             </div>

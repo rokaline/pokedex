@@ -25,6 +25,8 @@ Route::get('/pokemon/test', [HomepageController::class, 'index'])->name('pokemon
 ====================================*/
 
 
+
+
 //Route::get('/pokemon/test', [PokemonController::class, 'index'])->name('pokemons.store');
 
 //Page d'accueil
@@ -44,8 +46,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-// pour Admin
-//ADMIN/POKEMON: AFFICHER/ CREER / EDITER / CONSERVER /SUPPRIMER
+// POKEMON
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/pokemon', [PokemonController::class, 'index'])->name('homepage.pokemons.index');
 
@@ -67,6 +69,11 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
+
+
+
+
+//ADMIN/POKEMON: AFFICHER/ CREER / EDITER / CONSERVER /SUPPRIMER
 /* aut, que pour les personnes identifiées*/
 
 
@@ -87,18 +94,18 @@ Route::middleware(['auth'])->group(function () {
 
 
 // Groupe de routes nécessitant l'authentification
-// Route::middleware('auth')->group(function () {
-//     // Route pour éditer le profil
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit'); // Nomme cette route 'profile.edit'
+Route::middleware('auth')->group(function () {
+    // Route pour éditer le profil
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit'); // Nomme cette route 'profile.edit'
 
-//     // Route pour mettre à jour le profil
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update'); // Nomme cette route 'profile.update'
+    // Route pour mettre à jour le profil
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update'); // Nomme cette route 'profile.update'
 
-//     // Route pour supprimer le profil
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy'); // Nomme cette route 'profile.destroy'
+    // Route pour supprimer le profil
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy'); // Nomme cette route 'profile.destroy'
 
 
-// });
+});
 
 // Inclut les routes d'authentification définies dans 'auth.php'
 require __DIR__.'/auth.php';

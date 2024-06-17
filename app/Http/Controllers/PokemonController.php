@@ -11,17 +11,47 @@ use App\Models\Type;
 use Illuminate\Http\Request;
 
 class PokemonController extends Controller{
-    public function index()
-    {
+//     public function index()
+//     {
 
-        $pokemons = Pokemon::paginate(6);
-// dd($pokemons);
+//         $pokemons = Pokemon::paginate(6);
+// // dd($pokemons);
 
-        return view('pokemon.index', [
-            'pokemons' => $pokemons,
+//         return view('pokemon.index', [
+//             'pokemons' => $pokemons,
 
-        ]);
+//         ]);
+//     }
+
+
+
+public function index(Request $request)
+{
+    $search = $request->input('search');
+
+    $query = Pokemon::query();
+
+    if ($search) {
+        $query->where('nom', 'LIKE', "%{$search}%")
+              ->orWhere('pv', 'LIKE', "%{$search}%")
+              ->orWhere('poids', 'LIKE', "%{$search}%")
+              ->orWhere('taille', 'LIKE', "%{$search}%")
+              ->orWhereHas('types', function($q) use ($search) {
+                  $q->where('nom', 'LIKE', "%{$search}%")
+                    ->orWhere('couleur', 'LIKE', "%{$search}%");
+              })
+              ->orWhereHas('attaques', function($q) use ($search) {
+                  $q->where('nom', 'LIKE', "%{$search}%")
+                    ->orWhere('dégâts', 'LIKE', "%{$search}%")
+                    ->orWhere('description', 'LIKE', "%{$search}%");
+              });
     }
+
+    $pokemons = $query->with(['types', 'attaques'])->paginate(6);
+
+    return view('pokemon.index', compact('pokemons'));
+}
+
 
 
     /*pour affichage du pokemon et ses caracteristiques*/
