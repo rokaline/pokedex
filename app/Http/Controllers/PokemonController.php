@@ -14,7 +14,7 @@ class PokemonController extends Controller{
     public function index()
     {
 
-        $pokemons = Pokemon::all();
+        $pokemons = Pokemon::paginate(6);
 // dd($pokemons);
 
         return view('pokemon.index', [

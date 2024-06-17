@@ -165,7 +165,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    <!-- Pagination pour naviguer entre les pages -->
+                <div class="mt-8">
+
+                    {{ $pokemons->links() }}
+                    </div>
             </div>
         </div>
     </div>

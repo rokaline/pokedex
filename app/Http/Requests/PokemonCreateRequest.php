@@ -27,15 +27,15 @@ class PokemonCreateRequest extends FormRequest
             'pv' => 'required|integer|min:0',
             'poids' => 'required|numeric|min:0',
             'taille' => 'required|numeric|min:0',
-            'type_nom' => 'required|array|min:1',
-            'type_nom.*' => 'string|max:255',
+
+            'type_nom' => 'required|string|max:255',
             'type_img_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'type_img_path.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+
             'couleur' => 'required|string|max:50',
-            'attaque_nom' => 'required|array|min:1',
-            'attaque_nom.*' => 'string|max:255',
+            'attaque_nom' => 'required|string|max:255',
+
             'attaque_img_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'attaque_img_path.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+
             'dégâts' => 'required|integer|min:0',
             'description' => 'required|string|max:1000',
         ];

@@ -52,14 +52,14 @@
                 <!-- Pokémon Type Name -->
                 <div>
                     <x-input-label for="type_nom" :value="__('Type Pokemon')" />
-                    <x-text-input id="type_nom" class="block mt-1 w-full" type="text" name="type_nom[]" :value="old('type_nom.0')" required />
+                    <x-text-input id="type_nom" class="block mt-1 w-full" type="text" name="type_nom" :value="old('type_nom.0')" required />
                     <x-input-error :messages="$errors->get('type_nom')" class="mt-2" />
                 </div>
 
                 <!-- Pokémon Type Image -->
                 <div>
                     <x-input-label for="type_img_path" :value="__('Type Image')" />
-                    <x-text-input id="type_img_path" class="block mt-1 w-full" type="file" name="type_img_path[]" />
+                    <x-text-input id="type_img_path" class="block mt-1 w-full" type="file" name="type_img_path" />
                     <x-input-error :messages="$errors->get('type_img_path')" class="mt-2" />
                 </div>
 
@@ -73,14 +73,14 @@
                 <!-- Pokémon Attack Name -->
                 <div>
                     <x-input-label for="attaque_nom" :value="__('Nom Attaque')" />
-                    <x-text-input id="attaque_nom" class="block mt-1 w-full" type="text" name="attaque_nom[]" :value="old('attaque_nom.0')" required />
+                    <x-text-input id="attaque_nom" class="block mt-1 w-full" type="text" name="attaque_nom" :value="old('attaque_nom.0')" required />
                     <x-input-error :messages="$errors->get('attaque_nom')" class="mt-2" />
                 </div>
 
                 <!-- Pokémon Attack Image -->
                 <div>
                     <x-input-label for="attaque_img_path" :value="__('Attaque Image')" />
-                    <x-text-input id="attaque_img_path" class="block mt-1 w-full" type="file" name="attaque_img_path[]" />
+                    <x-text-input id="attaque_img_path" class="block mt-1 w-full" type="file" name="attaque_img_path" />
                     <x-input-error :messages="$errors->get('attaque_img_path')" class="mt-2" />
                 </div>
 

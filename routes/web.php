@@ -46,10 +46,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pokemon/create', [PokemonController::class, 'create'])->name('pokemon.create');
 
     // Édition d'un pokemon
-    Route::get('/pokemon/edit', [PokemonController::class, 'edit'])->name('pokemons.edit');
+    Route::get('/pokemon/{pokemon}/edit', [PokemonController::class, 'edit'])->name('pokemons.edit');
 
     // Suppression d'un pokemon
-    Route::delete('/pokemon/destroy', [PokemonController::class, 'destroy'])->name('pokemons.destroy');
+    Route::delete('/pokemon/{pokemon}/destroy', [PokemonController::class, 'destroy'])->name('pokemons.destroy');
 
 
 
