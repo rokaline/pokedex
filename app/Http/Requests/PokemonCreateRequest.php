@@ -21,6 +21,8 @@ class PokemonCreateRequest extends FormRequest
      */
     public function rules()
     {
+
+
         return [
             'nom' => 'required|unique:pokemon|max:255',
             'img_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
