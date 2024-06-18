@@ -21,10 +21,10 @@
 
 
 
-                {{-- TABLEAU PKx --}}
+                {{-- TABLEAU POKEMON--}}
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <div class="flex items-center space-x-4 justify-end">
-                        <a class="font-bold hover:text-yellow-600 transition" href="{{ route('homepage.pokemons.index') }}">Tableau des Pokémon</a>
+                        <a class="font-bold hover:text-yellow-600 transition" href="{{ route('homepage.pokemons.index') }}">Tableau des Pokemon</a>
                     </div>
                 </div>
 
@@ -34,9 +34,18 @@
                 {{-- Lien TYPES GESTION --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <div class="flex items-center space-x-4 justify-end">
-                        <a class="font-bold hover:text-yellow-600 transition" href="{{ route('type.index') }}">Types Pokemon</a>
+                        <a class="font-bold hover:text-yellow-600 transition" href="{{ route('type.index') }}">Types</a>
                     </div>
                 </div>
+
+
+                {{-- Lien ATTAQUES GESTION --}}
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="flex items-center space-x-4 justify-end">
+                        <a class="font-bold hover:text-yellow-600 transition" href="{{ route('attaque.index') }}">Attaques</a>
+                    </div>
+                </div>
+
 
 
             </div>

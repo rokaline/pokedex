@@ -4,6 +4,7 @@ use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\PokemonController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\PokemonController as AdminPokemonController;
+use App\Http\Controllers\AttaqueController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\TypeController;
 use App\Models\Pokemon;
@@ -83,6 +84,18 @@ Route::middleware(['auth'])->group(function () {
 
 
 //ATTAQUES
+Route::middleware(['auth'])->group(function () {
+    Route::get('/attaques', [AttaqueController::class, 'index'])->name('attaque.index');
+    Route::get('/attaques/create', [AttaqueController::class, 'create'])->name('attaque.create');
+    Route::post('/attaques', [AttaqueController::class, 'store'])->name('attaque.store');
+    Route::get('/attaques/{attaque}/edit', [AttaqueController::class, 'edit'])->name('attaque.edit');
+    Route::put('/attaques/{attaque}', [AttaqueController::class, 'update'])->name('attaque.update');
+    Route::delete('/attaques/{attaque}', [AttaqueController::class, 'destroy'])->name('attaque.destroy');
+});
+
+
+
+
 
 
 // Groupe de routes nécessitant l'authentification
