@@ -29,6 +29,7 @@ class AttaqueCreateRequest extends FormRequest
              'attaque_img_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
              'dégâts' => 'required|integer|min:0',
              'description' => 'required|string|max:1000',
+             'type_id' => 'required|exists:types,id', 
 
          ];
      }

@@ -1,4 +1,4 @@
-{{-- attaque/create.blade.php --}}
+{{-- attaque/edit.blade.php --}}
 
 <x-app-layout>
     <x-slot name="header">
@@ -10,16 +10,17 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-12">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
             <div class="text-2xl mb-4">
-                Ajout Attaque
+                Modification Attaque
             </div>
 
-            <form method="POST" action="{{ route('attaque.store') }}" enctype="multipart/form-data" class="space-y-6">
+            <form method="POST" action="{{ route('attaque.update', $attaque) }}" enctype="multipart/form-data" class="space-y-6">
                 @csrf
+                @method('PUT')
 
                 <!-- Nom Attaque -->
                 <div>
                     <x-input-label for="nom" :value="__('Nom Attaque')" />
-                    <x-text-input id="nom" class="block mt-1 w-full" type="text" name="nom" :value="old('nom')" required />
+                    <x-text-input id="nom" class="block mt-1 w-full" type="text" name="nom" :value="old('nom', $attaque->nom)" required />
                     <x-input-error :messages="$errors->get('nom')" class="mt-2" />
                 </div>
 
@@ -33,14 +34,14 @@
                 <!-- Dégâts Attaque -->
                 <div>
                     <x-input-label for="dégâts" :value="__('Dégâts')" />
-                    <x-text-input id="dégâts" class="block mt-1 w-full" type="number" name="dégâts" :value="old('dégâts')" required />
+                    <x-text-input id="dégâts" class="block mt-1 w-full" type="number" name="dégâts" :value="old('dégâts', $attaque->dégâts)" required />
                     <x-input-error :messages="$errors->get('dégâts')" class="mt-2" />
                 </div>
 
                 <!-- Description Attaque -->
                 <div>
                     <x-input-label for="description" :value="__('Description')" />
-                    <textarea id="description" name="description" rows="4" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">{{ old('description') }}</textarea>
+                    <textarea id="description" name="description" rows="4" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">{{ old('description', $attaque->description) }}</textarea>
                     <x-input-error :messages="$errors->get('description')" class="mt-2" />
                 </div>
 
@@ -50,7 +51,7 @@
                     <select id="type_id" name="type_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
                         <option value="">Sélectionner un type</option>
                         @foreach($types as $type)
-                            <option value="{{ $type->id }}" {{ old('type_id') == $type->id ? 'selected' : '' }}>{{ $type->nom }}</option>
+                            <option value="{{ $type->id }}" {{ old('type_id', $attaque->type_id) == $type->id ? 'selected' : '' }}>{{ $type->nom }}</option>
                         @endforeach
                     </select>
                     <x-input-error :messages="$errors->get('type_id')" class="mt-2" />
@@ -59,7 +60,7 @@
                 <!-- Submit Button -->
                 <div class="flex justify-end">
                     <x-primary-button>
-                        {{ __('Créer Attaque') }}
+                        {{ __('Modifier une Attaque') }}
                     </x-primary-button>
                 </div>
             </form>
