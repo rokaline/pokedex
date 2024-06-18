@@ -26,10 +26,6 @@ class PokemonController extends Controller{
         ]);
     }
 
-
-
-
-
     ///AFFICHAGE
     public function show($id)
     {
@@ -39,21 +35,15 @@ class PokemonController extends Controller{
         return view('pokemon.show', compact('pokemon'));
     }
 
-
-
     ///CREATION
     public function create()
     {
         return view('pokemon.create');
     }
 
-
 ///ENREGISTREMENT
 public function store(PokemonCreateRequest $request)
 {
-
-    dd($request->all());
-
     // Création d'une instance de Pokémon avec les données validées
     $pokemon = new Pokemon();
     $pokemon->nom = $request->validated()['nom'];
@@ -71,20 +61,19 @@ public function store(PokemonCreateRequest $request)
     $pokemon->save();
 
     // Redirection vers la liste des Pokémon après création
-    return redirect()->route('pokemon.index');
-
-
+    return redirect()->route('homepage.pokemons.index'); // Correction de la route
 }
 
 
 
+///EDIT
     public function edit(Pokemon $pokemon)
     {
         return view('pokemon.edit', compact('pokemon'));
     }
 
 
-   ///UPDATE: Mise à jour
+///UPDATE: Mise à jour
    public function update(PokemonUpdateRequest $request, Pokemon $pokemon)
    {
        // On modifie les propriétés du pokemon
@@ -99,8 +88,6 @@ public function store(PokemonCreateRequest $request)
         $path = $request->file('img_path')->store('pokemon', 'public');
         $pokemon->img_path = $path;
     }
-
-
 
 
     // Sauvegarde du Pokémon
@@ -120,7 +107,7 @@ public function store(PokemonCreateRequest $request)
 
 
 
-   /// DESTRUCTION (Sortie de la DB)
+/// DESTRUCTION (Sortie de la DB)
    public function destroy(Pokemon $pokemon)
    {
        $pokemon->delete();
