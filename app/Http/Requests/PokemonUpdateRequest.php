@@ -24,22 +24,22 @@ class PokemonUpdateRequest extends FormRequest
         return [
 
             //pokemon
-            'nom' => 'required|unique:pokemon|max:255',
+            'nom' => 'required|unique:pokemon|max:255.'.$this->route('pokemon')->id,
             'img_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'pv' => 'required|integer|min:0',
             'poids' => 'required|numeric|min:0',
             'taille' => 'required|numeric|min:0',
 
-            //type
-            'type_nom' => 'required|string|max:255',
-            'type_img_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'couleur' => 'required|string|max:50',
+            // //type
+            // 'type_nom' => 'required|string|max:255',
+            // 'type_img_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            // 'couleur' => 'required|string|max:50',
 
-            //attaque
-            'attaque_nom' => 'required|string|max:255',
-            'attaque_img_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'dégâts' => 'required|integer|min:0',
-            'description' => 'required|string|max:1000',
+            // //attaque
+            // 'attaque_nom' => 'required|string|max:255',
+            // 'attaque_img_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            // 'dégâts' => 'required|integer|min:0',
+            // 'description' => 'required|string|max:1000',
         ];
     }
 }

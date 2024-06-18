@@ -18,9 +18,9 @@
 
                 <!-- Pokémon Attack Name -->
                 <div>
-                    <x-input-label for="attaque_nom" :value="__('Nom Attaque')" />
-                    <x-text-input id="attaque_nom" class="block mt-1 w-full" type="text" name="attaque_nom" :value="old('attaque_nom')" required />
-                    <x-input-error :messages="$errors->get('attaque_nom')" class="mt-2" />
+                    <x-input-label for="nom" :value="__('Nom Attaque')" />
+                    <x-text-input id="nom" class="block mt-1 w-full" type="text" name="nom" :value="old('nom')" required />
+                    <x-input-error :messages="$errors->get('nom')" class="mt-2" />
                 </div>
 
                 <!-- Pokémon Attack Image -->

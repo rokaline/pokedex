@@ -11,6 +11,9 @@ use App\Models\Type;
 use Illuminate\Http\Request;
 
 class PokemonController extends Controller{
+
+
+    ///INDEX
     public function index()
     {
 
@@ -25,36 +28,9 @@ class PokemonController extends Controller{
 
 
 
-// public function index(Request $request)
-// {
-//     $search = $request->input('search');
-
-//     $query = Pokemon::query();
-
-//     if ($search) {
-//         $query->where('nom', 'LIKE', "%{$search}%")
-//               ->orWhere('pv', 'LIKE', "%{$search}%")
-//               ->orWhere('poids', 'LIKE', "%{$search}%")
-//               ->orWhere('taille', 'LIKE', "%{$search}%")
-//               ->orWhereHas('types', function($q) use ($search) {
-//                   $q->where('nom', 'LIKE', "%{$search}%")
-//                     ->orWhere('couleur', 'LIKE', "%{$search}%");
-//               })
-//               ->orWhereHas('attaques', function($q) use ($search) {
-//                   $q->where('nom', 'LIKE', "%{$search}%")
-//                     ->orWhere('dégâts', 'LIKE', "%{$search}%")
-//                     ->orWhere('description', 'LIKE', "%{$search}%");
-//               });
-//     }
-
-//     $pokemons = $query->with(['types', 'attaques'])->paginate(6);
-
-//     return view('pokemon.index', compact('pokemons'));
-// }
 
 
-
-    /*pour affichage du pokemon et ses caracteristiques*/
+    ///AFFICHAGE
     public function show($id)
     {
 //dd($id);
@@ -64,100 +40,75 @@ class PokemonController extends Controller{
     }
 
 
+
+    ///CREATION
     public function create()
     {
         return view('pokemon.create');
     }
 
-    public function store(PokemonCreateRequest $request)
-    {
-        // Création d'une instance de Pokémon avec les données validées
-        $pokemon = new Pokemon();
-        $pokemon->nom = $request->validated()['nom'];
-        $pokemon->pv = $request->validated()['pv'];
-        $pokemon->poids = $request->validated()['poids'];
-        $pokemon->taille = $request->validated()['taille'];
 
-        // Récupérer et enregistrer l'image du Pokémon
-        if ($request->hasFile('img_path')) {
-            $path = $request->file('img_path')->store('pokemons', 'public');
-            $pokemon->img_path = $path;
-        }
+///ENREGISTREMENT
+public function store(PokemonCreateRequest $request)
+{
 
-        // Sauvegarde du Pokémon
-        $pokemon->save();
+    dd($request->all());
 
-        // Création du type de Pokémon
-        $type = new Type();
-        $type->nom = $request->validated()['type_nom'];
-        $type->couleur = $request->validated()['couleur'];
+    // Création d'une instance de Pokémon avec les données validées
+    $pokemon = new Pokemon();
+    $pokemon->nom = $request->validated()['nom'];
+    $pokemon->pv = $request->validated()['pv'];
+    $pokemon->poids = $request->validated()['poids'];
+    $pokemon->taille = $request->validated()['taille'];
 
-        // Récupérer et enregistrer l'image du type
-        if ($request->hasFile('type_img_path')) {
-            $typePath = $request->file('type_img_path')->store('types', 'public');
-            $type->img_path = $typePath;
-        }
-
-        $type->save();
-        $pokemon->types()->attach($type);
-
-        // Création de l'attaque
-        $attaque = new Attaque();
-        $attaque->nom = $request->validated()['attaque_nom'];
-        $attaque->dégâts = $request->validated()['dégâts'];
-        $attaque->description = $request->validated()['description'];
-        $attaque->type_id = $type->id; // Associer l'attaque au type créé ci-dessus
-
-        // Récupérer et enregistrer l'image de l'attaque
-        if ($request->hasFile('attaque_img_path')) {
-            $attaquePath = $request->file('attaque_img_path')->store('attaques', 'public');
-            $attaque->img_path = $attaquePath;
-        }
-
-        $attaque->save();
-        $pokemon->attaques()->attach($attaque);
-
-        // Redirection vers la liste des Pokémon après création
-        return redirect()->route('homepage.pokemons.index');
+    // Récupérer et enregistrer l'image du Pokémon
+    if ($request->hasFile('img_path')) {
+        $path = $request->file('img_path')->store('pokemon', 'public');
+        $pokemon->img_path = $path;
     }
 
-   /**
-    * Display the specified resource.
-    */
+    // Sauvegarde du Pokémon
+    $pokemon->save();
 
-   /**
-    * Show the form for editing the specified resource.
-    */
-   public function edit(Pokemon $pokemon)
-   {
-       $types = Type::all();
-       $attaques = Attaque::all();
-       return view('admin.pokemons.edit', compact('pokemon', 'types', 'attaques'));
-   }
+    // Redirection vers la liste des Pokémon après création
+    return redirect()->route('pokemon.index');
 
-   /**
-    * Update the specified resource in storage.
-    */
+
+}
+
+
+
+    public function edit(Pokemon $pokemon)
+    {
+        return view('pokemon.edit', compact('pokemon'));
+    }
+
+
+   ///UPDATE: Mise à jour
    public function update(PokemonUpdateRequest $request, Pokemon $pokemon)
    {
        // On modifie les propriétés du pokemon
        $pokemon->nom = $request->validated()['nom'];
-       $pokemon->image = $request->validated()['image_path'];
        $pokemon->pv = $request->validated()['pv'];
        $pokemon->poids = $request->validated()['poids'];
        $pokemon->taille = $request->validated()['taille'];
-       $pokemon->couleur =$request->validated()['type'];
-       $pokemon->image = $request->validated()['type_image_path'];
-       $pokemon->couleur = $request->validated()['couleur'];
-       $pokemon->attaque = $request->validated()['attaque'];
-       $pokemon->image = $request->validated()['attaque_image_path'];
-       $pokemon->dégâts =$request->validated()['dégâts'];
-       $pokemon->description = $request->validated()['description'];
 
+
+    // Récupérer et enregistrer l'image du Pokémon
+    if ($request->hasFile('img_path')) {
+        $path = $request->file('img_path')->store('pokemon', 'public');
+        $pokemon->img_path = $path;
+    }
+
+
+
+
+    // Sauvegarde du Pokémon
+    $pokemon->save();
 
        // Si il y a une image, on la sauvegarde
        if ($request->hasFile('image')) {
-           $path = $request->file('image')->store('pokemons', 'public');
+           $path = $request->file('image')->store('pokemon', 'public');
            $pokemon->img_path = $path;
        }
 
@@ -167,9 +118,9 @@ class PokemonController extends Controller{
        return redirect()->back();
    }
 
-   /**
-    * Remove the specified resource from storage.
-    */
+
+
+   /// DESTRUCTION (Sortie de la DB)
    public function destroy(Pokemon $pokemon)
    {
        $pokemon->delete();

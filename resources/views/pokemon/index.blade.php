@@ -1,22 +1,30 @@
+
+{{-- pokemon/index.blade --}}
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Pokemons') }}
+            {{ __('Pokemon Section') }}
         </h2>
     </x-slot>
 
-
-    POKEMON/index
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-2xl font-bold text-gray-800">Tableau des Pokemon</h2>
+                    <a href="{{ route('pokemon.create') }}" class="text-gray-500 font-bold py-2 px-4 rounded hover:bg-gray-200 transition duration-200">
+                        Ajouter un Pokemon
+                    </a>
+                </div>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
-                    <div class="flex justify-between items-center">
-                        <h2 class="text-2xl font-bold text-gray-800">Liste des Pokémon </h2>
-                    </div>
-                        {{-- Bouton d'ajout de Pokémon --}}
 
-                       
+                        {{-- Bouton d'ajout de Pokémon --}}
+                        <form method="POST" action="{{ route('pokemon.store') }}" enctype="multipart/form-data" class="space-y-6">
+                            @csrf
+
                     </div>
                     <div class="mt-6 text-gray-500 overflow-x-auto">
                         <table class="min-w-full divide-y divide-gray-200 border border-gray-300 rounded-lg">
@@ -46,32 +54,9 @@
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Taille
                                     </th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Type de Pokémon
-                                    </th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Couleur
-                                    </th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Type d'attaque
-                                    </th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Dégâts
-                                    </th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Description
-                                    </th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Actions
-                                    </th>
                                 </tr>
                             </thead>
+
                             <tbody class="divide-y divide-gray-200">
                                 @foreach ($pokemons as $pokemon)
                                     <tr class="hover:bg-gray-50">
@@ -96,7 +81,7 @@
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             {{ $pokemon->taille }}
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
+                                        {{-- <td class="px-6 py-4 whitespace-nowrap">
                                             @foreach ($pokemon->types as $type)
                                                 <span
                                                     class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
@@ -135,11 +120,11 @@
                                                     <br>
                                                 @endif
                                             @endforeach
-                                        </td>
+                                        </td> --}}
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                            <a href="{{ route('pokemons.edit', $pokemon->id) }}"
+                                            <a href="{{ route('pokemon.edit', $pokemon->id) }}"
                                                 class="text-indigo-600 hover:text-indigo-900">Éditer</a>
-                                            <form action="{{ route('pokemons.destroy', $pokemon->id) }}" method="POST"
+                                            <form action="{{ route('pokemon.destroy', $pokemon->id) }}" method="POST"
                                                 class="inline">
                                                 @csrf
                                                 @method('DELETE')

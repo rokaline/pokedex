@@ -22,14 +22,14 @@ class AttaqueCreateRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
 
-     public function rules()
+     public function rules():array
      {
          return [
              'nom' => 'required|string|max:255',
-             'img_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+             'attaque_img_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
              'dégâts' => 'required|integer|min:0',
              'description' => 'required|string|max:1000',
-            
+
          ];
      }
 

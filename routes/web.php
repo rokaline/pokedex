@@ -57,15 +57,18 @@ Route::middleware(['auth'])->group(function () {
 
     // Création d'un pokemon
     Route::get('/pokemon/create', [PokemonController::class, 'create'])->name('pokemon.create');
+    
 
     // Édition d'un pokemon
-    Route::get('/pokemon/{pokemon}/edit', [PokemonController::class, 'edit'])->name('pokemons.edit');
+    Route::get('/pokemon/{pokemon}/edit', [PokemonController::class, 'edit'])->name('pokemon.edit');
+    Route::put('/pokemon/{pokemon}', [PokemonController::class, 'update'])->name('pokemon.update');
+
 
     // Suppression d'un pokemon
-    Route::delete('/pokemon/{pokemon}/destroy', [PokemonController::class, 'destroy'])->name('pokemons.destroy');
+    Route::delete('/pokemon/{pokemon}/destroy', [PokemonController::class, 'destroy'])->name('pokemon.destroy');
 
     // Enregistrement d'un nouveau pokemon
-    Route::post('/pokemon', [PokemonController::class, 'store'])->name('pokemons.store');
+    Route::post('/pokemon', [PokemonController::class, 'store'])->name('pokemon.store');
 
 });
 

@@ -1,19 +1,27 @@
+
 <x-app-layout>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('NouveauPokémon') }}
+            {{ __('Pokemon Section') }}
         </h2>
     </x-slot>
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-12">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
-            <div class="text-2xl mb-4">
-                Ajout Pokemon
+            <div class="flex justify-between mt-8">
+                <div class=" text-2xl">
+                    Modifier un Pokemon
+                </div>
             </div>
 
-            <form method="POST" action="{{ route('pokemon.store') }}" enctype="multipart/form-data" class="space-y-6">
-                @csrf
-                <!-- Pokémon Name -->
+            <div class="text-gray-500">
+                <form method="POST" action="{{ route('pokemon.update', $pokemon) }}" class="flex flex-col space-y-4">
+
+                    @csrf
+                    @method('PUT')
+
+                    <!-- Pokémon Name -->
                 <div>
                     <x-input-label for="nom" :value="__('Nom Pokemon')" />
                     <x-text-input id="nom" class="block mt-1 w-full" type="text" name="nom" :value="old('nom')" required autofocus />
@@ -48,13 +56,16 @@
                     <x-input-error :messages="$errors->get('taille')" class="mt-2" />
                 </div>
 
-                <!-- Submit Button -->
-                <div class="flex justify-end">
-                    <x-primary-button>
-                        {{ __('Créer Pokemon') }}
-                    </x-primary-button>
-                </div>
-            </form>
+
+
+
+                    <div class="flex justify-end">
+                        <x-primary-button type="submit">
+                            {{ __('Modifier') }}
+                        </x-primary-button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </x-app-layout>

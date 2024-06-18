@@ -12,7 +12,10 @@ class AttaqueController extends Controller
     public function index()
     {
 
-
+    //    $pokemon->attaque = $request->validated()['attaque'];
+    //    $pokemon->image = $request->validated()['attaque_image_path'];
+    //    $pokemon->dégâts =$request->validated()['dégâts'];
+    //    $pokemon->description = $request->validated()['description'];
 
         $attaques = Attaque::paginate(6);
 // dd($attaques);
@@ -114,6 +117,27 @@ class AttaqueController extends Controller
        $attaque->save();
 
        return redirect()->back();
+
+
+
+
+// // Création de l'attaque
+        // $attaque = new Attaque();
+        // $attaque->nom = $request->validated()['attaque_nom'];
+        // $attaque->dégâts = $request->validated()['dégâts'];
+        // $attaque->description = $request->validated()['description'];
+        // $attaque->type_id = $type->id; // Associer l'attaque au type créé ci-dessus
+
+        // // Récupérer et enregistrer l'image de l'attaque
+        // if ($request->hasFile('attaque_img_path')) {
+        //     $attaquePath = $request->file('attaque_img_path')->store('attaques', 'public');
+        //     $attaque->img_path = $attaquePath;
+        // }
+
+        // $attaque->save();
+        // $pokemon->attaques()->attach($attaque);
+
+
    }
 
    /**
