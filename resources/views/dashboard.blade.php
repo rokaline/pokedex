@@ -16,11 +16,11 @@
                     </a>
                 </div>
 
-                <div class="mt-8">
-                    <a href="{{ route('type.index') }}" class="font-bold py-2 px-4 rounded" style="background-color: #D32F2F; color: white;">
-                        Voir tous les types
+                {{-- <div class="mt-8">
+                    <a href="{{ route('/') }}" class="font-bold py-2 px-4 rounded" style="background-color: #D32F2F; color: white;">
+                        Chercher par filtres
                     </a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
