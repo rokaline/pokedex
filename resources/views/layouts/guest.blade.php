@@ -20,11 +20,11 @@
         <!-- Navigation -->
         <nav class="bg-black text-red-600 py-4">
             <div class="container mx-auto flex justify-between items-center px-4">
-                <!-- Logo -->
+                {{-- <!-- Logo -->
                 <a href="/" class="group font-bold text-3xl flex items-center space-x-4 hover:text-red-500 transition">
                     <img src="images/boule.jpg" alt="Logo" class="w-10 h-10 fill-current text-gray-500 group-hover:text-yellow-500 transition" />
                     <span class="ml-2">Pokedex World</span>
-                </a>
+                </a> --}}
 
                 <!-- Liens de navigation -->
                 <div class="flex items-center space-x-6">
