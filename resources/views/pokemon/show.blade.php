@@ -54,6 +54,7 @@
                             <div class="text-lg text-gray-700">
                                 <p><strong>Dégâts:</strong> {{ $attaque->dégâts }}</p>
                                 <p><strong>Description:</strong> <p class="mt-2">{{ $attaque->description }}</p>
+                                
                                 <p><strong>Type:</strong> {{ $attaque->type->nom }}</p>
                                 <img src="{{ Storage::url($attaque->type->img_path) }}"
                                     alt="{{ $attaque->type->nom }}"

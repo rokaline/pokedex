@@ -26,6 +26,26 @@
                         <p class="text-gray-700 mt-2">Taille: {{ $pokemon->taille }} m</p>
 
 
+                        <div class="mt-8">
+                            {{-- Types --}}
+                            <div class="mb-6">
+
+                                @if($pokemon->types)
+                                    @foreach($pokemon->types as $type)
+
+                                    <div class="flex justify-between items-center text-gray-800">
+
+                                            <h2 class="font-semibold">Type</h2><img src="{{ Storage::url($type->img_path) }}"
+                                                alt="{{ $type->nom }}"
+                                                class="rounded-full shadow-md aspect-auto object-cover object-center w-8 h-8 border-2 border-gray-300">
+                                            <span class="font-semibold" style="color: {{ $type->couleur }}">{{ $type->nom }}</span>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <p class="text-center text-gray-600">Aucun type disponible pour ce Pokémon.</p>
+                                @endif
+                            </div>
+
 
                     </div>
 
