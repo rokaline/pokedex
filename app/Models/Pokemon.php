@@ -21,7 +21,8 @@ class Pokemon extends Model
      */
     public function types()
     {
-        return $this->belongsToMany(Type::class, 'pokemon_type');
+        return $this->belongsToMany(Type::class);
+        // return $this->belongsToMany(Type::class, 'pokemon_type');
         /*belongsTomany car un pokemon peut avoir pls types et un type peut-etre pris par plus pokemon*/
     }
 

@@ -20,7 +20,7 @@
         {{-- Bloc pour affichage du type et des attaques --}}
         <div class="mt-8">
             {{-- Types --}}
-            {{-- <div class="mb-6">
+            <div class="mb-6">
 
                 @if($pokemon->types)
                     @foreach($pokemon->types as $type)
@@ -36,7 +36,7 @@
                 @else
                     <p class="text-center text-gray-600">Aucun type disponible pour ce Pokémon.</p>
                 @endif
-            </div> --}}
+            </div>
 
             {{-- Attaques --}}
             <div class="mb-6">

@@ -17,24 +17,11 @@ class PokemonController extends Controller
         $pokemons = Pokemon::paginate(6);
 
 
-
-
-
-
-        
         return view('pokemon.index', [
             'pokemons' => $pokemons,
         ]);
 
-
-
     }
-
-
-
-
-
-
 
 
 
@@ -49,7 +36,10 @@ class PokemonController extends Controller
     ///CREATION
     public function create()
     {
-        return view('pokemon.create');
+        // Récupérer tous les types depuis la base de données
+        $types = Type::all();
+
+        return view('pokemon.create', compact('types'));
     }
 
     ///ENREGISTREMENT
@@ -71,9 +61,22 @@ class PokemonController extends Controller
         // Sauvegarde du Pokémon
         $pokemon->save();
 
+        // Assigner les types au Pokémon
+        $types = [];
+        if ($request->filled('type_obligatoire')) {
+            $types[] = $request->input('type_obligatoire');
+        }
+        if ($request->filled('type_optionnel')) {
+            $types[] = $request->input('type_optionnel');
+        }
+        $pokemon->types()->sync($types);
+
         // Redirection vers la liste des Pokémon après création
         return redirect()->route('homepage.pokemons.index');
     }
+
+
+
 
     ///EDIT
     public function edit(Pokemon $pokemon)
