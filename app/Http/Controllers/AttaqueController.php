@@ -35,7 +35,7 @@ class AttaqueController extends Controller
 
         // Récupérer et enregistrer l'image de l'attaque
         if ($request->hasFile('attaque_img_path')) {
-            $path = $request->file('attaque_img_path')->store('attaques', 'public');
+            $path = $request->file('attaque_img_path')->store('images', 'public');
             $attaque->img_path = $path;
         }
 
@@ -60,7 +60,7 @@ class AttaqueController extends Controller
         $attaque->type_id = $request->validated()['type_id'];
 
         if ($request->hasFile('attaque_img_path')) {
-            $path = $request->file('attaque_img_path')->store('attaques', 'public');
+            $path = $request->file('attaque_img_path')->store('images', 'public');
             $attaque->img_path = $path;
         }
 

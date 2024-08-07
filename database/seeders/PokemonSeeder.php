@@ -117,30 +117,31 @@ class PokemonSeeder extends Seeder
                 'poids' => 46.7,
                 'taille' => 1.6,
             ],
-            [//16
-                'nom' => 'Sylvor',
-                'img_path' => 'images/sylvor.jpg',
-                'pv' => 45,
-                'poids' => 46.7,
-                'taille' => 1.6,
-            ],
+            // [//16
+            //     'nom' => 'Sylvor',
+            //     'img_path' => 'images/sylvor.jpg',
+            //     'pv' => 45,
+            //     'poids' => 46.7,
+            //     'taille' => 1.6,
+            // ],
 
         ]);
 
         $poke = Pokemon::find(1);
         $poke->attaques()->sync([1,3]);
+        $poke->types()->sync([1]);
 
         $poke = Pokemon::find(2);
         $poke->attaques()->sync([2,3]);
 
         $poke = Pokemon::find(3);
-        $poke->attaques()->sync([3, ]);
+        $poke->attaques()->sync([3]);
 
         $poke = Pokemon::find(4);
         $poke->attaques()->sync([1,2]);
 
         $poke = Pokemon::find(5);
-        $poke->attaques()->sync([0,3]);
+        $poke->attaques()->sync([1,3]);
 
         $poke = Pokemon::find(6);
         $poke->attaques()->sync([2,3]);
@@ -152,7 +153,7 @@ class PokemonSeeder extends Seeder
         $poke->attaques()->sync([3,1]);
 
         $poke = Pokemon::find(9);
-        $poke->attaques()->sync([0,]);
+        $poke->attaques()->sync([1]);
 
         $poke = Pokemon::find(10);
         $poke->attaques()->sync([1,3]);
@@ -164,21 +165,15 @@ class PokemonSeeder extends Seeder
         $poke->attaques()->sync([2,3]);
 
         $poke = Pokemon::find(13);
-        $poke->attaques()->sync([0,1]);
+        $poke->attaques()->sync([2,1]);
+
         $poke = Pokemon::find(14);
         $poke->attaques()->sync([2,1]);
 
         $poke = Pokemon::find(15);
         $poke->attaques()->sync([1,3]);
 
-        $poke = Pokemon::find(16);
-        $poke->attaques()->sync([2,1]);
 
-        $poke = Pokemon::find(17);
-        $poke->attaques()->sync([2,3]);
-
-        $poke = Pokemon::find(18);
-        $poke->attaques()->sync([0,2]);
 
 
 

@@ -31,7 +31,7 @@ class TypeController extends Controller
         $type->couleur = $request->validated()['couleur'];
 
         if ($request->hasFile('type_img_path')) {
-            $path = $request->file('type_img_path')->store('type', 'public');
+            $path = $request->file('type_img_path')->store('images', 'public');
             $type->img_path = $path;
         }
 
@@ -45,7 +45,7 @@ class TypeController extends Controller
         $type->couleur = $request->validated()['couleur'];
 
         if ($request->hasFile('type_img_path')) {
-            $path = $request->file('type_img_path')->store('types', 'public');
+            $path = $request->file('type_img_path')->store('images', 'public');
             $type->img_path = $path;
         }
 

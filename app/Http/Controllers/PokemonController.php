@@ -44,7 +44,7 @@ class PokemonController extends Controller
 
         // Récupérer et enregistrer l'image du Pokémon
         if ($request->hasFile('img_path')) {
-            $path = $request->file('img_path')->store('pokemon', 'public');
+            $path = $request->file('img_path')->store('images', 'public');
             $pokemon->img_path = $path;
         }
 
@@ -72,7 +72,7 @@ class PokemonController extends Controller
 
         // Récupérer et enregistrer l'image du Pokémon
         if ($request->hasFile('img_path')) {
-            $path = $request->file('img_path')->store('pokemon', 'public');
+            $path = $request->file('img_path')->store('images', 'public');
             $pokemon->img_path = $path;
         }
 
