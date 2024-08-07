@@ -1,5 +1,6 @@
 <?php
-/*PokemonController*/namespace App\Http\Controllers;
+/*PokemonController*/
+namespace App\Http\Controllers;
 
 use App\Http\Requests\PokemonCreateRequest;
 use App\Http\Requests\PokemonUpdateRequest;
@@ -14,10 +15,29 @@ class PokemonController extends Controller
     public function index()
     {
         $pokemons = Pokemon::paginate(6);
+
+
+
+
+
+
+        
         return view('pokemon.index', [
             'pokemons' => $pokemons,
         ]);
+
+
+
     }
+
+
+
+
+
+
+
+
+
 
     ///AFFICHAGE
     public function show($id)

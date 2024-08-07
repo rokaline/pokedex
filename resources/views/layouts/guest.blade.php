@@ -28,8 +28,17 @@
 
                 <!-- Liens de navigation -->
                 <div class="flex items-center space-x-6">
+
+                    {{-- LOGIN --}}
                     <a href="{{ route('login') }}" class="font-bold hover:text-yellow-600 transition">Login</a>
-                    <a href="{{ route('homepage.index') }}" class="font-bold hover:text-yellow-600 transition">Accueil</a>
+
+                    {{-- HOMEPAGE --}}
+                    <a href="{{ route('homepage.index') }}" class="font-bold hover:text-yellow-600 transition">Homepage</a>
+
+                    {{-- FILTRE --}}
+                    {{-- <a href="{{ route('filter.index') }}" class="font-bold hover:text-yellow-600 transition">Recherches</a> --}}
+
+
                     <!-- Ajouter d'autres liens de navigation ici si nécessaire -->
                 </div>
             </div>

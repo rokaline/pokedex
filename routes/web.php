@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\PokemonController as AdminPokemonController;
 use App\Http\Controllers\AttaqueController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\FilterController;
 use App\Http\Controllers\TypeController;
 use App\Models\Pokemon;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 //pour debug
 Route::get('/pokemon/test', [HomepageController::class, 'index'])->name('pokemons.index');
 //Route::get('/pokemon/test', [HomepageController::class, 'index'])->name('pokemons.store');
+
+
 /*====================================
 =            Front Office            =
 ====================================*/
@@ -33,8 +36,17 @@ Route::get('/pokemon/test', [HomepageController::class, 'index'])->name('pokemon
 
 //Page d'accueil
 Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
+
+//Page Filtre
+// Route::get('/filter', [FilterController::class, 'index'])->name('filter.index');
+// Route::get('/filter', [FilterController::class, 'index'])->name('filter.show');
+
+
 /*pour l'affichage pokemon et de ses charactéristiques (sans login*)*/
 Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('homepage.pokemons.show');
+
+
+
 
 
 /*====================================
@@ -57,7 +69,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Création d'un pokemon
     Route::get('/pokemon/create', [PokemonController::class, 'create'])->name('pokemon.create');
-    
+
 
     // Édition d'un pokemon
     Route::get('/pokemon/{pokemon}/edit', [PokemonController::class, 'edit'])->name('pokemon.edit');
