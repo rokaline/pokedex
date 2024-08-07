@@ -29,6 +29,7 @@ class TypeCreateRequest extends FormRequest
             'nom' => 'required|string|max:255',
             'type_img_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'couleur' => 'required|string|max:50',
+            
         ];
     }
 

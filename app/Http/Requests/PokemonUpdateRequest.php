@@ -23,12 +23,14 @@ class PokemonUpdateRequest extends FormRequest
     {
         return [
 
-           
+
             'nom' => 'required|unique:pokemon|max:255.'.$this->route('pokemon')->id,
             'img_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'pv' => 'nullable|integer|min:0',
             'poids' => 'nullable|numeric|min:0',
             'taille' => 'nullable|numeric|min:0',
+            'type_obligatoire' => 'required|exists:types,id',
+            'type_optionnel' => 'nullable|exists:types,id',
 
             // //type
             // 'type_nom' => 'required|string|max:255',

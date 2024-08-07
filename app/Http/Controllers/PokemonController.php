@@ -81,7 +81,8 @@ class PokemonController extends Controller
     ///EDIT
     public function edit(Pokemon $pokemon)
     {
-        return view('pokemon.edit', compact('pokemon'));
+        $types = Type::all();
+        return view('pokemon.edit', compact('pokemon', 'types'));
     }
 
     ///UPDATE: Mise à jour
@@ -102,6 +103,15 @@ class PokemonController extends Controller
         // Sauvegarde du Pokémon
         $pokemon->save();
 
+        // Assigner les types au Pokémon
+        $types = [];
+        if ($request->filled('type_obligatoire')) {
+            $types[] = $request->input('type_obligatoire');
+        }
+        if ($request->filled('type_optionnel')) {
+            $types[] = $request->input('type_optionnel');
+        }
+        $pokemon->types()->sync($types);
         return redirect()->route('homepage.pokemons.index');
     }
 
