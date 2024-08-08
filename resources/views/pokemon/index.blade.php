@@ -4,7 +4,7 @@
 
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-9xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-6">
                 <div class="flex justify-between items-center">
                     <h2 class="text-2xl font-bold text-white">Tableau des Pokemon</h2>
@@ -22,6 +22,7 @@
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">PV</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Poids</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Taille</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Modifier</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-600">

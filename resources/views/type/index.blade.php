@@ -2,7 +2,7 @@
 <x-app-layout>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-10xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-6">
                 <div class="flex justify-between items-center">
                     <h2 class="text-2xl font-bold text-white">Tableau des Types</h2>
@@ -22,17 +22,17 @@
                             </tr>
                         </thead>
 
-                        <tbody class="bg-gray-50 divide-y divide-gray-600">
+                        <tbody class="divide-y divide-gray-600">
                             @foreach ($types as $type)
                             <tr class="hover:bg-gray-700">
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $type->id }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $type->nom }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $type->id }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $type->nom }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <img src="{{ Storage::url($type->img_path) }}" alt="{{ $type->nom }}" class="w-16 h-16 rounded">
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $type->couleur }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                    <a href="{{ route('type.edit', $type->id) }}" class="text-red-500 hover:text-red-400">Éditer</a>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $type->couleur }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <a href="{{ route('type.edit', $type->id) }}" class="text-yellow-500 hover:text-yellow-400">Éditer</a>
                                     <form action="{{ route('type.destroy', $type->id) }}" method="POST" class="inline">
                                         @csrf
                                         @method('DELETE')
@@ -42,7 +42,7 @@
                             </tr>
                             @endforeach
                         </tbody>
-                        
+
                     </table>
                 </div>
                 <div class="mt-8">

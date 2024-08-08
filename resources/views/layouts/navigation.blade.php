@@ -6,28 +6,38 @@
                 <!-- HOMEPAGE -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('homepage.index')" :active="request()->routeIs('homepage.index')" class="text-black hover:text-red-500">
-                        {{ __('ACCUEIL') }}
+                        {{ __('Homepage') }}
+                    </x-nav-link>
+                </div>
+
+                <!-- DASHBOARD -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link
+                      :href="route('dashboard')"
+                      :active="request()->routeIs('dashboard')"
+                    >
+                      {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
 
                 {{-- TABLEAU POKEMON --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <div class="flex items-center space-x-4 justify-end">
-                        <a class="font-bold text-black hover:text-red-500 transition-colors duration-200" href="{{ route('homepage.pokemons.index') }}">Tableau des Pokémon</a>
+                        <a class="font-bold text-black hover:text-red-500 transition-colors duration-200" href="{{ route('homepage.pokemons.index') }}">Liste des Pokémon</a>
                     </div>
                 </div>
 
                 {{-- Lien TYPES GESTION --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <div class="flex items-center space-x-4 justify-end">
-                        <a class="font-bold text-black hover:text-red-500 transition-colors duration-200" href="{{ route('type.index') }}">Types</a>
+                        <a class="font-bold text-black hover:text-red-500 transition-colors duration-200" href="{{ route('type.index') }}">Liste des Types</a>
                     </div>
                 </div>
 
                 {{-- Lien ATTAQUES GESTION --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <div class="flex items-center space-x-4 justify-end">
-                        <a class="font-bold text-black hover:text-red-500 transition-colors duration-200" href="{{ route('attaque.index') }}">Attaques</a>
+                        <a class="font-bold text-black hover:text-red-500 transition-colors duration-200" href="{{ route('attaque.index') }}">Liste des Attaques</a>
                     </div>
                 </div>
             </div>
