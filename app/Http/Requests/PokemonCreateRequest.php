@@ -29,6 +29,8 @@ class PokemonCreateRequest extends FormRequest
             'pv' => 'required|integer|min:0',
             'poids' => 'required|numeric|min:0',
             'taille' => 'required|numeric|min:0',
+            'type_obligatoire' => 'required|exists:types,id',
+            'type_optionnel' => 'nullable|exists:types,id',
 
             // 'type_nom' => 'required|string|max:255',
             // 'type_img_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',

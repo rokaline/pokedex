@@ -117,13 +117,13 @@ class PokemonSeeder extends Seeder
                 'poids' => 46.7,
                 'taille' => 1.6,
             ],
-            // [//16
-            //     'nom' => 'Sylvor',
-            //     'img_path' => 'images/sylvor.jpg',
-            //     'pv' => 45,
-            //     'poids' => 46.7,
-            //     'taille' => 1.6,
-            // ],
+            // // [//16
+            // //     'nom' => 'Sylvor',
+            // //     'img_path' => 'images/sylvor.jpg',
+            // //     'pv' => 45,
+            // //     'poids' => 46.7,
+            // //     'taille' => 1.6,
+            // // ],
 
         ]);
 

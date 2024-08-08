@@ -13,7 +13,7 @@
                 </div>
                 <div class="mt-6 text-gray-300 overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-700 border border-gray-600 rounded-lg">
-                        <thead class="bg-gray-700">
+                        <thead class="bg-black">
                             <tr>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">#</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Nom</th>

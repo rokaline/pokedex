@@ -59,14 +59,12 @@ class PokemonController extends Controller
         $pokemon->save();
 
         // Assigner les types au Pokémon
-        $types = [];
         if ($request->filled('type_obligatoire')) {
-            $types[] = $request->input('type_obligatoire');
+            $pokemon->types()->attach($request->input('type_obligatoire'));
         }
         if ($request->filled('type_optionnel')) {
-            $types[] = $request->input('type_optionnel');
+            $pokemon->types()->attach($request->input('type_optionnel'));
         }
-        $pokemon->types()->sync($types);
 
         // Redirection vers la liste des Pokémon après création
         return redirect()->route('homepage.pokemons.index');
@@ -79,13 +77,15 @@ class PokemonController extends Controller
     public function edit(Pokemon $pokemon)
     {
         $types = Type::all();
-        return view('pokemon.edit', compact('pokemon', 'types'));
+        $attaques = Attaque::all(); // Ajout de cette ligne pour récupérer toutes les attaques
+
+        return view('pokemon.edit', compact('pokemon', 'types', 'attaques'));
     }
 
     ///UPDATE: Mise à jour
     public function update(PokemonUpdateRequest $request, Pokemon $pokemon)
     {
-        // On modifie les propriétés du pokemon
+        // On modifie les propriétés du pokemon si nécessaire
         $pokemon->nom = $request->validated()['nom'];
         $pokemon->pv = $request->validated()['pv'];
         $pokemon->poids = $request->validated()['poids'];
@@ -97,18 +97,28 @@ class PokemonController extends Controller
             $pokemon->img_path = $path;
         }
 
+
+
+        // Assigner les types au Pokémon
+        if ($request->filled('type_obligatoire')) {
+            $pokemon->types()->attach($request->input('type_obligatoire'));
+        }
+        if ($request->filled('type_optionnel')) {
+            $pokemon->types()->attach($request->input('type_optionnel'));
+        }
+
+        // Assigner les attaques au Pokémon
+        if ($request->filled('attaque_obligatoire')) {
+            $pokemon->types()->attach($request->input('attaque_obligatoire'));
+        }
+        if ($request->filled('attaque_optionnel')) {
+            $pokemon->types()->attach($request->input('attaque_optionnel'));
+        }
+
         // Sauvegarde du Pokémon
         $pokemon->save();
 
-        // Assigner les types au Pokémon
-        $types = [];
-        if ($request->filled('type_obligatoire')) {
-            $types[] = $request->input('type_obligatoire');
-        }
-        if ($request->filled('type_optionnel')) {
-            $types[] = $request->input('type_optionnel');
-        }
-        $pokemon->types()->sync($types);
+        // Redirection vers la liste des Pokémon après création
         return redirect()->route('homepage.pokemons.index');
     }
 

@@ -19,19 +19,19 @@ class TypesSeeder extends Seeder
 
             [#2
                 'nom' => 'Eau',
-                'img_path' => 'images/eau4.jpg',
+                'img_path' => 'images/eau1.jpg',
                 'couleur' => 'Blanc',
             ],
 
             [#3
                 'nom' => 'Feu',
-                'img_path' => 'images/feu2.jpg',
+                'img_path' => 'images/feu1.jpg',
                 'couleur' => 'Rouge',
             ],
 
             [#
                 'nom' => 'Terre',
-                'img_path' => 'images/terre4.jpg',
+                'img_path' => 'images/terre1.jpg',
                 'couleur' => 'Ocre',
             ],
         ]);

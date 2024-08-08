@@ -1,16 +1,19 @@
 <!-- resources/views/pokemon/show.blade.php -->
 
 <x-guest-layout>
-    <div class="container mx-auto p-6">
+    <!-- Informations du Pokémon -->
+    <div class="flex flex-col md:flex-row md:justify-between md:items-start bg-gray-100 p-6 rounded-lg shadow-lg">
 
-        <div class="mb-4 border border-gray-300 p-4 rounded-md shadow-lg bg-gray-100">
-            <h2 class="font-semibold text-2xl text-gray-800 text-center mb-4">
-        <h1 class="font-bold text-3xl mb-4 capitalize text-center text-red-500">#{{ $pokemon->id  }}: {{ $pokemon->nom }}</h1>
-
+        <!-- Nom du Pokémon -->
+        <div class="mb-6 text-center">
+            <h1 class="font-bold text-4xl mb-4 text-red-600 capitalize bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text text-transparent">
+                #{{ $pokemon->id }}: {{ $pokemon->nom }}
+            </h1>
+        </div>
 
 
         {{-- Bloc pour affichage du type et des attaques --}}
-        <div class="mt-8">
+        <div class="md:w-3/4">
 
             {{-- Image et informations du Pokémon --}}
             <div class="mt-4 text-center">
@@ -18,31 +21,14 @@
                     alt="image du pokemon"
                     class="rounded-lg shadow-lg aspect-auto object-cover object-center mx-auto w-1/6 border-4 border-red-500">
 
-                <div class="mt-4 text-lg text-gray-700">
-                    <p><strong>PV:</strong> {{ $pokemon->pv }}</p>
-                    <p><strong>Poids:</strong> {{ $pokemon->poids }} kg</p>
-                    <p><strong>Taille:</strong> {{ $pokemon->taille }} m</p>
-                </div>
+                    <div class="text-lg text-gray-800 mb-4">
+                        <p><strong class="font-semibold">PV:</strong> {{ $pokemon->pv }}</p>
+                        <p><strong class="font-semibold">Poids:</strong> {{ $pokemon->poids }} kg</p>
+                        <p><strong class="font-semibold">Taille:</strong> {{ $pokemon->taille }} m</p>
+                    </div>
             </div>
 
-            {{-- Types --}}
-            {{-- <div class="mb-6">
-
-                @if($pokemon->types)
-                    @foreach($pokemon->types as $type)
-
-                        <div class="flex items-center justify-center mb-2">
-
-                            <h2 class="font-semibold text-2xl text-gray-800 text-center mb-4">Type</h2><img src="{{ Storage::url($type->img_path) }}"
-                                alt="{{ $type->nom }}"
-                                class="rounded-full shadow-md aspect-auto object-cover object-center w-8 h-8 border-2 border-gray-300">
-                            <span class="ml-2 font-semibold text-lg" style="color: {{ $type->couleur }}">{{ $type->nom }}</span>
-                        </div>
-                    @endforeach
-                @else
-                    <p class="text-center text-gray-600">Aucun type disponible pour ce Pokémon.</p>
-                @endif
-            </div> --}}
+    
 
             {{-- Attaques --}}
             <div class="mb-6">

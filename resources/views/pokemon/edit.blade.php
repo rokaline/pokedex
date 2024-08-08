@@ -1,3 +1,7 @@
+
+
+{{-- pokemon.edit.blade --}}
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -53,33 +57,63 @@
                         <x-input-error :messages="$errors->get('taille')" class="mt-2" />
                     </div>
 
-                    <!-- Type Obligatoire -->
-                <div>
-                    <x-input-label for="type_obligatoire" :value="__('Type Obligatoire')" />
-                    <select name="type_obligatoire" id="type_obligatoire" class="border border-red-500 rounded shadow px-4 py-2 w-full">
-                        <option value="">Sélectionnez un type obligatoire</option>
-                        @foreach($types as $type)
-                            <option value="{{ $type->id }}" {{ old('type_obligatoire') == $type->id ? 'selected' : '' }}>
-                                {{ $type->nom }}
-                            </option>
-                        @endforeach
-                    </select>
-                    <x-input-error :messages="$errors->get('type_obligatoire')" class="mt-2" />
-                </div>
+                        <!-- Type Obligatoire -->
+                    <div>
+                        <x-input-label for="type_obligatoire" :value="__('Type Obligatoire')" />
+                        <select name="type_obligatoire" id="type_obligatoire" class="border border-red-500 rounded shadow px-4 py-2 w-full">
+                            <option value="">Sélectionnez un type obligatoire</option>
+                            @foreach($types as $type)
+                                <option value="{{ $type->id }}" {{ old('type_obligatoire') == $type->id ? 'selected' : '' }}>
+                                    {{ $type->nom }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <x-input-error :messages="$errors->get('type_obligatoire')" class="mt-2" />
+                    </div>
 
-                <!-- Type Optionnel -->
-                <div>
-                    <x-input-label for="type_optionnel" :value="__('Type Optionnel')" />
-                    <select name="type_optionnel" id="type_optionnel" class="border border-red-500 rounded shadow px-4 py-2 w-full">
-                        <option value="">Sélectionnez un type optionnel</option>
-                        @foreach($types as $type)
-                            <option value="{{ $type->id }}" {{ old('type_optionnel') == $type->id ? 'selected' : '' }}>
-                                {{ $type->nom }}
-                            </option>
-                        @endforeach
-                    </select>
-                    <x-input-error :messages="$errors->get('type_optionnel')" class="mt-2" />
-                </div>
+                    <!-- Type Optionnel -->
+                    <div>
+                        <x-input-label for="type_optionnel" :value="__('Type Optionnel')" />
+                        <select name="type_optionnel" id="type_optionnel" class="border border-red-500 rounded shadow px-4 py-2 w-full">
+                            <option value="">Sélectionnez un type optionnel</option>
+                            @foreach($types as $type)
+                                <option value="{{ $type->id }}" {{ old('type_optionnel') == $type->id ? 'selected' : '' }}>
+                                    {{ $type->nom }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <x-input-error :messages="$errors->get('type_optionnel')" class="mt-2" />
+                    </div>
+
+
+
+                        <!-- Attaque Obligatoire -->
+                        <div>
+                            <x-input-label for="attaque_obligatoire" :value="__('Attaque Obligatoire')" />
+                            <select name="attaque_obligatoire" id="attaque_obligatoire" class="border border-red-500 rounded shadow px-4 py-2 w-full">
+                                <option value="">Sélectionnez une attaque obligatoire</option>
+                                @foreach($attaques as $attaque)
+                                    <option value="{{ $attaque->id }}" {{ old('attaque_obligatoire') == $attaque->id ? 'selected' : '' }}>
+                                        {{ $attaque->nom }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <!-- Attaque Optionnelle -->
+                        <div>
+                            <x-input-label for="attaque_optionnel" :value="__('Attaque Optionnel')" />
+                            <select name="attaque_optionnel" id="type_optionnel" class="border border-red-500 rounded shadow px-4 py-2 w-full">
+                                <option value="">Sélectionnez une attaque optionnelle</option>
+                                @foreach($attaques as $attaque)
+                                    <option value="{{ $attaque->id  }}" {{ old('attaque_optionnel') == $attaque->id ? 'selected' : '' }}>
+                                        {{ $attaque->nom }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <x-input-error :messages="$errors->get('attaque_optionnel')" class="mt-2" />
+                        </div>
+
 
                     <div class="flex justify-end">
                         <x-primary-button type="submit">

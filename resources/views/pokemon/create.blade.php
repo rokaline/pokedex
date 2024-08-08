@@ -77,13 +77,6 @@
                     <x-input-error :messages="$errors->get('type_optionnel')" class="mt-2" />
                 </div>
 
-                <!-- Type Image -->
-                {{-- <div>
-                    <x-input-label for="img_path" :value="__('Image Type')" />
-                    <x-text-input id="img_path" class="block mt-1 w-full" type="file" name="img_path" required />
-                    <x-input-error :messages="$errors->get('img_path')" class="mt-2" />
-                </div> --}}
-
                 <!-- Submit Button -->
                 <div class="flex justify-end">
                     <x-primary-button>
