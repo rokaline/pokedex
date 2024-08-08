@@ -28,9 +28,8 @@ class HomepageTest extends DuskTestCase
         });
     }
 
-
-
 }
+
 
 
 
