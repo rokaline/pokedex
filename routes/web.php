@@ -61,12 +61,11 @@ Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('homepage
 
 
 
-// DASBOARD
+// DASBOARD (affichage tableau général)
 Route::middleware(['auth', 'verified'])->group(function () {
 
     //Tableau général
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
 
 });
 

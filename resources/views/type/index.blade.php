@@ -1,6 +1,6 @@
 {{-- type/index.blade --}}
 <x-app-layout>
-    
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-6">
@@ -21,6 +21,7 @@
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Modification</th>
                             </tr>
                         </thead>
+
                         <tbody class="bg-gray-50 divide-y divide-gray-600">
                             @foreach ($types as $type)
                             <tr class="hover:bg-gray-700">
@@ -41,6 +42,7 @@
                             </tr>
                             @endforeach
                         </tbody>
+                        
                     </table>
                 </div>
                 <div class="mt-8">

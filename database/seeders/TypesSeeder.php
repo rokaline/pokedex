@@ -11,25 +11,28 @@ class TypesSeeder extends Seeder
     public function run()
     {
         Type::insert([
-            [
-                'nom' => 'Feu',
-                'img_path' => 'images/tyFeu.jpg',
-                'couleur' => 'jaune',
+            [   #1
+                'nom' => 'Air',
+                'img_path' => 'images/air1.jpg',
+                'couleur' => 'Bleu',
             ],
-            [
+
+            [#2
                 'nom' => 'Eau',
-                'img_path' => 'images/tyEau.jpg',
-                'couleur' => 'bleu',
+                'img_path' => 'images/eau4.jpg',
+                'couleur' => 'Blanc',
             ],
-            [
-                'nom' => 'Plante',
-                'img_path' => 'images/tyPlante.jpg',
-                'couleur' => 'vert',
+
+            [#3
+                'nom' => 'Feu',
+                'img_path' => 'images/feu2.jpg',
+                'couleur' => 'Rouge',
             ],
-            [
-                'nom' => 'Electrique',
-                'img_path' => 'images/tyElectrique.jpg',
-                'couleur' => 'jaune',
+
+            [#
+                'nom' => 'Terre',
+                'img_path' => 'images/terre4.jpg',
+                'couleur' => 'Ocre',
             ],
         ]);
 
