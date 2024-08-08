@@ -13,13 +13,14 @@ class HomepageTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                 ->waitForText('Homepage') // Attendre que le texte apparaisse
-                ->assertSee('Homepage');
+                ->assertSee('Homepage')
+                ->assertSee('Login')
+                ->assertSee('Site officiel Pokemon');
         });
     }
 
 
-
-    public function testLoadingPokemon()
+    public function testLoadingOnePokemon()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
@@ -27,6 +28,17 @@ class HomepageTest extends DuskTestCase
                 ->assertSee('Hydroshock');
         });
     }
+
+
+    public function testLoadingImage()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/')
+                ->pause(2000) // Attendre 2 secondes pour s'assurer que la page a fini de se charger
+                ->assertVisible('img[src*="mossblade.jpg"]'); // Vérifiez que l'image est bien visible sur la page d'accueil
+        });
+    }
+
 
 }
 
