@@ -18,9 +18,6 @@ class HomepageController extends Controller
         $pokemons = Pokemon::paginate(8);
 
 
-    
-
-
         // Retourne la vue 'homepage.index' et lui passe la variable 'pokemons'
         return view('homepage.index', [
             'pokemons' => $pokemons,

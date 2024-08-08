@@ -6,11 +6,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\PokemonController as AdminPokemonController;
 use App\Http\Controllers\AttaqueController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\TypeController;
 use App\Models\Pokemon;
 use Illuminate\Support\Facades\Route;
-
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /////////////////////// Routes déjà présentes dans laravel
 // Route pour la page d'accueil
@@ -53,11 +54,23 @@ Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('homepage
 =            Back Office             =
 ====================================*/
 
-// Route pour la page de tableau de bord (dashboard) : Page d'accueil du back office
-// Page d'accueil du back office
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+// DASBOARD
+Route::middleware(['auth', 'verified'])->group(function () {
+
+    //Tableau général
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
+});
+
+
 
 
 // POKEMON

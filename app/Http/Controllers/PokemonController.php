@@ -23,9 +23,6 @@ class PokemonController extends Controller
 
     }
 
-
-
-
     ///AFFICHAGE
     public function show($id)
     {
