@@ -1,3 +1,5 @@
+{{-- navigation dans dashborad --}}
+
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-200">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,21 +22,21 @@
                     </x-nav-link>
                 </div>
 
-                {{-- TABLEAU POKEMON --}}
+                {{-- Tableau récapitulatif Pokemon --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <div class="flex items-center space-x-4 justify-end">
                         <a class="font-bold text-black hover:text-red-500 transition-colors duration-200" href="{{ route('homepage.pokemons.index') }}">Liste des Pokémon</a>
                     </div>
                 </div>
 
-                {{-- Lien TYPES GESTION --}}
+                {{-- Tableau TYPES --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <div class="flex items-center space-x-4 justify-end">
                         <a class="font-bold text-black hover:text-red-500 transition-colors duration-200" href="{{ route('type.index') }}">Liste des Types</a>
                     </div>
                 </div>
 
-                {{-- Lien ATTAQUES GESTION --}}
+                {{-- Tableau Attaques --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <div class="flex items-center space-x-4 justify-end">
                         <a class="font-bold text-black hover:text-red-500 transition-colors duration-200" href="{{ route('attaque.index') }}">Liste des Attaques</a>

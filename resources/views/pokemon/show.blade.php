@@ -1,5 +1,5 @@
 <!-- resources/views/pokemon/show.blade.php -->
-
+<!-- tableau liste des Pokemon (dans admin)  -->
 <x-guest-layout>
     <!-- Informations du Pokémon -->
     <div class="flex flex-col md:flex-row md:justify-between md:items-start bg-gray-100 p-6 rounded-lg shadow-lg">
@@ -28,7 +28,7 @@
                     </div>
             </div>
 
-    
+
 
             {{-- Attaques --}}
             <div class="mb-6">
