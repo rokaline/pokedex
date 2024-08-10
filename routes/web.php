@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\PokemonController as AdminPokemonController;
 use App\Http\Controllers\AttaqueController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\FilterController;
+use App\Http\Controllers\FiltreController;
 use App\Http\Controllers\TypeController;
 use App\Models\Pokemon;
 use Illuminate\Support\Facades\Route;
@@ -35,18 +35,11 @@ Route::get('/pokemon/test', [HomepageController::class, 'index'])->name('pokemon
 
 //Route::get('/pokemon/test', [PokemonController::class, 'index'])->name('pokemons.store');
 
-//Page d'accueil
-Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
+// Page d'accueil avec filtre
+Route::get('/', [PokemonController::class, 'index'])->name('homepage.index');
 
-//Page Filtre
-// Route::get('/filter', [FilterController::class, 'index'])->name('filter.index');
-// Route::get('/filter', [PokemonController::class, 'show'])->name('homepage.pokemons.show');
-
-
-/*pour l'affichage pokemon et de ses charactéristiques (sans login*)*/
+// Affichage des détails d'un Pokémon
 Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('homepage.pokemons.show');
-
-
 
 
 

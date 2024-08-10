@@ -12,16 +12,58 @@ use Illuminate\Http\Request;
 class PokemonController extends Controller
 {
     ///INDEX
-    public function index()
+
+
+    // public function index()//SANS  Filtre
+    // {
+    //      $pokemons = Pokemon::paginate(6);
+
+
+    //      return view('pokemon.index', [
+    //          'pokemons' => $pokemons,
+    //      ]);
+
+    // }
+
+     public function index(Request $request) //AVEC filtre
     {
-        $pokemons = Pokemon::paginate(6);
+        // Récupérer tous les types et attaques disponibles pour les champs de sélection
+        $types = Type::all();
+        $attaques = Attaque::all();
 
+        // Commencer la requête pour les Pokémon
+        $query = Pokemon::query();
 
-        return view('pokemon.index', [
+        // Filtre pr Pokemon
+        if ($request->filled('search')) {
+            $query->where('nom', 'LIKE', '%'.$request->query('search').'%');
+        }
+
+        // Filtre pr Type
+        if ($request->filled('type')) {
+            $query->whereHas('types', function ($query) use ($request) {
+                $query->where('types.id', $request->query('type'));
+            });
+        }
+
+        // Filtre pr Attaque
+        if ($request->filled('attaque')) {
+            $query->whereHas('attaques', function ($query) use ($request) {
+                $query->where('attaques.id', $request->query('attaque'));
+            });
+        }
+
+        // Affichage résultats
+        $pokemons = $query->orderByDesc('created_at')->paginate(6);
+
+        return view('homepage.index', [
             'pokemons' => $pokemons,
+            'types' => $types,
+            'attaques' => $attaques,
         ]);
-
     }
+
+
 
     ///AFFICHAGE
     public function show($id)

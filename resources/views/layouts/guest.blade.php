@@ -36,7 +36,7 @@
                     <a href="{{ route('homepage.index') }}" class="font-bold hover:text-yellow-600 transition">Homepage</a>
 
                     {{-- FILTRE --}}
-                    {{-- <a href="{{ route('filter.index') }}" class="font-bold hover:text-yellow-600 transition">Recherches</a> --}}
+                    {{-- <a href="{{ route('filter.index') }}" class="font-bold hover:text-yellow-600 transition">Recherches</a>  --}}
 
 
                     <!-- Ajouter d'autres liens de navigation ici si nécessaire -->
