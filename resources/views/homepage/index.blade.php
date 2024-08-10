@@ -2,7 +2,16 @@
 
 <x-guest-layout>
     <div class="container mx-auto p-6">
-        <h1 class="font-bold text-8xl mb-8 text-center text-red-800 bg-clip-text text-transparent bg-gradient-to-r from-red-800 to-red-800">POKEDEX</h1>
+        <!-- Mot POKEDEX avec design amélioré -->
+        <h1 class="font-bold text-8xl mb-8 text-center text-white bg-red-600 p-4 rounded-lg shadow-lg border-4 border-yellow-300 bg-gradient-to-r from-red-700 via-red-500 to-red-700">
+            POKEDEX
+        </h1>
+
+
+
+
+
+
 
         <!-- Affichage des Pokémon -->
         <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -23,11 +32,11 @@
                                 <p class="font-semibold">PV: {{ $pokemon->pv }}</p>
                                 <p class="font-semibold">Poids: {{ $pokemon->poids }} kg</p>
                             </div>
-                            <p class="text-gray-700">Taille: {{ $pokemon->taille }} m</p>
+                            <p class="font-semibold">Taille: {{ $pokemon->taille }} m</p>
                         </div>
 
                         <!-- Affichage des types -->
-                        <div class="mt-6 flex flex-col gap-2">
+                        <div class="mt-6 flex flex-col gap-2 font-semibold">Type
                             @if($pokemon->types->count() > 0)
                                 @foreach($pokemon->types as $type)
                                     <div class="flex items-center gap-2 text-gray-800">

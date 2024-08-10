@@ -144,8 +144,8 @@ class PokemonSeeder extends Seeder
         $poke->types()->sync([1,2]);
 
         $poke = Pokemon::find(5);
-        $poke->attaques()->sync([1,3]);
-        $poke->types()->sync([1,3]);
+        $poke->attaques()->sync([1,4]);
+        $poke->types()->sync([1,4]);
 
         $poke = Pokemon::find(6);
         $poke->attaques()->sync([2,3]);
@@ -160,8 +160,8 @@ class PokemonSeeder extends Seeder
         $poke->types()->sync([3,1]);
 
         $poke = Pokemon::find(9);
-        $poke->attaques()->sync([1]);
-        $poke->types()->sync([1]);
+        $poke->attaques()->sync([4]);
+        $poke->types()->sync([4]);
 
         $poke = Pokemon::find(10);
         $poke->attaques()->sync([1,3]);

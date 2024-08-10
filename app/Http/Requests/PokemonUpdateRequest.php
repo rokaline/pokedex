@@ -1,5 +1,5 @@
 <?php
-
+// PokemonUpdateRequest.php
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class PokemonUpdateRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Détermine si l'utilisateur est autorisé à faire cette requête.
      */
     public function authorize(): bool
     {
@@ -15,28 +15,34 @@ class PokemonUpdateRequest extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Récupère les règles de validation qui s'appliquent à la requête.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
-
-
-            // 'nom' => 'required|unique:pokemon|max:255.'.$this->route('pokemon')->id,
-
             'nom' => 'required|string|max:255',
-            'img_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'pv' => 'nullable|integer|min:0',
-            'poids' => 'nullable|numeric|min:0',
-            'taille' => 'nullable|numeric|min:0',
+            'pv' => 'required|integer',
+            'poids' => 'required|numeric',
+            'taille' => 'required|numeric',
+            'img_path' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'type_obligatoire' => 'required|exists:types,id',
+            'dégâtsObligatoire' => 'required|integer',
+
             'type_optionnel' => 'nullable|exists:types,id',
-            'attaque_obligatoire' => 'required|exists:attaques,id',
-            'attaque_optionnel' => 'nullable|exists:attaques,id',
+            'attaque_optionnelle' => 'nullable|exists:attaques,id',
 
 
         ];
     }
+
+
+    /**
+     * Messages personnalisés pour les erreurs de validation.
+     *
+     * @return array<string, string>
+     */
+
 }
+

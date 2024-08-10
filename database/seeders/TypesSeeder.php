@@ -14,25 +14,25 @@ class TypesSeeder extends Seeder
             [   #1
                 'nom' => 'Air',
                 'img_path' => 'images/air1.jpg',
-                'couleur' => 'Bleu',
+                'couleur' => 'grey',
             ],
 
             [#2
                 'nom' => 'Eau',
                 'img_path' => 'images/eau1.jpg',
-                'couleur' => 'Blanc',
+                'couleur' => 'blue',
             ],
 
             [#3
                 'nom' => 'Feu',
                 'img_path' => 'images/feu1.jpg',
-                'couleur' => 'Rouge',
+                'couleur' => 'red',
             ],
 
             [#
                 'nom' => 'Terre',
                 'img_path' => 'images/terre1.jpg',
-                'couleur' => 'Ocre',
+                'couleur' => 'brown',
             ],
         ]);
 

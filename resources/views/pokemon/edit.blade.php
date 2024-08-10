@@ -1,5 +1,3 @@
-
-
 {{-- pokemon.edit.blade --}}
 
 <x-app-layout>
@@ -25,7 +23,7 @@
                     <!-- Pokémon Name -->
                     <div>
                         <x-input-label for="nom" :value="__('Nom Pokémon')" />
-                        <x-text-input id="nom" class="block mt-1 w-full" type="text" name="nom" :value="$pokemon->nom" required autofocus />
+                        <x-text-input id="nom" class="block mt-1 w-full" type="text" name="nom" :value="old('nom', $pokemon->nom)" required autofocus />
                         <x-input-error :messages="$errors->get('nom')" class="mt-2" />
                     </div>
 
@@ -39,31 +37,34 @@
                     <!-- Pokémon PV -->
                     <div>
                         <x-input-label for="pv" :value="__('PV')" />
-                        <x-text-input id="pv" class="block mt-1 w-full" type="number" name="pv" :value="$pokemon->pv" required />
+                        <x-text-input id="pv" class="block mt-1 w-full" type="number" name="pv" :value="old('pv', $pokemon->pv)" required />
                         <x-input-error :messages="$errors->get('pv')" class="mt-2" />
                     </div>
 
                     <!-- Pokémon Weight -->
                     <div>
                         <x-input-label for="poids" :value="__('Poids')" />
-                        <x-text-input id="poids" class="block mt-1 w-full" type="number" step="0.1" name="poids" :value="$pokemon->poids" required />
+                        <x-text-input id="poids" class="block mt-1 w-full" type="number" step="0.1" name="poids" :value="old('poids', $pokemon->poids)" required />
                         <x-input-error :messages="$errors->get('poids')" class="mt-2" />
                     </div>
 
                     <!-- Pokémon Height -->
                     <div>
                         <x-input-label for="taille" :value="__('Taille')" />
-                        <x-text-input id="taille" class="block mt-1 w-full" type="number" step="0.1" name="taille" :value="$pokemon->taille" required />
+                        <x-text-input id="taille" class="block mt-1 w-full" type="number" step="0.1" name="taille" :value="old('taille', $pokemon->taille)" required />
                         <x-input-error :messages="$errors->get('taille')" class="mt-2" />
                     </div>
 
-                        <!-- Type Obligatoire -->
+
+                    {{--    ------  ------------------------MUST HAVE------------------------------- --}}
+
+                    <!-- Type Obligatoire -->
                     <div>
                         <x-input-label for="type_obligatoire" :value="__('Type Obligatoire')" />
                         <select name="type_obligatoire" id="type_obligatoire" class="border border-red-500 rounded shadow px-4 py-2 w-full">
                             <option value="">Sélectionnez un type obligatoire</option>
                             @foreach($types as $type)
-                                <option value="{{ $type->id }}" {{ old('type_obligatoire') == $type->id ? 'selected' : '' }}>
+                                <option value="{{ $type->id }}" {{ old('type_obligatoire', $pokemon->types->first()?->id) == $type->id ? 'selected' : '' }}>
                                     {{ $type->nom }}
                                 </option>
                             @endforeach
@@ -71,13 +72,33 @@
                         <x-input-error :messages="$errors->get('type_obligatoire')" class="mt-2" />
                     </div>
 
-                    <!-- Type Optionnel -->
+
+                    <!-- Attaque Obligatoire -->
+                    <div>
+                        <x-input-label for="attaque_obligatoire" :value="__('Attaque Obligatoire')" />
+                        <select name="attaque_obligatoire" id="attaque_obligatoire" class="border border-red-500 rounded shadow px-4 py-2 w-full">
+                            <option value="">Sélectionnez une attaque obligatoire</option>
+                            @foreach($attaques as $attaque)
+                                <option value="{{ $attaque->id }}" {{ old('attaque_obligatoire', $pokemon->attaques->first()?->id) == $attaque->id ? 'selected' : '' }}>
+                                    {{ $attaque->nom }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <x-input-error :messages="$errors->get('attaque_obligatoire')" class="mt-2" />
+                    </div>
+
+
+
+
+                    {{--    ------  ------------------------OPTION------------------------------- --}}
+
+                    <!-- NOM Type Optionnel -->
                     <div>
                         <x-input-label for="type_optionnel" :value="__('Type Optionnel')" />
                         <select name="type_optionnel" id="type_optionnel" class="border border-red-500 rounded shadow px-4 py-2 w-full">
                             <option value="">Sélectionnez un type optionnel</option>
                             @foreach($types as $type)
-                                <option value="{{ $type->id }}" {{ old('type_optionnel') == $type->id ? 'selected' : '' }}>
+                                <option value="{{ $type->id }}" {{ old('type_optionnel', $pokemon->types->count() > 1 ? $pokemon->types->get(1)->id : null) == $type->id ? 'selected' : '' }}>
                                     {{ $type->nom }}
                                 </option>
                             @endforeach
@@ -87,32 +108,20 @@
 
 
 
-                        <!-- Attaque Obligatoire -->
-                        <div>
-                            <x-input-label for="attaque_obligatoire" :value="__('Attaque Obligatoire')" />
-                            <select name="attaque_obligatoire" id="attaque_obligatoire" class="border border-red-500 rounded shadow px-4 py-2 w-full">
-                                <option value="">Sélectionnez une attaque obligatoire</option>
-                                @foreach($attaques as $attaque)
-                                    <option value="{{ $attaque->id }}" {{ old('attaque_obligatoire') == $attaque->id ? 'selected' : '' }}>
-                                        {{ $attaque->nom }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
+                    <!-- Attaque Optionnelle -->
+                    <div>
+                        <x-input-label for="attaque_optionnelle" :value="__('Attaque Optionnelle')" />
+                        <select name="attaque_optionnelle" id="attaque_optionnelle" class="border border-red-500 rounded shadow px-4 py-2 w-full">
+                            <option value="">Sélectionnez une attaque optionnelle</option>
+                            @foreach($attaques as $attaque)
+                                <option value="{{ $attaque->id }}" {{ old('attaque_optionnelle', $pokemon->attaques->count() > 1 ? $pokemon->attaques->get(1)->id : null) == $attaque->id ? 'selected' : '' }}>
+                                    {{ $attaque->nom }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <x-input-error :messages="$errors->get('attaque_optionnelle')" class="mt-2" />
+                    </div>
 
-                        <!-- Attaque Optionnelle -->
-                        <div>
-                            <x-input-label for="attaque_optionnel" :value="__('Attaque Optionnel')" />
-                            <select name="attaque_optionnel" id="type_optionnel" class="border border-red-500 rounded shadow px-4 py-2 w-full">
-                                <option value="">Sélectionnez une attaque optionnelle</option>
-                                @foreach($attaques as $attaque)
-                                    <option value="{{ $attaque->id  }}" {{ old('attaque_optionnel') == $attaque->id ? 'selected' : '' }}>
-                                        {{ $attaque->nom }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            <x-input-error :messages="$errors->get('attaque_optionnel')" class="mt-2" />
-                        </div>
 
 
                     <div class="flex justify-end">

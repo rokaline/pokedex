@@ -40,7 +40,7 @@ Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
 
 //Page Filtre
 // Route::get('/filter', [FilterController::class, 'index'])->name('filter.index');
-// Route::get('/filter', [FilterController::class, 'index'])->name('filter.show');
+// Route::get('/filter', [PokemonController::class, 'show'])->name('homepage.pokemons.show');
 
 
 /*pour l'affichage pokemon et de ses charactéristiques (sans login*)*/
