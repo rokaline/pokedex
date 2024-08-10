@@ -106,8 +106,6 @@
                         <x-input-error :messages="$errors->get('type_optionnel')" class="mt-2" />
                     </div>
 
-
-
                     <!-- Attaque Optionnelle -->
                     <div>
                         <x-input-label for="attaque_optionnelle" :value="__('Attaque Optionnelle')" />
