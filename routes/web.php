@@ -31,10 +31,6 @@ Route::get('/pokemon/test', [HomepageController::class, 'index'])->name('pokemon
 ====================================*/
 
 
-
-
-//Route::get('/pokemon/test', [PokemonController::class, 'index'])->name('pokemons.store');
-
 // Page d'accueil avec filtre
 Route::get('/', [PokemonController::class, 'index'])->name('homepage.index');
 
@@ -47,17 +43,10 @@ Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('homepage
 =            Back Office             =
 ====================================*/
 
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-
-
-// DASBOARD (affichage tableau général)
+// DASBOARD
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    //Tableau général
+
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 });

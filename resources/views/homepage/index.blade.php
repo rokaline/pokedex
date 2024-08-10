@@ -6,10 +6,10 @@
         </h1>
 
         <!-- Formulaire de filtre affichage du pokemon recherché dans pokemon.show-->
-        <div class="container mx-auto p-6">
-            <h1 class="font-bold text-4xl mb-6 text-center text-red-600">Recherches Pokémon et caractéristiques</h1>
+        <div class="container mx-auto p-6 bg-white rounded-lg shadow-xl">
+            <h1 class="font-bold text-4xl mb-6 text-center text-red-600">Recherche Pokemon et caractéristiques</h1>
 
-            <form action="{{ route('homepage.index') }}" method="GET" class="mb-8">
+            <form action="{{ route('homepage.index') }}" method="GET" class="mb-8 space-y-4">
                 <div class="flex justify-center space-x-4">
 
                     <!-- recherche Pokémon -->
@@ -17,8 +17,8 @@
                         type="text"
                         name="search"
                         id="search"
-                        placeholder="Rechercher un Pokémon"
-                        class="border border-red-500 rounded shadow px-4 py-2 w-1/4"
+                        placeholder="Rechercher un Pokemon"
+                        class="border border-red-500 rounded shadow px-4 py-2 w-1/4 focus:outline-none focus:ring-2 focus:ring-red-500"
                         value="{{ request()->search }}"
                         autofocus
                     />
@@ -27,18 +27,16 @@
                         type="submit"
                         class="bg-red-500 text-white rounded shadow px-4 py-2 hover:bg-red-700 transition"
                     >
-                        Rechercher un pokemon
+                        Rechercher
                     </button>
                 </div>
 
-
                 <div class="flex justify-center space-x-4">
-
                      <!-- recherche Type -->
                     <select
                         name="type"
                         id="type"
-                        class="border border-red-500 rounded shadow px-4 py-2 w-1/4"
+                        class="border border-red-500 rounded shadow px-4 py-2 w-1/4 focus:outline-none focus:ring-2 focus:ring-red-500"
                     >
                         <option value="">Types</option>
                         @foreach($types as $type)
@@ -56,14 +54,12 @@
                     </button>
                 </div>
 
-
                 <div class="flex justify-center space-x-4">
-
                    <!-- recherche Attaque -->
                    <select
                        name="attaque"
                        id="attaque"
-                       class="border border-red-500 rounded shadow px-4 py-2 w-1/4"
+                       class="border border-red-500 rounded shadow px-4 py-2 w-1/4 focus:outline-none focus:ring-2 focus:ring-red-500"
                    >
                        <option value="">Attaques</option>
                        @foreach($attaques as $attaque)
@@ -83,15 +79,8 @@
             </form>
         </div>
 
-
-
-
-
-
-
-
         <!-- Affichage des Pokémon -->
-        <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-8">
             @foreach ($pokemons as $pokemon)
                 <li class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-transform duration-300 transform hover:scale-105">
                     <a href="{{ route('homepage.pokemons.show', $pokemon->id) }}" class="block">

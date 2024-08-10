@@ -46,9 +46,9 @@ class HomepageTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                ->waitForText('Recherches Pokémon et caractéristiques')
+                ->waitForText('Recherche Pokemon et caractéristiques')
                 ->type('#search', 'Vineshroud')
-                ->press('Rechercher un pokemon')
+                ->press('Rechercher')
                 ->pause(2000)
                 ->assertSee('Vineshroud') // Vérifie que le nom du Pokémon recherché est visible
                 ->assertDontSee('Mickey'); // Vérifie que le nom d'un Pokémon non recherché n'est pas visible
