@@ -31,11 +31,14 @@ Route::get('/pokemon/test', [HomepageController::class, 'index'])->name('pokemon
 ====================================*/
 
 
-// Page d'accueil avec filtre
-Route::get('/', [PokemonController::class, 'index'])->name('homepage.index');
 
 // Affichage des détails d'un Pokémon
 Route::get('/pokemons/{id}', [PokemonController::class, 'show'])->name('homepage.pokemons.show');
+
+
+// Page d'accueil + filtre
+Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
+
 
 
 

@@ -37,7 +37,7 @@ class AttaquesSeeder extends Seeder
 
             [#3
                 'nom' => 'Crack-Earth',
-                'img_path' => 'images/atTerre4.jpg',
+                'img_path' => 'images/atTerre1.jpg',
                 'dégâts' => 70,
                 'description' => 'Des lianes vigoureuses fouettent l\'ennemi. Peut parfois paralyser la cible.',
                 'type_id' => Type::where('nom', 'Terre')->first()->id,
