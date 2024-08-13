@@ -19,29 +19,33 @@ class AttaquesSeeder extends Seeder
                 'type_id' => Type::where('nom', 'Air')->first()->id,
             ],
 
+
             [#2 EAU
-                'nom' => 'Cascade-Mystique',
+                'nom' => 'EauMystique',
                 'img_path' => 'images/atCascade.jpg',
-                'dégâts' => 80,
-                'description' => 'Une puissante cascade d\'eau qui frappe l\'ennemi. Peut parfois augmenter la défense du lanceur.',
+                'dégâts' => 40,
+                'description' => 'Une puissante cascade eau magique la défense du lanceur.',
                 'type_id' => Type::where('nom', 'Eau')->first()->id,
              ],
+
             [
-                #1
-                'nom' => 'Flammes-Eternelles',
+                #3Feu
+                'nom' => 'Feu Eternel',
                 'img_path' => 'images/atFlamme.jpg',
                 'dégâts' => 90,
-                'description' => 'Un torrent de feu brûlant l\'ennemi avec une intensité inégalée. Peut parfois brûler la cible.',
+                'description' => 'Un torche de feu.',
                 'type_id' => Type::where('nom', 'Feu')->first()->id,
             ],
+           
 
-            [#3
-                'nom' => 'Crack-Earth',
+            [#4 Terre
+                'nom' => 'Terre Ecrasante',
                 'img_path' => 'images/atTerre1.jpg',
-                'dégâts' => 70,
-                'description' => 'Des lianes vigoureuses fouettent l\'ennemi. Peut parfois paralyser la cible.',
+                'dégâts' => 90,
+                'description' => 'Boule de Terre.',
                 'type_id' => Type::where('nom', 'Terre')->first()->id,
             ],
+
 
             // Ajoutez d'autres attaques ici
         ]);

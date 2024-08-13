@@ -42,6 +42,9 @@ Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
 
 
 
+
+
+
 /*====================================
 =            Back Office             =
 ====================================*/

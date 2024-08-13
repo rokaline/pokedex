@@ -26,7 +26,7 @@
                         <!-- Type Nom -->
                         <div>
                             <x-input-label for="nom" :value="__('Type')" class="text-red-300"/>
-                            <x-text-input id="nom" class="block mt-1 w-full bg-gray-700 border border-red-500 text-white" type="text" name="nom" value="{{ old('nom', $type->nom) }}" required autofocus />
+                            <x-text-input id="nom" class="block mt-1 w-full bg-gray-700 border border-red-500 text-white" type="text" name="nom" value="{{ old('nom', $type->nom) }}"  />
                             <x-input-error :messages="$errors->get('nom')" class="mt-2 text-yellow-300" />
                         </div>
 
@@ -40,7 +40,7 @@
                         <!-- Type Color -->
                         <div>
                             <x-input-label for="couleur" :value="__('Couleur')" class="text-red-300"/>
-                            <x-text-input id="couleur" class="block mt-1 w-full bg-gray-700 border border-red-500 text-white" type="text" name="couleur" value="{{ old('couleur', $type->couleur) }}" required />
+                            <x-text-input id="couleur" class="block mt-1 w-full bg-gray-700 border border-red-500 text-white" type="text" name="couleur" value="{{ old('couleur', $type->couleur) }}"  />
                             <x-input-error :messages="$errors->get('couleur')" class="mt-2 text-yellow-300" />
                         </div>
 

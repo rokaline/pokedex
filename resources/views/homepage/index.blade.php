@@ -1,13 +1,15 @@
 <x-guest-layout>
     <div class="container mx-auto p-6">
         <!-- Mot POKEDEX avec design amélioré -->
-        <h1 class="font-bold text-8xl mb-8 text-center text-white bg-red-600 p-4 rounded-lg shadow-lg border-4 border-yellow-300 bg-gradient-to-r from-red-700 via-red-500 to-red-700">
-            POKEDEX
-        </h1>
+
+
+        <div class="font-bold text-8xl mb-8 text-center bg-red-600 p-4 rounded-lg shadow-lg border-4 border-yellow-300 bg-gradient-to-r from-red-700 via-red-500 to-red-700">
+
+
 
         <!-- Formulaire de filtre affichage du pokemon recherché dans pokemon.show-->
         <div class="container mx-auto p-6 bg-white rounded-lg shadow-xl">
-            <h1 class="font-bold text-4xl mb-6 text-center text-red-600">Recherche Pokemon et caractéristiques</h1>
+            <h1 class="font-bold text-4xl mb-6 text-center text-red-600">Welcome to Pokemon World</h1>
 
             <form action="{{ route('homepage.index') }}" method="GET" class="mb-8 space-y-4">
                 <div class="flex justify-center space-x-4">
@@ -93,16 +95,14 @@
                     <div class="p-6 bg-gradient-to-br from-yellow-100 via-red-50 to-red-100">
                         <h2 class="font-bold text-2xl mb-2 text-red-600">#{{ $pokemon->id }}</h2>
                         <h3 class="font-bold text-xl mb-4 text-red-500">{{ $pokemon->nom }}</h3>
-                        <div class="flex flex-col gap-2 text-gray-800">
-                            <div class="flex justify-between">
-                                <p class="font-semibold">PV: {{ $pokemon->pv }}</p>
-                                <p class="font-semibold">Poids: {{ $pokemon->poids }} kg</p>
-                            </div>
-                            <p class="font-semibold">Taille: {{ $pokemon->taille }} m</p>
+                        <div class="text-lg text-gray-800 mb-4 mt-4">
+                            <p><strong class="font-semibold">PV:</strong> {{ $pokemon->pv }}</p>
+                            <p><strong class="font-semibold">Poids:</strong> {{ $pokemon->poids }} kg</p>
+                            <p><strong class="font-semibold">Taille:</strong> {{ $pokemon->taille }} m</p>
                         </div>
 
                         <!-- Affichage des types -->
-                        <div class="mt-6 flex flex-col gap-2 font-semibold">Type
+                        <div class="mt-6 flex flex-col gap-2 font-semibold">Type(s)
                             @if($pokemon->types->count() > 0)
                                 @foreach($pokemon->types as $type)
                                     <div class="flex items-center gap-2 text-gray-800">
@@ -112,6 +112,8 @@
                                         />
                                         <span class="font-semibold" style="color: {{ $type->couleur }}">{{ $type->nom }}</span>
                                     </div>
+
+
                                 @endforeach
                             @else
                                 <p class="text-center text-gray-600">Aucun type disponible pour ce Pokémon.</p>
@@ -121,6 +123,7 @@
                 </li>
             @endforeach
         </ul>
+    </div><!-- fin encard roiuge -->
 
         <!-- Pagination -->
         <div class="mt-8 flex justify-center">

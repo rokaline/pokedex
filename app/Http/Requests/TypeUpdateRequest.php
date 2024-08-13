@@ -14,10 +14,10 @@ class TypeUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //type
-            'nom' => 'required|string|max:255',
+            //type, tt est mis en nullable car le user modifie ce qu'il veut
+            'nom' => 'nullable|string|max:255',
             'type_img_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'couleur' => 'required|string|max:50',
+            'couleur' => 'nullable|string|max:50',
         ];
     }
 }

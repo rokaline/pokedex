@@ -1,9 +1,5 @@
 <?php
-
-
 /*HomepageController*/
-
-
 namespace App\Http\Controllers;
 
 use App\Models\Attaque;
@@ -14,47 +10,41 @@ use App\Models\Type;
 
 class HomepageController extends Controller
 {
-    // Méthode qui sera appelée pour afficher la page d'accueil
-    public function index(Request $request) 
+
+    public function index(Request $request)
     {
         // Récupérer tous les types et attaques disponibles pour les champs de sélection
         $types = Type::all();
         $attaques = Attaque::all();
 
-        // Commencer la requête pour les Pokémon
-        $query = Pokemon::query();
+        // Filtre par lettre de Pokemon
+        $pokemons = Pokemon::where('nom', 'LIKE', $request->search.'%');
 
-        // Filtre pr Pokemon
-        if ($request->filled('search')) {
-            $query->where('nom', 'LIKE', '%'.$request->query('search').'%');
-        }
-
-        // Filtre pr Type
+        // Filtre pour le type
         if ($request->filled('type')) {
-            $query->whereHas('types', function ($query) use ($request) {
-                $query->where('types.id', $request->query('type'));
+            $pokemons->whereHas('types', function ($query) use ($request) {
+                $query->where('types.id', $request->type);
             });
         }
 
-        // Filtre pr Attaque
+        // Filtre pour l'attaque
         if ($request->filled('attaque')) {
-            $query->whereHas('attaques', function ($query) use ($request) {
-                $query->where('attaques.id', $request->query('attaque'));
+            $pokemons->whereHas('attaques', function ($query) use ($request) {
+                $query->where('attaques.id', $request->attaque);
             });
         }
 
-        // Affichage résultats
-        $pokemons = $query->orderByDesc('created_at')->paginate(6);
+        // Exécuter la requête et paginer les résultats
+        $pokemons = $pokemons->orderBy('id')->paginate(6);
 
 
-
+        // Retourner la vue avec les résultats
         return view('homepage.index', [
+             'pokemons' => $pokemons,
+             'types' => $types,
+             'attaques' => $attaques,
+         ]);
 
-            'pokemons' => $pokemons,
-            'types' => $types,
-            'attaques' => $attaques,
-        ]);
     }
-
 
 }

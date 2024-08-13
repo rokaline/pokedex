@@ -22,13 +22,13 @@ class PokemonUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nom' => 'required|string|max:255',
-            'pv' => 'required|integer',
-            'poids' => 'required|numeric',
-            'taille' => 'required|numeric',
-            'img_path' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'nom' => 'required|string|max:255',//
+            'pv' => 'nullable|integer',
+            'poids' => 'nullable|numeric',
+            'taille' => 'nullable|numeric',
+            'img_path' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'type_obligatoire' => 'required|exists:types,id',
-            'dégâtsObligatoire' => 'required|integer',
+            'attaque_obligatoire' => 'required|integer',
 
             'type_optionnel' => 'nullable|exists:types,id',
             'attaque_optionnelle' => 'nullable|exists:attaques,id',
@@ -45,4 +45,3 @@ class PokemonUpdateRequest extends FormRequest
      */
 
 }
-

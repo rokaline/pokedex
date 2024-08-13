@@ -62,7 +62,7 @@ class PokemonSeeder extends Seeder
                 'taille' => 1.7,
             ],
             [//8
-                'nom' => 'Aquaflor',
+                'nom' => 'Atrodor',
                 'img_path' => 'images/aquaflor.jpg',
                 'pv' => 80,
                 'poids' => 50.0,
@@ -131,7 +131,7 @@ class PokemonSeeder extends Seeder
         ]);
 
         $poke = Pokemon::find(1);
-        $poke->attaques()->sync([1,3]);
+        $poke->attaques()->sync([4,3]);
         $poke->types()->sync([1,3]);
 
         $poke = Pokemon::find(2);
@@ -140,59 +140,59 @@ class PokemonSeeder extends Seeder
 
         $poke = Pokemon::find(3);
         $poke->attaques()->sync([3]);
-        $poke->types()->sync([3]);
+        $poke->types()->sync([2]);
 
         $poke = Pokemon::find(4);
-        $poke->attaques()->sync([1,2]);
-        $poke->types()->sync([1,2]);
+        $poke->attaques()->sync([4]);
+        $poke->types()->sync([4]);
 
         $poke = Pokemon::find(5);
-        $poke->attaques()->sync([1,4]);
+        $poke->attaques()->sync([2,3]);
         $poke->types()->sync([1,4]);
 
         $poke = Pokemon::find(6);
         $poke->attaques()->sync([4,3]);
-        $poke->types()->sync([4,3]);
+        $poke->types()->sync([4,1]);
 
         $poke = Pokemon::find(7);
-        $poke->attaques()->sync([2,1]);
-        $poke->types()->sync([2,1]);
+        $poke->attaques()->sync([1]);
+        $poke->types()->sync([1]);
 
         $poke = Pokemon::find(8);
-        $poke->attaques()->sync([3,1]);
-        $poke->types()->sync([3,1]);
-
-        $poke = Pokemon::find(9);
         $poke->attaques()->sync([4]);
         $poke->types()->sync([4]);
 
+        $poke = Pokemon::find(9);
+        $poke->attaques()->sync([2,1]);
+        $poke->types()->sync([4,3]);
+
         $poke = Pokemon::find(10);
-        $poke->attaques()->sync([1,3]);
-        $poke->types()->sync([1,3]);
+        $poke->attaques()->sync([1,4]);
+        $poke->types()->sync([2,3]);
 
         $poke = Pokemon::find(11);
-        $poke->attaques()->sync([2]);
-        $poke->types()->sync([2]);
+        $poke->attaques()->sync([4,1]);
+        $poke->types()->sync([4,1]);
 
         $poke = Pokemon::find(12);
         $poke->attaques()->sync([2,3]);
         $poke->types()->sync([2,3]);
 
         $poke = Pokemon::find(13);
-        $poke->attaques()->sync([1]);
-        $poke->types()->sync([1]);
+        $poke->attaques()->sync([4]);
+        $poke->types()->sync([2]);
 
         $poke = Pokemon::find(14);
-        $poke->attaques()->sync([4,2]);
-        $poke->types()->sync([4,2]);
+        $poke->attaques()->sync([3,2]);
+        $poke->types()->sync([3,2]);
 
         $poke = Pokemon::find(15);
-        $poke->attaques()->sync([1,3]);
-        $poke->types()->sync([1,3]);
+        $poke->attaques()->sync([2]);
+        $poke->types()->sync([2]);
 
         $poke = Pokemon::find(16);
-        $poke->attaques()->sync([1,4]);
-        $poke->types()->sync([1,4]);
+        $poke->attaques()->sync([1,2]);
+        $poke->types()->sync([4,3]);
 
 
 
