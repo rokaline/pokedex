@@ -110,7 +110,7 @@ class PokemonController extends Controller
 
         // Gestion de l'image du Pokémon
         if ($request->hasFile('img_path')) {
-            $path = $request->file('img_path')->store('images/pokemon', 'public');
+            $path = $request->file('img_path')->store('images/newPokemon', 'public');
             $pokemon->img_path = $path;
         }
 
@@ -123,9 +123,6 @@ class PokemonController extends Controller
             $typeObligatoire = Type::find($request->input('type_obligatoire'));
             if ($typeObligatoire) {
                 $pokemon->types()->attach($typeObligatoire->id);
-
-
-                $typeObligatoire->save();
             }
         }
 
@@ -138,35 +135,33 @@ class PokemonController extends Controller
             $attaqueObligatoire = Attaque::find($request->input('attaque_obligatoire'));
             if ($attaqueObligatoire) {
                 $pokemon->attaques()->attach($attaqueObligatoire->id);
-
-                $attaqueObligatoire->save();
             }
         }
 
-
-         // OPTIONS Pokémon
-        //TYPE Option
+        // OPTIONS Pokémon
+        // TYPE Option
         if ($request->filled('type_optionnel')) {
-            // Récupérer et associer le type optionnel
+            // Récupérer le type optionnel
             $typeOptionnel = Type::find($request->input('type_optionnel'));
             if ($typeOptionnel) {
-            $pokemon->types()->attach($typeOptionnel->id);
-
-               $typeOptionnel->save();
-           }
-         }
-
+                // Vérifier si le type optionnel est déjà associé
+                if (!$pokemon->types->contains($typeOptionnel->id)) {
+                    $pokemon->types()->attach($typeOptionnel->id);
+                }
+            }
+        }
 
         // Attaque Option
-
         if ($request->filled('attaque_optionnelle')) {
-             // Récupérer et associer l'attaque optionnelle
+            // Récupérer l'attaque optionnelle
             $attaqueOptionnelle = Attaque::find($request->input('attaque_optionnelle'));
-             if ($attaqueOptionnelle) {
-                 $pokemon->attaques()->attach($attaqueOptionnelle->id);
-                 $attaqueOptionnelle->save();
-             }
-         }
+            if ($attaqueOptionnelle) {
+                // Vérifier si l'attaque optionnelle est déjà associée
+                if (!$pokemon->attaques->contains($attaqueOptionnelle->id)) {
+                    $pokemon->attaques()->attach($attaqueOptionnelle->id);
+                }
+            }
+        }
 
         // Sauvegarde des modifications du Pokémon
         $pokemon->save();
@@ -174,9 +169,6 @@ class PokemonController extends Controller
         // Redirection vers la liste des Pokémon après modification
         return redirect()->route('homepage.pokemons.index');
     }
-
-
-
 
 
     /// DESTRUCTION (Sortie de la DB)
