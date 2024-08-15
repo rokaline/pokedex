@@ -16,6 +16,7 @@ class TypeUpdateRequest extends FormRequest
         return [
             //type, tt est mis en nullable car le user modifie ce qu'il veut
             'nom' => 'nullable|string|max:255',
+            
             'type_img_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'couleur' => 'nullable|string|max:50',
         ];

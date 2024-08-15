@@ -60,7 +60,7 @@
 
                     <!-- Type Obligatoire -->
                     <div>
-                        <x-input-label for="type_obligatoire" :value="__('Type Obligatoire')" />
+                        <x-input-label for="type_obligatoire" :value="__('Type Primaire du Pokemon')" />
                         <select name="type_obligatoire" id="type_obligatoire" class="border border-red-500 rounded shadow px-4 py-2 w-full">
                             <option value="">Sélectionnez un type obligatoire</option>
                             @foreach($types as $type)
@@ -75,7 +75,7 @@
 
                     <!-- Attaque Obligatoire -->
                     <div>
-                        <x-input-label for="attaque_obligatoire" :value="__('Attaque Obligatoire')" />
+                        <x-input-label for="attaque_obligatoire" :value="__('Première Attaque Obligatoire')" />
                         <select name="attaque_obligatoire" id="attaque_obligatoire" class="border border-red-500 rounded shadow px-4 py-2 w-full">
                             <option value="">Sélectionnez une attaque obligatoire</option>
                             @foreach($attaques as $attaque)
@@ -94,7 +94,7 @@
 
                     <!-- NOM Type Optionnel -->
                     <div>
-                        <x-input-label for="type_optionnel" :value="__('Type Optionnel')" />
+                        <x-input-label for="type_optionnel" :value="__('Type Secondaire du Pokemon')" />
                         <select name="type_optionnel" id="type_optionnel" class="border border-red-500 rounded shadow px-4 py-2 w-full">
                             <option value="">Sélectionnez un type optionnel</option>
                             @foreach($types as $type)
@@ -108,7 +108,7 @@
 
                     <!-- Attaque Optionnelle -->
                     <div>
-                        <x-input-label for="attaque_optionnelle" :value="__('Attaque Optionnelle')" />
+                        <x-input-label for="attaque_optionnelle" :value="__('Seconde Atatque du Pokemon')" />
                         <select name="attaque_optionnelle" id="attaque_optionnelle" class="border border-red-500 rounded shadow px-4 py-2 w-full">
                             <option value="">Sélectionnez une attaque optionnelle</option>
                             @foreach($attaques as $attaque)

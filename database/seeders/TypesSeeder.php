@@ -11,6 +11,7 @@ class TypesSeeder extends Seeder
     public function run()
     {
         Type::insert([
+
             [   #1
                 'nom' => 'Air',
                 'img_path' => 'images/air1.jpg',
@@ -34,6 +35,8 @@ class TypesSeeder extends Seeder
                 'img_path' => 'images/terre1.jpg',
                 'couleur' => 'brown',
             ],
+
+           
         ]);
 
 
