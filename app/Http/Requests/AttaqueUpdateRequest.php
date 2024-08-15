@@ -14,8 +14,9 @@ class AttaqueUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [//tt est mis en nullable car le user modifie ce qu'il veut
-            'nom' => 'nullable|string|max:255',
-            
+
+            'nom' => 'nullable|string|max:255|unique:attaques,nom,' . $this->route('attaque')->id,
+
             'attaque_img_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'dégâts' => 'nullable|integer|min:0',
             'description' => 'nullable|string|max:1000',
