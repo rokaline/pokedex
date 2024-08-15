@@ -71,7 +71,12 @@ class AttaqueController extends Controller
 
     public function destroy(Attaque $attaque)
     {
+        // supression attaque de bdd
         $attaque->delete();
-        return redirect()->back();
+
+        // redirection vers la page précédente
+        return redirect()->route('attaque.index');
     }
+
+
 }
