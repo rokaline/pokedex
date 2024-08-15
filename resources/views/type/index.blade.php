@@ -1,4 +1,3 @@
-{{-- type/index.blade --}}
 <x-app-layout>
 
     <div class="py-12">
@@ -33,16 +32,13 @@
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $type->couleur }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <a href="{{ route('type.edit', $type->id) }}" class="text-yellow-500 hover:text-yellow-400">Éditer</a>
-                                    <form action="{{ route('type.destroy', $type->id) }}" method="POST" class="inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="text-red-500 hover:text-red-400 ml-4">Supprimer</button>
-                                    </form>
+                                    <button x-data="{ id: {{ $type->id }} }"
+                                        x-on:click.prevent="window.selected = id; $dispatch('open-modal', 'confirm-type-deletion');"
+                                        class="text-red-500 hover:text-red-400 ml-4">Supprimer</button>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
-
                     </table>
                 </div>
                 <div class="mt-8">
@@ -51,4 +47,31 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal de confirmation -->
+    <x-modal name="confirm-type-deletion" focusable>
+        <form method="post" onsubmit="event.target.action = '/types/' + window.selected" class="p-6">
+            @csrf
+            @method('DELETE')
+
+            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                Êtes-vous sûr de vouloir supprimer ce type ?
+            </h2>
+
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                Cette action est irréversible. Toutes les données seront supprimées.
+            </p>
+
+            <div class="mt-6 flex justify-end">
+                <x-secondary-button x-on:click="$dispatch('close')">
+                    Annuler
+                </x-secondary-button>
+
+                <x-danger-button class="ml-3" type="submit">
+                    Supprimer
+                </x-danger-button>
+            </div>
+        </form>
+    </x-modal>
+
 </x-app-layout>
