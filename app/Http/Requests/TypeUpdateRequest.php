@@ -14,9 +14,8 @@ class TypeUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //type, tt est mis en nullable car le user modifie ce qu'il veut
-            'nom' => 'nullable|string|max:255',
-            
+
+            'nom' => 'nullable|string|max:255|unique:types,nom,' . $this->route('type')->id,
             'type_img_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'couleur' => 'nullable|string|max:50',
         ];
