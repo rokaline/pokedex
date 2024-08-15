@@ -42,13 +42,12 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                         <a href="{{ route('pokemon.edit', $pokemon->id) }}"
                                             class="text-yellow-500 hover:text-yellow-400">Éditer</a>
-                                        <form action="{{ route('pokemon.destroy', $pokemon->id) }}" method="POST"
-                                            class="inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="text-red-600 hover:text-red-700 ml-4">Supprimer</button>
-                                        </form>
+
+
+
+                                        <button x-data="{ id: {{ $pokemon->id }} }"
+                                            x-on:click.prevent="window.selected = id; $dispatch('open-modal', 'confirm-pokemon-deletion');"
+                                            class="text-red-500 hover:text-red-400 ml-4">Supprimer</button>
                                     </td>
                                 </tr>
                             @endforeach

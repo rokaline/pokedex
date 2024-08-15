@@ -47,13 +47,13 @@
             </div>
 
             <!-- Bloc pour affichage du type et des attaques -->
-            <div class="flex justify-center items-center mb-6">
-                <div class="md:w-3/4 mt-6 md:mt-0">
+            <div class="display:flex justify-center mt-8">
+                <div class="md:w-3/4 mt-10 md:mt-0">
                     <div class="bg-gradient-to-br from-yellow-100 via-red-50 to-red-100 p-6 rounded-lg shadow-inner mb-6">
                         <!-- Attaques -->
                         @if($pokemon->attaques)
                             @foreach($pokemon->attaques as $attaque)
-                                <div class="mb-6">
+                                <div class="pt-6">
                                     <!-- NOM -->
                                     <h2 class="font-bold text-2xl text-red-600 mb-2">
                                         Attaque #{{ $attaque->id }}: {{ $attaque->nom }}

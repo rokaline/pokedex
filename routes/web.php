@@ -79,7 +79,7 @@ Route::middleware(['auth'])->group(function () {
      Route::post('/pokemon', [PokemonController::class, 'store'])->name('pokemon.store');
 
     // Suppression d'un pokemon
-    Route::delete('/pokemon/{pokemon}/destroy', [PokemonController::class, 'destroy'])->name('pokemon.destroy');
+    Route::delete('/pokemon/{pokemon}', [PokemonController::class, 'destroy'])->name('pokemon.destroy');
 
 
 
