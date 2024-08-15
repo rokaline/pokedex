@@ -2,18 +2,18 @@
 
 
 <x-app-layout>
-    <x-slot name="header">
+    {{-- <x-slot name="header">
         <h2 class="font-semibold text-xl text-red-500 leading-tight">
-            {{ __('Modifier un Type de Pokémon') }}
+            {{ __('Modifier un Type de Pokemon') }}
         </h2>
-    </x-slot>
+    </x-slot> --}}
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-6">
                 <div class="flex justify-between mt-8">
                     <div class="text-2xl text-white">
-                        Modifier un type
+                        Modifier un Type
                     </div>
                 </div>
 

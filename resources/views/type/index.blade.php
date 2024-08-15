@@ -50,7 +50,7 @@
 
     <!-- Modal de confirmation -->
     <x-modal name="confirm-type-deletion" focusable>
-        <form method="post" onsubmit="event.target.action = '/types/' + window.selected" class="p-6">
+        <form method="POST" onsubmit="event.target.action = '/types/' + window.selected" class="p-6">
             @csrf
             @method('DELETE')
 

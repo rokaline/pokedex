@@ -75,12 +75,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pokemon/{pokemon}/edit', [PokemonController::class, 'edit'])->name('pokemon.edit');
     Route::put('/pokemon/{pokemon}', [PokemonController::class, 'update'])->name('pokemon.update');
 
+     // Enregistrement d'un nouveau pokemon
+     Route::post('/pokemon', [PokemonController::class, 'store'])->name('pokemon.store');
 
     // Suppression d'un pokemon
     Route::delete('/pokemon/{pokemon}/destroy', [PokemonController::class, 'destroy'])->name('pokemon.destroy');
 
-    // Enregistrement d'un nouveau pokemon
-    Route::post('/pokemon', [PokemonController::class, 'store'])->name('pokemon.store');
+
 
 });
 

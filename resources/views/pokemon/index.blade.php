@@ -8,7 +8,7 @@
             <div class="bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-6">
                 <div class="flex justify-between items-center">
                     <h2 class="text-2xl font-bold text-white">Tableau des Pokemon</h2>
-                    <a href="{{ route('pokemon.create') }}" class="text-red-500 font-bold py-2 px-4 rounded hover:bg-red-600 transition duration-200">
+                    <a href="{{ route('pokemon.create') }}" class="font-bold py-2 px-4 rounded" style="background-color: #D32F2F; color: white; hover:bg-red-700">
                         Ajouter un Pokemon
                     </a>
                 </div>
@@ -63,15 +63,31 @@
         </div>
     </div>
 
-    <script>
-        function showImage(src) {
-            document.getElementById('modalImage').src = src;
-            document.getElementById('imageModal').classList.remove('hidden');
-        }
+    <!-- Modal de confirmation -->
+    <x-modal name="confirm-pokemon-deletion" focusable>
+        <form method="POST" onsubmit="event.target.action = '/pokemon/' + window.selected" class="p-6">
+            @csrf
+            @method('DELETE')
 
-        function hideImage() {
-            document.getElementById('imageModal').classList.add('hidden');
-        }
-    </script>
+            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                Êtes-vous sûr de vouloir supprimer ce Pokemon ?
+            </h2>
+
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                Cette action est irréversible. Toutes les données seront supprimées.
+            </p>
+
+            <div class="mt-6 flex justify-end">
+                <x-secondary-button x-on:click="$dispatch('close')">
+                    Annuler
+                </x-secondary-button>
+
+                <x-danger-button class="ml-3" type="submit">
+                    Supprimer
+                </x-danger-button>
+            </div>
+        </form>
+    </x-modal>
+
 
 </x-app-layout>
