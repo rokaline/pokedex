@@ -102,10 +102,10 @@
                         </div>
 
                         <!-- Affichage des types -->
-                        <div class="mt-6 flex flex-col gap-2 font-semibold">Type(s)
+                        <div class="mt-6 flex flex-col gap-2 font-semibold">
                             @if($pokemon->types->count() > 0)
                                 @foreach($pokemon->types as $type)
-                                    <div class="flex items-center gap-2 text-gray-800">
+                                    <div class="flex items-center gap-2 text-gray-800">Type: 
                                         <img src="{{ Storage::url($type->img_path) }}"
                                              alt="{{ $type->nom }}"
                                              class="w-8 h-8 rounded-full border-2 border-gray-300 shadow-sm"

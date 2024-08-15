@@ -15,7 +15,7 @@
             <div class="text-center">
                 <img src="{{ Storage::url($pokemon->img_path) }}"
                     alt="image du pokemon"
-                   class="rounded-lg shadow-2xl aspect-auto object-scale-down h-68 w-96 object-center mx-auto w-1/4 border-4 border-red-500 hover:scale-10 transition-transform duration-300">
+                   class="rounded-lg shadow-md aspect-auto object-cover object-center mx-auto w-48 border-4 border-red-500  mb-4 hover:scale-105 transition-transform duration-300">
 
 
                     <div class="text-lg text-gray-800 mb-4 mt-4 flex justify-center space-x-8">
@@ -25,17 +25,17 @@
                     </div>
 
                 <!-- Affichage des types -->
-                <div class="mt-6 flex flex-col gap-2 font-semibold">
+                <div class=" mt-3 flex flex-col gap-2 font-semibold">
                     @if($pokemon->types->count() > 0)
                     <div class="flex flex-col items-center text-gray-800 mb-4 mt-4">
                         <p class="font-semibold">Pokemon Type:</p>
-                        <div class="flex items-center justify-center gap-4">
+                        <div class="flex items-center justify-center gap-4 ">
                             @foreach ($pokemon->types as $type)
                                 <div class="flex items-center gap-2">
                                     <span class="font-semibold" style="color: {{ $type->couleur }}">{{ $type->nom }}</span>
                                     <img src="{{ Storage::url($type->img_path) }}"
                                          alt="{{ $type->nom }}"
-                                         class="w-12 h-12 rounded-full border-2 border-gray-300 shadow-sm"
+                                         class="w-12 h-12 rounded-full border-2 border-gray-300 shadow-sm "
                                     />
 
                                 </div>

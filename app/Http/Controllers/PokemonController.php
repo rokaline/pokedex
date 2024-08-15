@@ -79,71 +79,91 @@ class PokemonController extends Controller
 
     ///EDIT
     public function edit(Pokemon $pokemon)
-    {
-        // Récupérer tous les types disponibles pour les champs de sélection
-        $types = Type::all();
+{
+    // Récupérer tous les types disponibles pour les champs de sélection
+    $types = Type::all();
 
-        // Récupérer toutes les attaques disponibles pour les champs de sélection
-        $attaques = Attaque::all();
+    // Récupérer toutes les attaques disponibles pour les champs de sélection
+    $attaques = Attaque::all();
 
-        // Récupérer les types associés au Pokémon
-        $typeObligatoire = $pokemon->types->first();
-        $typeOptionnel = $pokemon->types->count() > 1 ? $pokemon->types->get(1) : null;
+    // Récupérer les types associés au Pokémon
+    $typeObligatoire = $pokemon->types->first();
+    $typeOptionnel = $pokemon->types->count() > 1 ? $pokemon->types->get(1) : null;
 
-        // Récupérer les attaques associées au Pokémon
-        $attaqueObligatoire = $pokemon->attaques->first();
-        $attaqueOptionnelle = $pokemon->attaques->count() > 1 ? $pokemon->attaques->get(1) : null;
+    // Récupérer les attaques associées au Pokémon
+    $attaqueObligatoire = $pokemon->attaques->first();
+    $attaqueOptionnelle = $pokemon->attaques->count() > 1 ? $pokemon->attaques->get(1) : null;
 
-        // Passer toutes les données nécessaires à la vue Blade
-        return view('pokemon.edit', compact('pokemon', 'types', 'attaques'));
-    }
-
-
+    // Passer toutes les données nécessaires à la vue Blade
+    return view('pokemon.edit', compact('pokemon', 'types', 'attaques'));
+}
 
     ///UPDATE: Mise à jour du pokemon et de ses caractéristiques
+
     public function update(PokemonUpdateRequest $request, Pokemon $pokemon)
     {
-        // méthode validated() pour récupérer les données validées
-        $validatedData = $request->validated();
+        // Mise à jour des informations de base du Pokémon
+        $pokemon->nom = $request->input('nom');
+        $pokemon->pv = $request->input('pv');
+        $pokemon->poids = $request->input('poids');
+        $pokemon->taille = $request->input('taille');
 
-        // maj du pokemon
-        $pokemon->nom = $validatedData['nom'];
-        $pokemon->pv = $validatedData['pv'];
-        $pokemon->poids = $validatedData['poids'];
-        $pokemon->taille = $validatedData['taille'];
-
-        // image pokemon
+        // Gestion de l'image du Pokémon
         if ($request->hasFile('img_path')) {
-            $path = $request->file('img_path')->store('images/pokemon', 'public');
+            $path = $request->file('img_path')->store('images/newPokemon', 'public');
             $pokemon->img_path = $path;
         }
 
-
-
-        // type obligatoire
+        // Mise à jour du type obligatoire du Pokémon
         if ($request->filled('type_obligatoire')) {
-            $pokemon->types()->sync([$validatedData['type_obligatoire']]);
+            // Détacher tous les types existants
+            $pokemon->types()->detach();
+
+            // Récupérer et associer le type obligatoire
+            $typeObligatoire = Type::find($request->input('type_obligatoire'));
+            if ($typeObligatoire) {
+                $pokemon->types()->attach($typeObligatoire->id);
+            }
         }
 
-        // attaque obligatoire
+        // Mise à jour de l'attaque obligatoire du Pokémon
         if ($request->filled('attaque_obligatoire')) {
-            $pokemon->attaques()->sync([$validatedData['attaque_obligatoire']]);
+            // Détacher toutes les attaques existantes
+            $pokemon->attaques()->detach();
+
+            // Récupérer et associer l'attaque obligatoire
+            $attaqueObligatoire = Attaque::find($request->input('attaque_obligatoire'));
+            if ($attaqueObligatoire) {
+                $pokemon->attaques()->attach($attaqueObligatoire->id);
+            }
         }
 
-        // type optionnel
+        // OPTIONS Pokémon
+        // TYPE Option
         if ($request->filled('type_optionnel')) {
-            // On attache sans détacher, car c'est un type optionnel.
-            $pokemon->types()->attach($validatedData['type_optionnel']);
+            // Récupérer le type optionnel
+            $typeOptionnel = Type::find($request->input('type_optionnel'));
+            if ($typeOptionnel) {
+                // Vérifier si le type optionnel est déjà associé
+                if (!$pokemon->types->contains($typeOptionnel->id)) {
+                    $pokemon->types()->attach($typeOptionnel->id);
+                }
+            }
         }
 
-        // attaque optionnelle
+        // Attaque Option
         if ($request->filled('attaque_optionnelle')) {
-            // On attache sans détacher, car c'est une attaque optionnelle.
-            $pokemon->attaques()->attach($validatedData['attaque_optionnelle']);
+            // Récupérer l'attaque optionnelle
+            $attaqueOptionnelle = Attaque::find($request->input('attaque_optionnelle'));
+            if ($attaqueOptionnelle) {
+                // Vérifier si l'attaque optionnelle est déjà associée
+                if (!$pokemon->attaques->contains($attaqueOptionnelle->id)) {
+                    $pokemon->attaques()->attach($attaqueOptionnelle->id);
+                }
+            }
         }
 
-
-        // Sauvegarde du pokemon ds BDD utilisant la méthode save()
+        // Sauvegarde des modifications du Pokémon
         $pokemon->save();
 
         // Redirection vers la liste des Pokémon après modification
@@ -151,10 +171,10 @@ class PokemonController extends Controller
     }
 
 
-        /// DESTRUCTION (Sortie de la DB)
-        public function destroy(Pokemon $pokemon)
-        {
-            $pokemon->delete();
-            return redirect()->back();
-        }
+    /// DESTRUCTION (Sortie de la DB)
+    public function destroy(Pokemon $pokemon)
+    {
+        $pokemon->delete();
+        return redirect()->back();
+    }
 }
