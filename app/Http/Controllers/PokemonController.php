@@ -181,3 +181,5 @@ class PokemonController extends Controller
         return redirect()->back();
     }
 }
+
+ 

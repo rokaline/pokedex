@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    <!-- Modal de confirmation -->
+    <!-- Modal de confirmation   -->
     <x-modal name="confirm-pokemon-deletion" focusable>
         <form method="POST" onsubmit="event.target.action = '/pokemon/' + window.selected" class="p-6">
             @csrf
