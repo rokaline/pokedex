@@ -120,7 +120,7 @@
 
 
                     <div class="flex justify-end">
-                        <x-primary-button type="submit">
+                        <x-primary-button type="submit" class="bg-red-600 hover:bg-red-700">
                             {{ __('Modifier') }}
                         </x-primary-button>
                     </div>

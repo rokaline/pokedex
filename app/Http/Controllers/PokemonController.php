@@ -110,7 +110,7 @@ class PokemonController extends Controller
         $pokemon->pv = $validatedData['pv'];
         $pokemon->poids = $validatedData['poids'];
         $pokemon->taille = $validatedData['taille'];
-        
+
         // Gestion de l'image du Pokémon
         if ($request->hasFile('img_path')) {
             $path = $request->file('img_path')->store('images/newPokemon', 'public');
@@ -141,7 +141,7 @@ class PokemonController extends Controller
             }
         }
 
-        // OPTIONS Pokémon
+        // OPTIONS Pokemon: ne permet pas d'avoir deux fois le meme type ni la mme attaque
         // TYPE Option
         if ($request->filled('type_optionnel')) {
             // Récupérer le type optionnel

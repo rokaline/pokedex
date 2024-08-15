@@ -1,11 +1,7 @@
 {{-- attaque/edit.blade.php --}}
 
 <x-app-layout>
-    {{-- <x-slot name="header">
-        <h2 class="font-semibold text-xl text-red-500 leading-tight">
-            {{ __('Modifier une Atatque') }}
-        </h2>
-    </x-slot> --}}
+
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -63,7 +59,7 @@
 
                 <!-- Submit Button -->
                 <div class="flex justify-end">
-                    <x-primary-button>
+                    <x-primary-button type="submit" class="bg-red-600 hover:bg-red-700">
                         {{ __('Modifier une Attaque') }}
                     </x-primary-button>
                 </div>
