@@ -102,12 +102,15 @@ class PokemonController extends Controller
 
     public function update(PokemonUpdateRequest $request, Pokemon $pokemon)
     {
-        // Mise à jour des informations de base du Pokémon
-        $pokemon->nom = $request->input('nom');
-        $pokemon->pv = $request->input('pv');
-        $pokemon->poids = $request->input('poids');
-        $pokemon->taille = $request->input('taille');
 
+        // Méthode validated() pour récupérer les données validées
+    $validatedData = $request->validated();
+        // Mise à jour des informations de base du Pokémon
+        $pokemon->nom = $validatedData['nom'];
+        $pokemon->pv = $validatedData['pv'];
+        $pokemon->poids = $validatedData['poids'];
+        $pokemon->taille = $validatedData['taille'];
+        
         // Gestion de l'image du Pokémon
         if ($request->hasFile('img_path')) {
             $path = $request->file('img_path')->store('images/newPokemon', 'public');
