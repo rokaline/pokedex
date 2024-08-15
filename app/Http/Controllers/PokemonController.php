@@ -108,6 +108,9 @@ class PokemonController extends Controller
         $pokemon->poids = $request->input('poids');
         $pokemon->taille = $request->input('taille');
 
+
+
+
         // Gestion de l'image du Pokémon
         if ($request->hasFile('img_path')) {
             $path = $request->file('img_path')->store('images/newPokemon', 'public');

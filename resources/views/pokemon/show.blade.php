@@ -15,14 +15,14 @@
             <div class="text-center">
                 <img src="{{ Storage::url($pokemon->img_path) }}"
                     alt="image du pokemon"
-                    class="rounded-lg shadow-2xl aspect-auto object-cover object-center mx-auto w-1/500 border-4 border-red-500 hover:scale-105 transition-transform duration-300">
+                   class="rounded-lg shadow-2xl aspect-auto object-scale-down h-68 w-96 object-center mx-auto w-1/4 border-4 border-red-500 hover:scale-10 transition-transform duration-300">
 
 
-                <div class="text-lg text-gray-800 mb-4 mt-4 flex justify-center space-x-8">
-                    <p><strong class="font-semibold">PV:</strong> {{ $pokemon->pv }}</p>
-                    <p><strong class="font-semibold">Poids:</strong> {{ $pokemon->poids }} kg</p>
-                    <p><strong class="font-semibold">Taille:</strong> {{ $pokemon->taille }} m</p>
-                </div>
+                    <div class="text-lg text-gray-800 mb-4 mt-4 flex justify-center space-x-8">
+                        <p><strong class="font-semibold">PV:</strong> {{ $pokemon->pv }}</p>
+                        <p><strong class="font-semibold">Poids:</strong> {{ $pokemon->poids }} kg</p>
+                        <p><strong class="font-semibold">Taille:</strong> {{ $pokemon->taille }} m</p>
+                    </div>
 
                 <!-- Affichage des types -->
                 <div class="mt-6 flex flex-col gap-2 font-semibold">
@@ -47,9 +47,9 @@
             </div>
 
             <!-- Bloc pour affichage du type et des attaques -->
-            <div class="flex justify-center items-center mt-400">
+            <div class="flex justify-center items-center mb-6">
                 <div class="md:w-3/4 mt-6 md:mt-0">
-                    <div class="bg-gradient-to-br from-yellow-100 via-red-50 to-red-100 p-6 rounded-lg shadow-inner">
+                    <div class="bg-gradient-to-br from-yellow-100 via-red-50 to-red-100 p-6 rounded-lg shadow-inner mb-6">
                         <!-- Attaques -->
                         @if($pokemon->attaques)
                             @foreach($pokemon->attaques as $attaque)
@@ -73,8 +73,7 @@
                                     <p><strong>Description de l'attaque:</strong>
                                         <span class="block mt-2">{{ $attaque->description }}</span>
                                     </p>
-
-                                    <!-- TYPE -->
+                                </div>
                                     <div class="flex items-center justify-center gap-4">
                                         <p><strong>Type:</strong> {{ $attaque->type->nom }}</p>
                                         <img src="{{ Storage::url($attaque->type->img_path) }}"
@@ -85,7 +84,6 @@
                                         </p>
                                     </div>
 
-                                </div>
                             @endforeach
                         @else
                             <p class="text-center text-gray-600">Aucune attaque disponible pour ce Pokémon.</p>
@@ -98,8 +96,7 @@
 
 
 
-            </div>
-        </div>
+
 
         <!-- Bouton de retour -->
         <div class="mt-8 flex items-center justify-center">

@@ -22,7 +22,8 @@ class PokemonUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nom' => 'required|string|max:255',//
+            'nom' => 'required|string|max:255|unique:pokemon,nom,' . $this->route('pokemon')->id,
+            
             'pv' => 'nullable|integer',
             'poids' => 'nullable|numeric',
             'taille' => 'nullable|numeric',
