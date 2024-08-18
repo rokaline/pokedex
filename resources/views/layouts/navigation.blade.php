@@ -5,8 +5,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- HOMEPAGE -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                 <!-- HOMEPAGE -->
+                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('homepage.index')" :active="request()->routeIs('homepage.index')" class="text-black hover:text-red-500">
                         {{ __('Homepage') }}
                     </x-nav-link>

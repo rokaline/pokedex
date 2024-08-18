@@ -7,79 +7,88 @@
 
 
 
-        <!-- Formulaire de filtre affichage du pokemon recherché dans pokemon.show-->
-        <div class="container mx-auto p-6 bg-white rounded-lg shadow-xl">
-            <h1 class="font-bold text-4xl mb-6 text-center text-red-600">Welcome to Pokemon World</h1>
+        <!-- Formulaire de filtre affichage du Pokémon recherché dans pokemon.show -->
+<div class="container mx-auto p-6 bg-white rounded-lg shadow-xl">
+    <h1 class="font-bold text-4xl mb-6 text-center text-red-600">Welcome to Pokemon World</h1>
 
-            <form action="{{ route('homepage.index') }}" method="GET" class="mb-8 space-y-4">
-                <div class="flex justify-center space-x-4">
-
-                    <!-- recherche Pokémon -->
-                    <input
-                        type="text"
-                        name="search"
-                        id="search"
-                        placeholder="Rechercher un Pokemon"
-                        class="border border-red-500 rounded shadow px-4 py-2 w-1/4 focus:outline-none focus:ring-2 focus:ring-red-500"
-                        value="{{ request()->search }}"
-                        autofocus
-                    />
-
-                    <button
-                        type="submit"
-                        class="bg-red-500 text-white rounded shadow px-4 py-2 hover:bg-red-700 transition"
-                    >
-                        Rechercher
-                    </button>
-                </div>
-
-                <div class="flex justify-center space-x-4">
-                     <!-- recherche Type -->
-                    <select
-                        name="type"
-                        id="type"
-                        class="border border-red-500 rounded shadow px-4 py-2 w-1/4 focus:outline-none focus:ring-2 focus:ring-red-500"
-                    >
-                        <option value="">Types</option>
-                        @foreach($types as $type)
-                            <option value="{{ $type->id }}" {{ request()->type == $type->id ? 'selected' : '' }}>
-                                {{ $type->nom }}
-                            </option>
-                        @endforeach
-                    </select>
-
-                    <button
-                        type="submit"
-                        class="bg-red-500 text-white rounded shadow px-4 py-2 hover:bg-red-700 transition"
-                    >
-                        Rechercher par Type
-                    </button>
-                </div>
-
-                <div class="flex justify-center space-x-4">
-                   <!-- recherche Attaque -->
-                   <select
-                       name="attaque"
-                       id="attaque"
-                       class="border border-red-500 rounded shadow px-4 py-2 w-1/4 focus:outline-none focus:ring-2 focus:ring-red-500"
-                   >
-                       <option value="">Attaques</option>
-                       @foreach($attaques as $attaque)
-                           <option value="{{ $attaque->id }}" {{ request()->attaque == $attaque->id ? 'selected' : '' }}>
-                               {{ $attaque->nom }}
-                           </option>
-                       @endforeach
-                   </select>
-
-                   <button
-                       type="submit"
-                       class="bg-red-500 text-white rounded shadow px-4 py-2 hover:bg-red-700 transition"
-                   >
-                       Rechercher par Attaque
-                   </button>
-               </div>
-            </form>
+    <form action="{{ route('homepage.index') }}" method="GET" class="mb-8 space-y-4">
+        <!-- Recherche Pokémon -->
+        <div class="flex flex-col md:flex-row md:justify-center md:space-x-4">
+            <div class="flex flex-col md:w-1/4 mb-4 md:mb-0">
+                <input
+                    type="text"
+                    name="search"
+                    id="search"
+                    placeholder="Rechercher un Pokemon"
+                    class="border border-red-500 rounded shadow px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-red-500"
+                    value="{{ request()->search }}"
+                    autofocus
+                />
+            </div>
+            <div class="flex justify-center">
+                <button
+                    type="submit"
+                    class="bg-red-500 text-white rounded shadow px-4 py-2 hover:bg-red-700 transition"
+                >
+                    Rechercher
+                </button>
+            </div>
         </div>
+
+        <!-- Recherche Type -->
+        <div class="flex flex-col md:flex-row md:justify-center md:space-x-4">
+            <div class="flex flex-col md:w-1/4 mb-4 md:mb-0">
+                <select
+                    name="type"
+                    id="type"
+                    class="border border-red-500 rounded shadow px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-red-500"
+                >
+                    <option value="">Types</option>
+                    @foreach($types as $type)
+                        <option value="{{ $type->id }}" {{ request()->type == $type->id ? 'selected' : '' }}>
+                            {{ $type->nom }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="flex justify-center">
+                <button
+                    type="submit"
+                    class="bg-red-500 text-white rounded shadow px-4 py-2 hover:bg-red-700 transition"
+                >
+                    Rechercher par Type
+                </button>
+            </div>
+        </div>
+
+        <!-- Recherche Attaque -->
+        <div class="flex flex-col md:flex-row md:justify-center md:space-x-4">
+            <div class="flex flex-col md:w-1/4 mb-4 md:mb-0">
+                <select
+                    name="attaque"
+                    id="attaque"
+                    class="border border-red-500 rounded shadow px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-red-500"
+                >
+                    <option value="">Attaques</option>
+                    @foreach($attaques as $attaque)
+                        <option value="{{ $attaque->id }}" {{ request()->attaque == $attaque->id ? 'selected' : '' }}>
+                            {{ $attaque->nom }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="flex justify-center">
+                <button
+                    type="submit"
+                    class="bg-red-500 text-white rounded shadow px-4 py-2 hover:bg-red-700 transition"
+                >
+                    Rechercher par Attaque
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
 
         <!-- Affichage des Pokémon -->
         <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-8">
@@ -105,7 +114,7 @@
                         <div class="mt-6 flex flex-col gap-2 font-semibold">
                             @if($pokemon->types->count() > 0)
                                 @foreach($pokemon->types as $type)
-                                    <div class="flex items-center gap-2 text-gray-800">Type: 
+                                    <div class="flex items-center gap-2 text-gray-800">Type:
                                         <img src="{{ Storage::url($type->img_path) }}"
                                              alt="{{ $type->nom }}"
                                              class="w-8 h-8 rounded-full border-2 border-gray-300 shadow-sm"
