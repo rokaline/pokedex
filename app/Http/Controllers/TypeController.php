@@ -59,9 +59,10 @@ class TypeController extends Controller
         // return redirect()->back();
 
         $pokemons = $type->pokemons;
+
         foreach ($pokemons as $pokemon) {
         if ($pokemon->types->count() == 1) {
-            // Supprimer le Pokémon car il n'aura plus de type
+
             $pokemon->delete();
         }
     }

@@ -69,14 +69,36 @@ class AttaqueController extends Controller
         return redirect()->route('attaque.index');
     }
 
-    public function destroy(Attaque $attaque)
-    {
-        // supression attaque de bdd
-        $attaque->delete();
+    // public function destroy(Attaque $attaque)
+    // {
+    //     // supression attaque de bdd
+    //     $attaque->delete();
 
-        // redirection vers la page précédente
-        return redirect()->route('attaque.index');
+    //     // redirection vers la page précédente
+    //     return redirect()->route('attaque.index');
+    // }
+
+    public function destroy(Attaque $attaque)
+{
+    // recuperation des pokemon et deleur attaque
+    $pokemons = $attaque->pokemons;
+
+
+    $attaque->delete();
+
+    // Vérifier les Pokémon et leur nombre d'attaques restantes après suppression de l'attaque
+    foreach ($pokemons as $pokemon) {
+        // Recharger les données du Pokémon pour vérifier les attaques restantes
+        $pokemon->load('attaques');
+
+        // Si le Pokémon n'a plus d'attaques après la suppression de cette attaque, le supprimer
+        if ($pokemon->attaques->count() == 0) {
+            $pokemon->delete();
+        }
     }
 
+    // Rediriger vers la liste des attaques
+    return redirect()->back();
+}
 
 }

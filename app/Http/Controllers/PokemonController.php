@@ -182,4 +182,3 @@ class PokemonController extends Controller
     }
 }
 
- 

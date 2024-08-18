@@ -49,7 +49,7 @@
     </div>
 
     <!-- Modal de confirmation -->
-    <x-modal name="confirm-attaque-deletion" focusable>
+   <x-modal name="confirm-attaque-deletion" focusable>
         <form method="POST" onsubmit="event.target.action = '/attaques/' + window.selected" class="p-6">
             @csrf
             @method('DELETE')
@@ -73,4 +73,12 @@
             </div>
         </form>
     </x-modal>
+
+
+
+
+
+
+
+
 </x-app-layout>

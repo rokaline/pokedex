@@ -88,7 +88,7 @@
 
                             @endforeach
                         @else
-                            <p class="text-center text-gray-600">Attaque à attribuer à ce Pokemon.</p>
+                            <p class="text-center text-gray-600">Aucune attaque disponible pour ce Pokmon.</p>
                         @endif
                     </div>
                 </div>

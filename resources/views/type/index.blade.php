@@ -58,8 +58,8 @@
                 Êtes-vous sûr de vouloir supprimer ce type ?
             </h2>
 
-            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                Cette action est irréversible. Toutes les données seront supprimées.
+            <p class="mt-1 text-sm text-red-600 dark:text-red-400">
+                Cette action est irréversible. Certains Pokemon peuvent disparaitres.
             </p>
 
             <div class="mt-6 flex justify-end">
