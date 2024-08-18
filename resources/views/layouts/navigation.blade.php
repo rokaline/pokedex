@@ -1,51 +1,36 @@
-{{-- navigation dans dashborad --}}
-
+{{-- Navigation dans dashboard --}}
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-200">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                 <!-- HOMEPAGE -->
-                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('homepage.index')" :active="request()->routeIs('homepage.index')" class="text-black hover:text-red-500">
-                        {{ __('Homepage') }}
-                    </x-nav-link>
-                </div>
+        <div class="flex justify-between h-16 items-center">
+            <div class="flex items-center">
+                <!-- Logo ou Nom de la Page -->
+                <a href="{{ route('homepage.index') }}" class="text-xl font-semibold text-red-600">
+                    {{ __('Pokemon World') }}
+                </a>
+            </div>
 
-                <!-- DASHBOARD -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link
-                      :href="route('dashboard')"
-                      :active="request()->routeIs('dashboard')"
-                    >
-                      {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
-
-                {{-- Tableau récapitulatif Pokemon --}}
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <div class="flex items-center space-x-4 justify-end">
-                        <a class="font-bold text-black hover:text-red-500 transition-colors duration-200" href="{{ route('homepage.pokemons.index') }}">Liste des Pokémon</a>
-                    </div>
-                </div>
-
-                {{-- Tableau TYPES --}}
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <div class="flex items-center space-x-4 justify-end">
-                        <a class="font-bold text-black hover:text-red-500 transition-colors duration-200" href="{{ route('type.index') }}">Liste des Types</a>
-                    </div>
-                </div>
-
-                {{-- Tableau Attaques --}}
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <div class="flex items-center space-x-4 justify-end">
-                        <a class="font-bold text-black hover:text-red-500 transition-colors duration-200" href="{{ route('attaque.index') }}">Liste des Attaques</a>
-                    </div>
-                </div>
+            <!-- Desktop Navigation Links -->
+            <div class="hidden sm:flex sm:space-x-4">
+                <x-nav-link :href="route('homepage.index')" :active="request()->routeIs('homepage.index')" class="text-black hover:text-red-500">
+                    {{ __('Homepage') }}
+                </x-nav-link>
+                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-black hover:text-red-500">
+                    {{ __('Dashboard') }}
+                </x-nav-link>
+                <x-nav-link :href="route('homepage.pokemons.index')" :active="request()->routeIs('homepage.pokemons.index')" class="text-black hover:text-red-500">
+                    {{ __('Liste des Pokémon') }}
+                </x-nav-link>
+                <x-nav-link :href="route('type.index')" :active="request()->routeIs('type.index')" class="text-black hover:text-red-500">
+                    {{ __('Liste des Types') }}
+                </x-nav-link>
+                <x-nav-link :href="route('attaque.index')" :active="request()->routeIs('attaque.index')" class="text-black hover:text-red-500">
+                    {{ __('Liste des Attaques') }}
+                </x-nav-link>
             </div>
 
             <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
+            <div class="hidden sm:flex sm:items-center">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-800 bg-white hover:text-red-500 focus:outline-none transition ease-in-out duration-150">
@@ -62,13 +47,9 @@
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
-
-                        <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <x-dropdown-link :href="route('logout')"
-                                             onclick="event.preventDefault();
-                                                     this.closest('form').submit();">
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
@@ -76,7 +57,7 @@
                 </x-dropdown>
             </div>
 
-            <!-- Hamburger -->
+            <!-- Mobile Menu Button -->
             <div class="-me-2 flex items-center sm:hidden">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-700 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -89,10 +70,22 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    <div :class="{'block': open, 'hidden': ! open}" class="sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('homepage.index')" :active="request()->routeIs('homepage.index')">
+                {{ __('Homepage') }}
+            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('homepage.pokemons.index')" :active="request()->routeIs('homepage.pokemons.index')">
+                {{ __('Liste des Pokémon') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('type.index')" :active="request()->routeIs('type.index')">
+                {{ __('Liste des Types') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('attaque.index')" :active="request()->routeIs('attaque.index')">
+                {{ __('Liste des Attaques') }}
             </x-responsive-nav-link>
         </div>
 
@@ -107,13 +100,9 @@
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
-
-                <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
+                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
