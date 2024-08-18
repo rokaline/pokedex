@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('img_path')->nullable();
             $table->integer('dégâts');
             $table->text('description');
-            $table->foreignId('type_id')->constrained()->onDelete('cascade');
+            $table->foreignId('type_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

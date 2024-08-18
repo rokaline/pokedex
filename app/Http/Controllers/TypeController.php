@@ -55,6 +55,18 @@ class TypeController extends Controller
 
     public function destroy(Type $type)
     {
+        // $type->delete();
+        // return redirect()->back();
+
+        $pokemons = $type->pokemons;
+        foreach ($pokemons as $pokemon) {
+        if ($pokemon->types->count() == 1) {
+            // Supprimer le Pokémon car il n'aura plus de type
+            $pokemon->delete();
+        }
+    }
+
+    // Procéder à la suppression du type
         $type->delete();
         return redirect()->back();
     }

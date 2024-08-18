@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('attaque_pokemon', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pokemon_id')->constrained()->onDelete('cascade');
-            $table->foreignId('attaque_id')->constrained()->onDelete('cascade');
+            $table->foreignId('pokemon_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('attaque_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -27,3 +27,4 @@ return new class extends Migration
         Schema::dropIfExists('attaque_pokemon');
     }
 };
+

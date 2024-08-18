@@ -51,7 +51,7 @@
                 <div class="md:w-3/4 mt-10 md:mt-0">
                     <div class="bg-gradient-to-br from-yellow-100 via-red-50 to-red-100 p-6 rounded-lg shadow-inner mb-6">
                         <!-- Attaques -->
-                        @if($pokemon->attaques)
+                        @if($pokemon->attaques->count() > 0)
                             @foreach($pokemon->attaques as $attaque)
                                 <div class="pt-6">
                                     <!-- NOM -->
@@ -74,7 +74,9 @@
                                         <span class="block mt-2">{{ $attaque->description }}</span>
                                     </p>
                                 </div>
-                                    <div class="flex items-center justify-center gap-4">
+
+
+                            <div class="flex items-center justify-center gap-4">
                                         <p><strong>Type:</strong> {{ $attaque->type->nom }}</p>
                                         <img src="{{ Storage::url($attaque->type->img_path) }}"
                                              alt="{{ $attaque->type->nom }}"
@@ -86,16 +88,11 @@
 
                             @endforeach
                         @else
-                            <p class="text-center text-gray-600">Aucune attaque disponible pour ce Pokémon.</p>
+                            <p class="text-center text-gray-600">Attaque à attribuer à ce Pokemon.</p>
                         @endif
                     </div>
                 </div>
             </div>
-
-
-
-
-
 
 
         <!-- Bouton de retour -->
