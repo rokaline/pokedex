@@ -132,7 +132,7 @@
                 </li>
             @endforeach
         </ul>
-    </div><!-- fin encard roiuge -->
+    </div><!-- fin encard rouge -->
 
         <!-- Pagination -->
         <div class="mt-8 flex justify-center">
